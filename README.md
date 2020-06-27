@@ -1,2 +1,17 @@
-# learning-lab-crash-course-su20
-READMEs &amp; code samples for our learning labs crash course over summer '20
+# Learning Labs Summer Crash Course (Summer '20)
+
+Hey there! This is a repository that contains all of the notes for ACM @ UCLA's Learning Labs Crash Course, which we held online during the summer of 2020. We developed this series to give developers with **zero prior web development experience** enough of a primer to make high-quality beautiful and interactive front-end applications. 
+
+While these notes are a good starting point, simply reading through all of these notes is not nearly enough to become a pro web developer! We aimed to give enough of a foundational background and a primer into each relevant area; however, to make great web applications, developers need to **practice aggressively**. 
+
+## Table of Contents 
+
+* TBD
+
+You can also find recorded videos of our summer sessions on the ACM YouTube channel, in the following playlist: ...
+
+## Licensing and Attribution
+
+These notes were mostly written by Matthew Wang ([@malsf21](https://github.com/malsf21)) and Leo Krashanoff ([@krashanoff](https://github.com/krashanoff)). They would like to thank ACM Hack in particular, for providing inspiration for some of these notes.
+
+These notes are published with the MIT License. You are free to use them however you wish. If you do, let us know - we'd love to know how you used them, and how we can make them better.
