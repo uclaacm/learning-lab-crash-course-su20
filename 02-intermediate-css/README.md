@@ -143,9 +143,68 @@ Also, note that the border goes around both the content and the padding! And, th
 
 ### The Margin Area
 
-...
+Last, but not least, let's talk about margin! Margin operates somewhat similarly to padding, in that we'll add some space around the element. Like `padding`, there's:
 
-note: margins collapse!!
+* `margin-top`
+* `margin-right`
+* `margin-bottom`
+* `margin-left`
+* and the shorthand `margin`
+
+Let's take a look at an example with all of our elements in play, building on our card example:
+
+```css
+/* CSS file */
+.text-card{
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid black;
+  margin-bottom: 50px;
+}
+```
+
+```html
+<!-- HTML FILE -->
+<div class="text-card">
+  I never understood Fifty Shades of Gray - there are at least thousands in RGB color space.
+</div>
+
+<div class="text-card">
+  Paradoxically, taking computer organisation has made my computer less organized; there's stacks and heaps of files everywhere now!
+</div>
+```
+
+TODO: screenshot of resulting cards
+
+Notice that, in addition to the padding within the box, we've now added space between the boxes: `50px` to be exact!
+
+There is one difference between the behaviour of margin and padding, other than their difference in order respective to the box model. Margins "collapse": that is to say, if two elements on top of each other have `margin-bottom: X;` and `margin-top: Y;`, the total space won't be `X + Y` (as it would for padding); instead, it'll *collapse* the margins, and pick the larger item. We can see this with our text cards:
+
+```css
+/* CSS file */
+.text-card{
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 50px;
+}
+```
+
+```html
+<!-- HTML FILE -->
+<div class="text-card">
+  I never understood Fifty Shades of Gray - there are at least thousands in RGB color space.
+</div>
+
+<div class="text-card">
+  Paradoxically, taking computer organisation has made my computer less organized; there's stacks and heaps of files everywhere now!
+</div>
+```
+
+Note that the visual distance between the two cards is the same as our previous example, even though we've changed the `margin-bottom: 50px;` to `margin: 50px;`!
+
 
 ### Padding vs. Margin
 
@@ -159,11 +218,49 @@ In general, Matt uses that as a good rule of thumb. However, you'll develop your
 
 ### Aside: the `box-sizing` property
 
-...
+Technically, what we just described is how margin, border, padding, and content play together when the property `box-sizing: content-box;` is set, which is the default value.
+
+However, you'll often see people set `box-sizing: border-box;` instead (which is something that we often do as well). What does this do? Well, instead of making `width` and `height` control just the content area, it makes those properties control *the combination of border, padding, and content* instead! This is often very convenient, because you can dynamically size the "bordered content" with `width` and `height` without having to account for the padding or border sizes. However, you need to **opt-in** to this feature, which is why we explained the box model in this order. It's up to you on which you prefer - just make sure everybody on your team is clear on what you're using!
 
 ## `display:inline` and `display:block`
 
-...
+One concept that's closely related to the box model is the `display` property. It turns out, the `display` property has many possible values (including `flex` and `grid`, which we'll go over in a later session), but for now, we'll focus on two very important ones: `inline` and `block`.
+
+**Block** and **inline** are a mutually exclusive way to describe the behaviour of an element, and in particular, these key properties:
+
+* a block element **takes up the full width of its parent** (unless changed with CSS), while an inline element **only takes up the width of its content** (unless changed with CSS)
+* a block element **always starts on a new line**, while an inline element does not
+
+Why is this important? Well first, this describes some of the behaviour of HTML tags that we've used before; note that creating a new `<p>` or `<div>` tag breaks the content on a new line, while tags like `<a>` and `<span>` don't. This is because `<p>` and `<div>` (among many others) are by default block-level elements, while `<a>` and `<span>` are by default inline.
+
+You can change these values with `display:inline` and `display:block`, which happens more often than you might think! To bring forward one example, you'll often see a snippet of code that looks something like this:
+
+```css
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+```
+
+```html
+<!-- TODO -->
+<img />
+<img class="img-responsive" />
+```
+
+TODO: Screenshot of image example
+
+We haven't talked about the `auto` keyword or the `max-width` property yet, but what this does is horizontally center an image, making it as big as possible. It's necessary for us to set `display:block;`, as the `<img>` is inline by default, and we need to use the property that a block element takes up the full width of its parent for this to work.
+
+While we're on the topic, let's quickly also mention what `max-width` and `auto` do, since they're relevant in the context of block-level elements.
+
+* `max-width` overrides the `width` property, and stops the `width` from ever being larger than the `max-width` property. Basically, this says to never scale the image larger than its original size.
+* the `auto` keyword automatically adjusts the value of its property based on the content and context of the element. `height: auto;` keeps the aspect ratio the same as the image gets larger, while `margin-left:auto;` and `margin-right:auto;` "fill" the rest of the space in the block-level element (as our width can't get larger than `100%`, so something else needs to take on the space
+
+If that didn't make too much sense, that's okay - that was a bit of a handwavy explanation. We'll include some resources below that explain that more in-depth.
 
 ## The `position` property
 
@@ -187,11 +284,11 @@ At the end of the day, there's quite a bit more to floats (for example, you ofte
 
 ## Conclusion
 
-
+...
 
 ## Further Reading
 
-These are tutorials from the Mozilla Developer Network that walk through the concepts we discussed. Reading them isn't required, but they can help consolidate your knowledge and catch details that we might've missed!
+These are tutorials that walk through the concepts we discussed. Reading them isn't required, but they can help consolidate your knowledge and catch details that we might've missed!
 
 * [The box model (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
 * [Block and inline layout in normal flow (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow)
@@ -201,3 +298,5 @@ These are tutorials from the Mozilla Developer Network that walk through the con
 ## Reference Links
 
 These are reference-style documents that go over the concepts we discussed.
+
+* [box-sizing (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
