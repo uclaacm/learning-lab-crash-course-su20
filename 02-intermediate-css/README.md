@@ -28,13 +28,13 @@ The box model says that **every HTML element is really just a box**. Simple, rig
 
 Before we discuss each of these areas, it would be helpful if we could see a diagram explaining what we mean. Here's one, courtesy of the Mozilla Developer Network:
 
-![MDN example of Box Model](https://mdn.mozillademos.org/files/16558/box-model.png)
+![MDN example of Box Model](images/mdn-box-model.png)
 
 Was that confusing? Hopefully not, but let's break each portion down.
 
 ### The Content Area
 
-The content area contains, well, your content. By default, the size of this area is determined by the size of your content: a `400px` image will have a content area of size `400px`, and text *generally* fills as much space as possible (though we'll go into this more in a bit). In addition, we've played around with the `width` and `height` attributes: by default, the `width` and `height` attributes only affect the content area. 
+The content area contains, well, your content. By default, the size of this area is determined by the size of your content: a `400px` image will have a content area of size `400px`, and text *generally* fills as much space as possible (though we'll go into this more in a bit). In addition, we've played around with the `width` and `height` attributes: by default, the `width` and `height` attributes only affect the content area.
 
 This is the easiest area to think about and examine. We can do this with a very trivial code example:
 
@@ -54,7 +54,7 @@ This is the easiest area to think about and examine. We can do this with a very 
 </div>
 ```
 
-TODO: screenshot of resulting content area
+![screenshot of content area example](images/content-area.png)
 
 A good question that you might be asking is "what are the default `width` and `height` values for the content area?". That's a *very* good question, and we promise we'll get there by the end of this session.
 
@@ -79,7 +79,7 @@ Let's also take a look at this with a code example. One very common use case of 
   width: 200px;
   height: 200px;
 }
-.padded-box{
+.padded-orange-box{
   background-color: orange;
   width: 200px;
   height: 200px;
@@ -93,12 +93,12 @@ Let's also take a look at this with a code example. One very common use case of 
   Why are spiders so good at making websites? Because they're great web developers!
 </div>
 <br />
-<div class="text-box">
+<div class="padded-orange-box">
   Why are spiders so good at making websites? Because they're great web developers!
 </div>
 ```
 
-TODO: screenshot of resulting padding + content area
+![screenshot of padding + content areas example](images/padding-area.png)
 
 The padded box looks better, and it's easier to read! Note that the second box is actually bigger: even though the `width` and the `height` is the same, that only affects our content area: our entire box is actually `220px` by `220px`! 
 
@@ -131,7 +131,7 @@ This is best explained visually. Let's look at this with another common code exa
 </div>
 ```
 
-TODO: screenshot of resulting border + padding + content area
+![screenshot of border + padding + content areas example](images/border-area.png)
 
 Here, the `border: 1px solid black;` is telling us:
 
@@ -155,7 +155,7 @@ Let's take a look at an example with all of our elements in play, building on ou
 
 ```css
 /* CSS file */
-.text-card{
+.text-card-mb{
   width: 200px;
   height: 200px;
   padding: 10px;
@@ -166,16 +166,16 @@ Let's take a look at an example with all of our elements in play, building on ou
 
 ```html
 <!-- HTML FILE -->
-<div class="text-card">
+<div class="text-card-mb">
   I never understood Fifty Shades of Gray - there are at least thousands in RGB color space.
 </div>
 
-<div class="text-card">
+<div class="text-card-mb">
   Paradoxically, taking computer organisation has made my computer less organized; there's stacks and heaps of files everywhere now!
 </div>
 ```
 
-TODO: screenshot of resulting cards
+![screenshot of margin + border + padding + content areas example, with margin-bottom: 50px;](images/margin-area.png)
 
 Notice that, in addition to the padding within the box, we've now added space between the boxes: `50px` to be exact!
 
@@ -183,7 +183,7 @@ There is one difference between the behaviour of margin and padding, other than 
 
 ```css
 /* CSS file */
-.text-card{
+.text-card-spaced{
   width: 200px;
   height: 200px;
   padding: 10px;
@@ -194,17 +194,18 @@ There is one difference between the behaviour of margin and padding, other than 
 
 ```html
 <!-- HTML FILE -->
-<div class="text-card">
+<div class="text-card-spaced">
   I never understood Fifty Shades of Gray - there are at least thousands in RGB color space.
 </div>
 
-<div class="text-card">
+<div class="text-card-spaced">
   Paradoxically, taking computer organisation has made my computer less organized; there's stacks and heaps of files everywhere now!
 </div>
 ```
 
-Note that the visual distance between the two cards is the same as our previous example, even though we've changed the `margin-bottom: 50px;` to `margin: 50px;`!
+![screenshot of margin + border + padding + content areas example with margin collapsing, with margin 50px;](images/margin-collapse.png)
 
+Note that the visual distance between the two cards is the same as our previous example, even though we've changed the `margin-bottom: 50px;` to `margin: 50px;`!
 
 ### Padding vs. Margin
 
@@ -214,13 +215,55 @@ If you wanted a one-liner, it would look something like this:
 
 > Padding creates space inside an element, while margin creates space between elements.
 
-In general, Matt uses that as a good rule of thumb. However, you'll develop your own internal intuition on which is the right choice to use, and eventually, you'll have more tools in your toolkit to properly space out your webpage. 
+In general, Matt uses that as a good rule of thumb. However, you'll develop your own internal intuition on which is the right choice to use, and eventually, you'll have more tools in your toolkit to properly space out your webpage.
 
 ### Aside: the `box-sizing` property
 
 Technically, what we just described is how margin, border, padding, and content play together when the property `box-sizing: content-box;` is set, which is the default value.
 
-However, you'll often see people set `box-sizing: border-box;` instead (which is something that we often do as well). What does this do? Well, instead of making `width` and `height` control just the content area, it makes those properties control *the combination of border, padding, and content* instead! This is often very convenient, because you can dynamically size the "bordered content" with `width` and `height` without having to account for the padding or border sizes. However, you need to **opt-in** to this feature, which is why we explained the box model in this order. It's up to you on which you prefer - just make sure everybody on your team is clear on what you're using!
+However, you'll often see people set `box-sizing: border-box;` instead (which is something that we often do as well).
+
+What does this do? Well, instead of making `width` and `height` control just the content area, it makes those properties control *the combination of border, padding, and content* instead! This is often very convenient, because you can dynamically size the "bordered content" with `width` and `height` without having to account for the padding or border sizes.
+
+A quick example: 
+
+```css
+/* CSS file */
+.text-card-spaced{
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 50px;
+}
+.box-sizing-border-box{
+  box-sizing: border-box;
+}
+```
+
+```html
+<!-- HTML FILE -->
+<div class="text-card-spaced">
+  This card is actually 200 + 10 + 1 + = 211px wide and tall (width + padding + border).
+</div>
+
+<div class="text-card-spaced box-sizing-border-box">
+  This card is 200px wide, just as we set!
+</div>
+```
+
+![screenshot comparing box-sizing values of content-box and border-box](images/box-sizing.png)
+
+It's so convenient, in fact, that some developers (like us) apply the property to all elements:
+
+```css
+/* the '*' selector applies to all elements */
+* {
+  box-sizing: border-box;
+}
+```
+
+However, you need to **opt-in** to this feature, which is why we explained the box model in this order. It's up to you on which you prefer - just make sure everybody on your team is clear on what you're using!
 
 ## `display:inline` and `display:block`
 
@@ -236,6 +279,13 @@ Why is this important? Well first, this describes some of the behaviour of HTML 
 You can change these values with `display:inline` and `display:block`, which happens more often than you might think! To bring forward one example, you'll often see a snippet of code that looks something like this:
 
 ```css
+.img-container{
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  margin-bottom: 300px;
+}
+
 .img-responsive {
   display: block;
   max-width: 100%;
@@ -247,18 +297,24 @@ You can change these values with `display:inline` and `display:block`, which hap
 
 ```html
 <!-- TODO -->
-<img />
-<img class="img-responsive" />
+<div class="img-container">
+  <img src="images/wash.jpg" />
+</div>
+<div class="img-container">
+  <img src="images/wash.jpg" class="img-responsive" />
+</div>
 ```
 
-TODO: Screenshot of image example
+TODO: a better example image and container set
+
+You wouldn't know this, but the image `wash.jpg` is ~ 600px by 600px. The first one doesn't respect the size of its container: it goes outside the border, and looks bad! However, the second one does, and stays just within the bounds of its container. This is a really useful tool when sizing images!
 
 We haven't talked about the `auto` keyword or the `max-width` property yet, but what this does is horizontally center an image, making it as big as possible. It's necessary for us to set `display:block;`, as the `<img>` is inline by default, and we need to use the property that a block element takes up the full width of its parent for this to work.
 
 While we're on the topic, let's quickly also mention what `max-width` and `auto` do, since they're relevant in the context of block-level elements.
 
 * `max-width` overrides the `width` property, and stops the `width` from ever being larger than the `max-width` property. Basically, this says to never scale the image larger than its original size.
-* the `auto` keyword automatically adjusts the value of its property based on the content and context of the element. `height: auto;` keeps the aspect ratio the same as the image gets larger, while `margin-left:auto;` and `margin-right:auto;` "fill" the rest of the space in the block-level element (as our width can't get larger than `100%`, so something else needs to take on the space
+* the `auto` keyword automatically adjusts the value of its property based on the content and context of the element. `height: auto;` keeps the aspect ratio the same as the image gets larger, while `margin-left:auto;` and `margin-right:auto;` "fill" the rest of the space in the block-level element (as our width can't get larger than `100%`, so something else needs to take on the space.
 
 If that didn't make too much sense, that's okay - that was a bit of a handwavy explanation. We'll include some resources below that explain that more in-depth.
 
@@ -272,7 +328,10 @@ We have now discussed layout and spacing, but how do we determine the position o
 * `absolute`
 * `sticky`
 
-...
+Everything so far we have discussed is what happens when you set `position:static`; elements appear one after another, known as the "normal" flow.
+
+The other `position` values change what the properties `top`, `right`, `bottom`, and `left` do - things we haven't discussed yet.
+
 
 ## The `float` property
 
