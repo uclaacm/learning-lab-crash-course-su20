@@ -24,7 +24,7 @@ Note that using JS is optional: some people use it, and some don't. Do what feel
 
 ## A Brief Aside & Inspirations: The Good, The Bad, and the Functionally Ugly
 
-Very quickly, let's run through some examples of cool designs for personal websites.
+Very quickly, let's run through some examples of cool designs for personal websites (though to be honest, this is also just a chance for Matt to show you some cool people he knows).
 
 Many people choose minimal websites that are content-focused and driven. Here are a few examples:
 
