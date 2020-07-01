@@ -6,9 +6,12 @@ Hey there! This is a repository that contains all of the notes for ACM @ UCLA's 
 
 While these notes are a good starting point, simply reading through all of these notes is not nearly enough to become a pro web developer! We aimed to give enough of a foundational background and a primer into each relevant area; however, to make great web applications, developers need to **practice aggressively**. 
 
-## Table of Contents 
+## Table of Contents
 
-* TBD
+* [Task 1: Personal Portfolio](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/task-1-portfolio)
+* [Lesson 01: Intro to HTML & CSS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/01-intro-html-css)
+* [Lesson 02: Intermediate CSS: The Box Model & Positioning](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/02-intermediate-css)
+* more on the way
 
 You can also find recorded videos of our summer sessions on the ACM YouTube channel, in the following playlist: ...
 
