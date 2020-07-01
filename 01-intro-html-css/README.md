@@ -1,6 +1,7 @@
 # 07/01/20: Introduction to HTML and CSS
 
 With Matt and Leo, we will discuss the fundamental languages of the web: HTML and CSS. With them, we will learn how to get started creating a basic website! Here are our learning goals for the lesson along with links to each header:
+
 * What are they used for?
 * Basic HTML tags (headers, paragraph, link, img, lists, div, span)
 * Basic properties of tags (href, anchor)
@@ -8,6 +9,47 @@ With Matt and Leo, we will discuss the fundamental languages of the web: HTML an
 * Discuss first project: portfolio!
 
 After completing this, you will be able to structure a basic website, style its components, and connect it to other resources on the web!
+
+## Table of Contents
+
+* [HTML](#html)
+    * [What is HTML?](#what-is-html)
+    * [What's in an index.html?](#whats-in-an-indexhtml)
+        * [What's special about index.html?](#whats-special-about-indexhtml)
+        * [Prelude to tags: comments in HTML](#prelude-to-tags-comments-in-html)
+    * [Tags](#tags)
+        * [&lt;html&gt;](#html-1)
+        * [&lt;head&gt;](#head)
+        * [&lt;body&gt;](#body)
+        * [Interlude to more tags](#interlude-to-more-tags)
+        * [&lt;h1&gt;](#h1)
+        * [&lt;p&gt;](#p)
+        * [&lt;span&gt;](#span)
+        * [&lt;ol&gt;, &lt;ul&gt;, and &lt;li&gt;](#ol-ul-and-li)
+        * [&lt;div&gt;](#div)
+        * [&lt;a&gt;](#a)
+        * [&lt;img&gt;](#img)
+        * [&lt;link&gt;](#link)
+        * [Tags: In Summary](#tags-in-summary)
+    * [What it means to be "tree-structured"](#what-it-means-to-be-tree-structured)
+    * [Properties](#properties)
+        * [Class](#class)
+        * [ID](#id)
+* [Styling with CSS](#styling-with-css)
+    * [Reading, writing CSS](#reading-writing-css)
+        * [Selectors](#selectors)
+        * [Properties and values](#properties-and-values)
+        * [font-size](#font-size)
+        * [font-weight](#font-weight)
+        * [color](#color)
+        * [background-color](#background-color)
+        * [border](#border)
+        * [Writing some CSS for our website](#writing-some-css-for-our-website)
+    * [**Cascading** Style Sheets](#cascading-style-sheets)
+    * [Linking CSS files to our webpage](#linking-css-files-to-our-webpage)
+    * [Basic CSS: Summary](#basic-css-summary)
+* [Project One: Building a Portfolio](#project-one-building-a-portfolio)
+* [Reference](#reference)
 
 # HTML
 
