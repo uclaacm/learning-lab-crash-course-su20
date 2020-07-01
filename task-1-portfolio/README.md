@@ -22,7 +22,9 @@ Like the rest of this crash course, the onus is on you to practice what you've l
 
 Note that using JS is optional: some people use it, and some don't. Do what feels right for you!
 
-## A Brief Aside & Inspirations: The Good, The Bad, and the Functionally Ugly
+We also want you to get used to using `git` and GitHub. We'll talk a bit about these tools in text below, but we'll be a bit brief (there are many, many `git` and GitHub tutorials out there).
+
+## Inspirations
 
 Very quickly, let's run through some examples of cool designs for personal websites (though to be honest, this is also just a chance for Matt to show you some cool people he knows).
 
@@ -54,6 +56,97 @@ And sometimes, you can go flashy. Here are some websites that do a lot, and say 
 * [https://www.strml.net/](https://www.strml.net/) - Samuel Reed's website went viral on Twitter, Reddit, and HackerNews, and for good reason. He literally constructs his website, right in front of you. By far one of the most innovative websites we've seen.
 * [http://www.rleonardi.com/interactive-resume/](http://www.rleonardi.com/interactive-resume/) - Okay, Robby Leonardi literally made his website an interactive game. He wins.
 * [http://mihirmathur.com/](http://mihirmathur.com/) - Mihir was a previous president of ACM @ UCLA! While his website has the general flow and layout of most websites, there are so many design microinteractions that just make his site pleasant to use.
+
+## A Brief Intro with git
+
+*You might find [GitHub Desktop](https://desktop.github.com), a visual interface for git, very helpful. We'll still go over the command-line steps, but there's no shame in using a UI!*
+
+Here, we're assuming you're using a Unix-based shell (e.g. macOS, Linux, or Git Bash on Windows).
+
+### Setup
+
+Okay, how do we get started? We'll start by creating a folder, and then a git repository:
+
+```sh
+$ mkdir personal-portfolio
+$ cd personal-portfolio
+$ git init
+...
+```
+
+`git init` creates an empty "git repository" in your folder.
+
+Now, you make some changes.
+
+```sh
+$ echo "This is my personal portfolio" >> README.md
+...
+```
+
+Now, we can check what `git` sees with `git status`:
+
+```sh
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+    README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+This is an important distinction. Just because we've changed a file, doesn't mean it'll be updated just yet. To do that, we need to move it to staging, using `git add`; we're going to cheat and use the glob pattern `*`, which means all files (but we could've also done `git add README.md`):
+
+```sh
+$ git add *
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+    new file:   README.md
+```
+
+Great! Now we have files ready to be committed. Let's commit, with `git commit`
+
+```sh
+$ git commit -m "adding my README file"
+...
+```
+
+The `-m` argument says to use the message from the command line, rather than entering a text editor.
+
+Now, all that's left is to push our changes to GitHub. But wait! We haven't even told GitHub we're going to do something! So let's do that first
+
+...
+
+Next, as GitHub tells us, we need to set the remote in our git repository. We'll give it a name; the name `master` is 
+
+...
+
+Great, and now we're ready. We can finally run `git push`!
+
+```sh
+$ git push -u origin master
+...
+```
+
+### The Typical Workflow
+
+Now that we've got our repository all setup, here's what we do every time we want to make a new change:
+
+* make your changes
+* add all relevant files with `git add`
+* use `git commit` to commit your changes locally
+* run `git push` to send them to our origin (in this case, GitHub)
+* double-check everything looks good on GitHub!
+
+Note: we haven't talked about branches and pull requests yet. We'll do that for our next task, don't you worry!
 
 ## Deploying Your Website with GitHub Pages
 
