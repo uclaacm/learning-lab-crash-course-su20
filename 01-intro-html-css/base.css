@@ -1,0 +1,28 @@
+h1 {
+    font-size: 50px;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+/* add a border around paragraphs and change their font to comic sans */
+p {
+    font-family: Comic Sans MS;
+    border: thin solid black;
+}
+
+/* give divs a different background color */
+div {
+    background-color: aliceblue;    /* this is a real named color in CSS! */
+}
+
+/* style elements with the class "reallybig" to have a font size of 100px */
+.reallybig {
+    font-size: 100px;
+}
+
+/* style the element with the ID page-title to have a font weight of 700 (bold) */
+#page-title {
+    font-weight: 700;
+}
