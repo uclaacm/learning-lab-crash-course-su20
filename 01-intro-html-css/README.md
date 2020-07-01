@@ -670,7 +670,26 @@ You may have noticed that we have multiple definitions of `font-size` for `h1` t
 
 ## \*\*Cascading\*\* Style Sheets
 
-...
+When there are multiple rules applying to the same element, [CSS' cascade and specificity rules come into play](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity).
+
+At a high level, the last rule to be declared is what takes precedence. So in our example above, the last `h1` styling rule takes precedence, making our font size 30px.
+
+However, when there are multiple rules applying from multiple **selectors**, precedence takes effect. **The most specific selector wins out on conflicting rules**.
+
+Here's the list of selector specificity, in order of least to most specific:
+* Type selectors (`h1`, `div`, etc.)
+* Class selectors (`.reallybig`)
+* ID selectors (`#page-title`)
+
+So if we wrote, using our stylesheet above:
+
+```html
+<h1 class='reallybig' id='page-title'>Conflict?</h1>
+```
+
+We would see that the font size from the class selector (`.reallybig`) would win out, and the ID styles would still be respected (since there was no conflict).
+
+Before we move on, there are of course ways to override these rules, but you should only do so sparingly. By appending `!important` to the end of a value for a particular rule, we can guarantee that the rule will win out in cases of conflict. However, this should be reserved for incredibly specific situations, such as for overwriting rules from a CSS framework - but even then you can take advantage of the cascade!
 
 ## Linking CSS files to our webpage
 
@@ -696,6 +715,16 @@ Since this is something that we would like to be loaded prior to the content of 
 <!-- ... -->
 ```
 
+While we're here, let's also give some elements the class and another the ID we made:
+
+```html
+<!-- ... -->
+        <div>
+            <h1 class='reallybig' id='page-title'>This is h1</h1>
+            <h2>This is h2</h2>
+<!-- ... -->
+```
+
 With this, we can see the styling changes immediately reflected:
 
 ![the HTML document with applied styling](images/withstyle.png)
@@ -715,6 +744,8 @@ To sum it all up, we learned about what **CSS** means, how to read and write it,
 The best part of frontend development is that much of what you learn is immediately applicable! So what can you do with your knowledge of HTML and CSS? Build a portfolio website for yourself!
 
 Try building off of the sample code we have been developing throughout this document or writing your own from scratch.
+
+Check out the [full assignment doc here](../task-1-portfolio/README.md).
 
 ***
 
