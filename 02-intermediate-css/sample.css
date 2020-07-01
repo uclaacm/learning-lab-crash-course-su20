@@ -17,14 +17,14 @@
     padding: 10px;
 }
 
-.text-card{
+.text-card {
     width: 200px;
     height: 200px;
     padding: 10px;
     border: 1px solid black;
 }
 
-.text-card-mb{
+.text-card-mb {
     width: 200px;
     height: 200px;
     padding: 10px;
@@ -32,7 +32,7 @@
     margin-bottom: 50px;
 }
 
-.text-card-spaced{
+.text-card-spaced {
     width: 200px;
     height: 200px;
     padding: 10px;
@@ -40,13 +40,22 @@
     margin: 50px;
 }
 
-.box-sizing-border-box{
+.box-sizing-border-box {
     box-sizing: border-box;
 }
 
-.img-container{
-    width: 400px;
+.large-img-container {
+    width: 600px;
+    height: 600px;
     border: 1px solid black;
+    background: pink;
+}
+  
+.small-img-container {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    background: pink;
 }
 
 .img-responsive {
@@ -55,4 +64,14 @@
     height: auto;
     margin-left: auto;
     margin-right: auto;
+}
+
+.float-left {
+    float: left;
+    background: red;
+}
+  
+.float-right {
+    float: right;
+    background: blue;
 }

@@ -15,6 +15,23 @@ We'll assume that you have some experience with HTML & CSS, to the extent that w
 
 Let's get started!
 
+## Table of Contents 
+
+* [The Box Model](#the-box-model)
+  * [The Content Area](#the-content-area)
+  * [The Padding Area](#the-padding-area)
+  * [The Border Area](#the-border-area)
+  * [The Margin Area](#the-margin-area)
+  * [Padding vs. Margin](#padding-vs-margin)
+  * [Aside: the box-sizing property](#aside-the-box-sizing-property)
+* [display:inline and display:block](#displayinline-and-displayblock)
+* [The position property](#the-position-property)
+  * [A quick aside on z-index](#a-quick-aside-on-z-index)
+* [The float property](#the-float-property)
+* [Conclusion](#conclusion)
+* [Further Reading](#further-reading)
+* [Reference Links](#reference-links)
+
 ## The Box Model
 
 The **box model** is a core part of HTML and CSS, and you'll likely hear about it more as you read web documentation, talk to web developers, and do front-end interviews. But what exactly does the box model mean?
@@ -74,12 +91,12 @@ Let's also take a look at this with a code example. One very common use case of 
 
 ```css
 /* CSS file */
-.orange-box{
+.orange-box {
   background-color: orange;
   width: 200px;
   height: 200px;
 }
-.padded-orange-box{
+.padded-orange-box {
   background-color: orange;
   width: 200px;
   height: 200px;
@@ -100,7 +117,7 @@ Let's also take a look at this with a code example. One very common use case of 
 
 ![screenshot of padding + content areas example](images/padding-area.png)
 
-The padded box looks better, and it's easier to read! Note that the second box is actually bigger: even though the `width` and the `height` is the same, that only affects our content area: our entire box is actually `220px` by `220px`! 
+The padded box looks better, and it's easier to read! Note that the second box is actually bigger: even though the `width` and the `height` is the same, that only affects our content area: our entire box is actually `220px` by `220px`!
 
 Also, notice that the space between the inside box and the outside box is orange, the `background-color` of the element. We want to emphasize that the "whitespace" that padding creates isn't always white!
 
@@ -116,7 +133,7 @@ This is best explained visually. Let's look at this with another common code exa
 
 ```css
 /* CSS file */
-.text-card{
+.text-card {
   width: 200px;
   height: 200px;
   padding: 10px;
@@ -155,7 +172,7 @@ Let's take a look at an example with all of our elements in play, building on ou
 
 ```css
 /* CSS file */
-.text-card-mb{
+.text-card-mb {
   width: 200px;
   height: 200px;
   padding: 10px;
@@ -183,7 +200,7 @@ There is one difference between the behaviour of margin and padding, other than 
 
 ```css
 /* CSS file */
-.text-card-spaced{
+.text-card-spaced {
   width: 200px;
   height: 200px;
   padding: 10px;
@@ -225,18 +242,18 @@ However, you'll often see people set `box-sizing: border-box;` instead (which is
 
 What does this do? Well, instead of making `width` and `height` control just the content area, it makes those properties control *the combination of border, padding, and content* instead! This is often very convenient, because you can dynamically size the "bordered content" with `width` and `height` without having to account for the padding or border sizes.
 
-A quick example: 
+A quick example:
 
 ```css
 /* CSS file */
-.text-card-spaced{
+.text-card-spaced {
   width: 200px;
   height: 200px;
   padding: 10px;
   border: 1px solid black;
   margin: 50px;
 }
-.box-sizing-border-box{
+.box-sizing-border-box {
   box-sizing: border-box;
 }
 ```
@@ -279,11 +296,18 @@ Why is this important? Well first, this describes some of the behaviour of HTML 
 You can change these values with `display:inline` and `display:block`, which happens more often than you might think! To bring forward one example, you'll often see a snippet of code that looks something like this:
 
 ```css
-.img-container{
+.large-img-container {
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
+  background: pink;
+}
+
+.small-img-container {
   width: 400px;
   height: 400px;
   border: 1px solid black;
-  margin-bottom: 300px;
+  background: pink;
 }
 
 .img-responsive {
@@ -296,20 +320,32 @@ You can change these values with `display:inline` and `display:block`, which hap
 ```
 
 ```html
-<!-- TODO -->
-<div class="img-container">
+<!-- images/wash.jpg is 500x500 -->
+<div class="large-img-container">
   <img src="images/wash.jpg" />
 </div>
-<div class="img-container">
+<br />
+<div class="large-img-container">
+  <img src="images/wash.jpg" class="img-responsive" />
+</div>
+<br />
+<div class="small-img-container">
+  <img src="images/wash.jpg" />
+</div>
+<div class="small-img-container">
   <img src="images/wash.jpg" class="img-responsive" />
 </div>
 ```
 
-TODO: a better example image and container set
+![screenshot using img-responsive when the image is smaller than the container](images/box-sizing.png)
 
-You wouldn't know this, but the image `wash.jpg` is ~ 600px by 600px. The first one doesn't respect the size of its container: it goes outside the border, and looks bad! However, the second one does, and stays just within the bounds of its container. This is a really useful tool when sizing images!
+First, let's look at what this does when the image is smaller than the container. The first (untouched) element is in the top-left, as we'd expect. But, the second one, with `img-responsive`, is horizontally centered. Nice! This is because of `margin-left: auto;` and `margin-right: auto;` (which we'll explain in a moment).
 
-We haven't talked about the `auto` keyword or the `max-width` property yet, but what this does is horizontally center an image, making it as big as possible. It's necessary for us to set `display:block;`, as the `<img>` is inline by default, and we need to use the property that a block element takes up the full width of its parent for this to work.
+![screenshot using img-responsive when the image is larger than the container](images/box-sizing.png)
+
+Next, we look at what this does then the image is larger than the container. The first (untouched) element expands past its container, which makes it look ugly. But, the second one, with `img-responsive`, is just within the bounds of its container. Nice! This is because of `max-width: 100%`, which we'll explain in a bit.
+
+In essence, what we've done is horizontally center an image and make it as big as possible in its container. It's necessary for us to set `display:block;`, as the `<img>` is inline by default, and we need to use the property that a block element takes up the full width of its parent for this to work.
 
 While we're on the topic, let's quickly also mention what `max-width` and `auto` do, since they're relevant in the context of block-level elements.
 
@@ -330,32 +366,114 @@ We have now discussed layout and spacing, but how do we determine the position o
 
 Everything so far we have discussed is what happens when you set `position:static`; elements appear one after another, known as the "normal" flow.
 
-The other `position` values change what the properties `top`, `right`, `bottom`, and `left` do - things we haven't discussed yet.
+The other `position` values change what the properties `top`, `right`, `bottom`, and `left` do - things we haven't discussed yet. Let's discuss them now!
 
+Each of those properties are an *offset property*, in that they tell the browser how far from the "offset" to place the new content area: for example,
+
+```css
+.some-element {
+  top: 30px;
+  left: 45px;
+}
+```
+
+Would place that element 30 pixels from the top, and 45 from the left of its reference point.
+
+But what is the reference point? That's what each of `relative`, `fixed`, and `absolute` describe:
+
+* `relative`: the reference point is where the content area would be normally, i.e. before using `top`, `right`, `bottom`, and `left`. In our example, this would shift our element 30 pixels down, and 45 to the right.
+* `fixed`: the reference point is the **viewport**, which is a fancy name for the edge of the browser. In our example, our element would be 30 pixels down and 45 to the right of the top-left corner of the screen, and it'll stay there **even when we scroll**.
+* `absolute`: the reference point is the entire document (imagine if we had a very large monitor that could hold the entire webpage, no matter what). In our example, our element would be 30 pixels down and 45 to the right of the top-left corner of the top of the page, and will move away as we scroll.
+
+These are harder to demonstrate with screenshots, so we recommend that you visit [this W3Schools Demo](https://www.w3schools.com/css/css_positioning.asp) for more information!
+
+Okay, and what about `position: sticky`? This one is a bit more complicated, and depends on the scroll position of the website. From a high level,
+
+* by default, we treat it as `postion: relative`
+* if the user has "scrolled past" where the element is on the website, it then becomes `position: fixed`
+
+Why would we want this property? It turns out, it's very useful in creating navigation bars and table headers - something you'll probably do as a web developer at some point.
+
+You can see a demo and more information on the [MDN Page](https://developer.mozilla.org/en-US/docs/Web/CSS/position#Sticky_positioning).
+
+### A quick aside on `z-index`
+
+If you're thinking carefully, you might have the question: what happens when two elements overlap? What chooses what goes on top of what?
+
+The answer is the `z-index` property, which we don't have too much time to go in-depth in the presentation. The very short answer is that if you think of the webpage as being governed by the x-axis and the y-axis, the natural "z-axis" would point at you, coming out of the monitor. By setting the `z-index` property, we can dictate the position of elements along this "z-axis". For example, an element with `z-index: 999` is "closer to you" than an element with `z-index: 100`, so it'll be on top. By default, elements have `z-index: 0`.
+
+You should read more about `z-index`; the [MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) is pretty manageable.
 
 ## The `float` property
 
 The `float` property is another CSS property that specifies position. It is used very frequently with objects appearing in the middle of text, like an image. If you've ever struggled with putting an image in-line with text in Microsoft Word or Google Docs, this is for you!
 
-...
+```css
+.float-left {
+  float: left;
+  background: red;
+}
+
+.float-right {
+  float: right;
+  background: blue;
+}
+```
+
+```html
+<div>
+  <div class="float-left">float left!</div>
+  <div class="float-right">float right!</div>
+  <p>
+    You know, balloons tend to keep my spirits up. You know, balloons tend to keep my spirits up. You know, balloons tend to keep my spirits up. You know, balloons tend to keep my spirits up. You know, balloons tend to keep my spirits up.
+  </p>
+</div>
+```
+
+![screenshot comparing float left and float right](images/box-sizing.png)
+
+Note how the text wraps around to content not filled by each float - the object is placed "in the middle" of the text, so to speak.
 
 At the end of the day, there's quite a bit more to floats (for example, you often have to use clearfixes or the `clear` property). However, we won't spend too much time on them, as floats are used less and less for layouts in favour of solutions like Flexbox or CSS Grid, both of which we'll cover later. It's still important for you to know what floats are, as they're used heavily by popular libraries/frameworks, and you'll often come across them on StackOverflow looking for CSS help.
 
 ## Conclusion
 
-...
+Wow, that was a lot! But, we now have many tools in our CSS toolkit to position things. In particular, we talked about:
+
+* box properties: `padding`, `border`, `margin`, and `width` & `height`
+* how the `box-sizing` property affects box properties
+* `block` and `inline` elements, and their properties
+* the `position` keywords and its possible values: `static`, `relative`, `fixed`, `absolute`, and `sticky`
+* a quick mention of how `z-index` works
+* a brief mention of `float`
+
+There's no pressure if you don't remember all of this at once! The important thing is that you now know that there are many different ways to position elements, and you have a general idea of how some of them work (Google is your friend)!
+
+Take a quick break, you deserve it! And, if you want to put some of this to use, you can check out our [portfolio task](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-1-portfolio/README.md)!
 
 ## Further Reading
 
-These are tutorials that walk through the concepts we discussed. Reading them isn't required, but they can help consolidate your knowledge and catch details that we might've missed!
+These are tutorials that walk through the concepts we discussed. Reading them isn't required, but they can help consolidate your knowledge and catch details that we might've missed! We abbreviate "Mozilla Developer Network" as "MDN".
 
-* [The box model (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
-* [Block and inline layout in normal flow (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow)
-* [Introducing positioning (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning)
+* [The box model (MDN)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
+* [Block and inline layout in normal flow (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow)
+* [Introducing positioning (MDN)](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning)
+* [CSS Layout - the position property (W3 Schools)](https://www.w3schools.com/css/css_positioning.asp)
 * [All About Floats (CSS Tricks)](https://css-tricks.com/all-about-floats/)
 
 ## Reference Links
 
-These are reference-style documents that go over the concepts we discussed.
+These are reference-style documents that go over the concepts and properties we discussed:
 
-* [box-sizing (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
+* [padding (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)
+* [margin (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
+* [border (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/border)
+* [width (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
+* [height (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+* [box-sizing (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
+* [display (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/display) (note this also goes into flex and grid, which we'll cover later)
+* [max-width (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width)
+* [position (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+* [z-index (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+* [float (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/float)
+* [clear (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/clear) (this is related to floats, if you're interested)
