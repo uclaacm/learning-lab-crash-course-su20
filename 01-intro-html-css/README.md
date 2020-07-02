@@ -1,5 +1,7 @@
 # 07/01/20: Introduction to HTML and CSS
 
+[Link to video.](https://www.youtube.com/watch?v=TlfR0JU5gSg&list=PLPO7_kXilXFa6YdXxn5oln1gagcqnFI4l&index=2&t=0s)
+
 With Matt and Leo, we will discuss the fundamental languages of the web: HTML and CSS. With them, we will learn how to get started creating a basic website! Here are our learning goals for the lesson along with links to each header:
 
 * What are they used for?
