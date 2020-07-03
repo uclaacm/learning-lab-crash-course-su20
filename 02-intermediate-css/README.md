@@ -1,5 +1,7 @@
 # Intermediate CSS: The Box Model & Positioning
 
+[Link to video.](https://www.youtube.com/watch?v=ar1Ni6SNaEE&list=PLPO7_kXilXFa6YdXxn5oln1gagcqnFI4l&index=2)
+
 ## Overview
 
 This session and set of notes covers topics in CSS related to layout and positioning. In particular, we discuss:
@@ -383,7 +385,7 @@ But what is the reference point? That's what each of `relative`, `fixed`, and `a
 
 * `relative`: the reference point is where the content area would be normally, i.e. before using `top`, `right`, `bottom`, and `left`. In our example, this would shift our element 30 pixels down, and 45 to the right.
 * `fixed`: the reference point is the **viewport**, which is a fancy name for the edge of the browser. In our example, our element would be 30 pixels down and 45 to the right of the top-left corner of the screen, and it'll stay there **even when we scroll**.
-* `absolute`: the reference point is the entire document (imagine if we had a very large monitor that could hold the entire webpage, no matter what). In our example, our element would be 30 pixels down and 45 to the right of the top-left corner of the top of the page, and will move away as we scroll.
+* `absolute`: the reference point is the first parent that has `position` not equal to `static` (choosing the entire document if needed). In our example, our element would be 30 pixels down and 45 to the right of the top-left corner of the top of the page, and will move away as we scroll.
 
 These are harder to demonstrate with screenshots, so we recommend that you visit [this W3Schools Demo](https://www.w3schools.com/css/css_positioning.asp) for more information!
 
