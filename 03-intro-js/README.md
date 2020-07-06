@@ -62,8 +62,6 @@ Let's open up an HTML file:
 We can add Javascript by using the `<script>` tag:
 
 ```html
-
-```html
 <!DOCTYPE html>
 <html>
     <head>
@@ -219,6 +217,8 @@ console.log(1 - "wow!");
 
 Like many other float conventions, Javascript has NaN - or **Not a Number**. This is a special value that you'll get if the computation doesn't make sense (e.g. a number minus a string). `NaN` propagates as well: `NaN` times anything is `NaN`, `NaN` subtracted by anything is `NaN`, etc.
 
+Coercion also happens with booleans: values that are `0`, `null`,`undefined`, `""` (the empty string) and `NaN` are coerced to `false`, and the rest are `true`. Note that this coercion doesn't occur with `==`, since it doesn't require a boolean; we're more talking about conditionals (which we'll see soon)!
+
 ### Everything is an Object
 
 It turns out, everything in Javascript is an *object* - and we mean object in an *object-oriented* programming way.
@@ -295,6 +295,8 @@ console.log(a.b.c);
 Oh no! Unfortunately, this means that to truly "copy" an object, you can't just make another variable and give it the same value. This is the exact same concept that exists in C++, Java, etc. with objects and deep copying.
 
 So, is there a solution? Kind of? Many different JS libraries implement their own version of deep copying, and since ES6 (a version of Javascript), fancy functions like `Object.assign()` and the shorthand [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) can be used. We're not going to go into the details, but it's useful!
+
+One last thing you might ask: do you have to `delete` objects that you're done with? No! Javascript is a *garbage collected* language, so the interpreter handles freeing memory once an object is deallocated. It also handles memory allocation, so `malloc` won't be haunting you anytime soon!
 
 ### let, var, and const
 
@@ -382,7 +384,7 @@ switch (committee){
         console.log("Also pretty cool!");
         break;
     default:
-        console.log("Eh, who cares!?);
+        console.log("Eh, who cares!?");
 }
 ```
 
@@ -413,7 +415,7 @@ Typically, you'll use `of` with things that are "iterable" (i.e. there is a set 
 
 ## Speaking of Functions...
 
-Javascript is a **functional programming language**. By the sound of that, functions are probably pretty important. Let's discuss them:
+Javascript is a **functional programming language**. By the sound of that, functions are probably pretty important. They look pretty C-like to us:
 
 ```js
 function saySomething(message){
@@ -423,10 +425,122 @@ function saySomething(message){
 saySomething("hey there!");
 // "hey there!"
 
-function exponent
+function squared(n){
+    return n^2;
+}
+
+squared(2);
+// 4
 ```
 
-## 
+You start by writing the keyword `function`, then the name of the function, and inside the parentheses, each parameter. Finally, you've got the body, and either an explicit `return` statement, or an implicit empty return (`return;`).
+
+Note that there are no explicit types here! This can actually make things quite confusing.
+
+```js
+function adder(a,b){
+    return a + b;
+}
+
+adder(42, 42);
+// 84
+adder(42, "42");
+// "4242"
+```
+
+Type coercion is back again! In this case, you'd probably want to use explicit type conversions.
+
+```js
+function numberAdder(a,b){
+    return Number(a) + Number(b);
+}
+```
+
+This type of typecasting is essentially calling the `Number` constructor with our parameters. While this looks pretty annoying, you often have to write code like this when interfacing with other libraries, as guaranteeing types is tricky!
+
+### First-Class Functions
+
+Let's move on to the cool stuff though. One of the big features of functional programming languages is the idea of *first-class functions*: functions are treated like any other data type. In this case, that means that... functions are objects too!
+
+```js
+function saySomething(message){
+    console.log(message);
+}
+
+let greeter = saySomething;
+greeter("hey!");
+// "hey!"
+
+console.log(greeter);
+// f: greeter(message) ...
+```
+
+Wow! That's not something you'll see often. The lack of type annotations makes this a little tricky ot understand, but we're basically pointing `greeter` to the "function body" of `saySomething`! Every time you use the name of the function *without parentheses or its parameters*, it's the reference to the function - just like any other variable!
+
+One useful application of this is a *higher-order function*, or passing in functions as arguments for other functions.
+
+```js
+function friendlyGreeting(name){
+    return "Hey there! Great to meet you, " + name;
+}
+
+function greetEverybody(listOfPeople, greetingFunction){
+    for (let person of listOfPeople){
+        console.log(greetingFunction(person));
+    }
+}
+
+let flirters = ['🥺', '😘', '😍'];
+
+greetEverybody(flirters, friendlyGreeting);
+// "Hey there! Great to meet you, 🥺"
+// "Hey there! Great to meet you, 😘"
+// "Hey there! Great to meet you, 😍"
+```
+
+That's a trivial example, but it demonstrates the point. One more realistic example of this is the `.map` function on arrays:
+
+```js
+function double(x){
+    return 2 * x;
+}
+let nums = [1, 2, 3, 5, 7, 11];
+nums.map(double);
+// 2, 4, 6, 10, 14, 22
+```
+
+This is a huge part of functional programming (something about no side effects, parallelization, etc. - out of scope of this discussion, but hit up Matt for more)! You'll find this often in React apps when you need to generate lists of components from data.
+
+### Anonymous Functions
+
+There's one other thing we'll quickly point out: anomyous (or lambda, or whatever you want to call them) functions.
+
+```js
+...
+```
+
+## Manipulating the DOM
+
+Okay, but how does this help us make websites? Well, the original focus was to change the "Document Object Model", which as you may recall, is a fancy word for our webpage. Let's run through a barebones example:
+
+```html
+<button id="button">
+    click me!
+</button>
+<p>
+    you've clicked the button <span id="clicks">0</span> times
+</p>
+```
+
+```js
+ document.getElementById("button").addEventListener("onclick", function(){
+        let clickElement = document.getElementById("clicks");
+        let currentClicks = Number(clickElement.value);
+        clickElement.innerHTML = currentClicks + 1;
+})
+```
+
+...
 
 ## Some Other Quirks
 
