@@ -103,7 +103,7 @@ console.log("Hello World!");
 
 If you go to your page, it'll look  like nothing has happened. But, we need to look a little closer. Go to your browser's console (usually from the Dev Tools, or "Inspect Element"):
 
-TODO: screesnhot of console
+!['Hello world!' displayed in the JavaScript console](images/firstConsole.png)
 
 Would you look at that! We did it!
 
@@ -515,9 +515,38 @@ This is a huge part of functional programming (something about no side effects, 
 
 There's one other thing we'll quickly point out: anomyous (or lambda, or whatever you want to call them) functions.
 
-```js
-...
+Let's say we wanted to double all elements of the `nums` array again, but we only need to *really* do this operation once. It wouldn't make sense to write a whole function, so we'd like for a slightly more disposable medium.
+
+Luckily, JavaScript provides for this in the form of **anonymous functions**, otherwise known as **lambda expressions** in languages like C++ and Python. It is easier to take a peek at one in action:
+
+```py
+# in python, lambda functions are very common.
+# you've likely seen or used one in a call to `filter`:
+nums = [1, 2, 3, 5, 7, 11]
+filter(lambda item: item == 5, nums)
+# [5]
 ```
+
+We have an indication that we are providing a lambda expression (`lambda` in Python), the name(s) of the argument(s) it will take (`item` after the `lambda`), and the expression itself (after the `:`). In this case, we wrote a lambda expression that will return true if `item` is equal to 5. Using this expression in a call to `filter` (which takes a function argument), we filter out all the items except for 5!
+
+With that under our belt, let's take a look at what one looks like in JavaScript:
+
+```js
+let nums = [1, 2, 3, 5, 7, 11];
+nums.map(function (element) {
+            return element * 2;
+        });
+// [2, 4, 6, 10, 14, 22]
+```
+
+Let's break down the syntax a little. Just like Python, we have:
+* Indication of the start of a `function` with the keyword
+* The parameter list or arguments to the function (the part in `()`)
+* The body of the function (in our case, the part in `{}`)
+
+Thus, each element in `nums` has our anonymous function called on it, and the element is set to its return value.
+
+There are slightly cleaner ways of creating lambdas in JavaScript, but this form will never fail you. Just make sure that your lambda expression takes the parameters its caller expects, and the return value is expected as well!
 
 ## Manipulating the DOM
 
@@ -533,17 +562,57 @@ Okay, but how does this help us make websites? Well, the original focus was to c
 ```
 
 ```js
- document.getElementById("button").addEventListener("onclick", function(){
-        let clickElement = document.getElementById("clicks");
-        let currentClicks = Number(clickElement.value);
-        clickElement.innerHTML = currentClicks + 1;
+document.getElementById("button").addEventListener("click", function(){
+    let clickElement = document.getElementById("clicks");
+    let currentClicks = Number(clickElement.innerHTML);
+    clickElement.innerHTML = currentClicks + 1;
 })
 ```
 
-...
+Let's open this up in our web browser and take a peek at what's going on.
+
+![TODO: a gif of the page in action]()
+
+Let's focus in a little bit on this: `document.getElementById(...) ...`. If you're looking for a direct example of the DOM in JS, here it is: the literal `document` object! This is the native JavaScript representation of the current webpage.
+
+Next, we call `getElementById()` on it, with argument `"button"`. This should be pretty self explanatory as to what it does, but let's take a look at what it actually looks like in our console:
+
+![console output of the button tag. all its properties are object fields](images/console_out.png)
+
+This is the crux of the DOM. Every tag in our document is representable as an object in native JavaScript (notice the properties `classList` or `attributes`?). We call each of these tags a **node** on our page. Why a node?
+
+Going back to the tree structure of HTML documents we discussed in lesson 1, we can see where this is useful in JavaScript. Every tag is a **node** on our webpage, with a parent node and children nodes - notice the inclusion of the `children` field.
+
+Each node also has a variety of member functions that can be called. In our example, we call `addEventListener`.
+
+### `addEventListener`
+
+This is an absolutely essential function to working with the DOM. If we want a particular function to be called each time an event occurs on the webpage with respect to a certain portion of said document, we can do so with this function.
+
+To put the function in more definite types, its signature is a little something like: `addEventListener(string eventName, function callBack)`.
+
+That is, we specify the event to listen for (in our case `"click"`), and the function to call when said event happens.
+
+With that out of the way, let's talk about our callback function:
+
+```js
+function(){
+    let clickElement = document.getElementById("clicks");
+    let currentClicks = Number(clickElement.innerHTML);
+    clickElement.innerHTML = currentClicks + 1;
+})
+```
+
+We declare a variable to be the element on our page with ID "clicks", cast the contents of its HTML (the `.innerHTML` field) to a `Number`, then set its `.innerHTML` field to said number + 1. That is, it increments the numerical value of the innerHTML of `clicks`.
 
 ## Some Other Quirks
 
 optional semicolons?
 
 interpreted? JIT?
+
+## Additional Resources
+
+In addition to the sources we've cited along the way throughout this document, there are a variety of parts of JavaScript and the DOM that we haven't talked about. These resources will help you to understand these other features and common use cases.
+
+...
