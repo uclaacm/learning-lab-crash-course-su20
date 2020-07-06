@@ -571,7 +571,7 @@ document.getElementById("button").addEventListener("click", function(){
 
 Let's open this up in our web browser and take a peek at what's going on.
 
-![TODO: a gif of the page in action]()
+![button that increments a text counter on click](images/onclick.gif)
 
 Let's focus in a little bit on this: `document.getElementById(...) ...`. If you're looking for a direct example of the DOM in JS, here it is: the literal `document` object! This is the native JavaScript representation of the current webpage.
 
@@ -607,12 +607,55 @@ We declare a variable to be the element on our page with ID "clicks", cast the c
 
 ## Some Other Quirks
 
-optional semicolons?
+### Optional Semicolons
 
-interpreted? JIT?
+**Javascript has optional semicolons**. That means that a function like:
+
+```js
+function myFunc() {
+    console.log("Hi!");
+}
+```
+
+Is just as valid as:
+
+```js
+function myFunc() {
+    console.log("Hi!")
+}
+```
+
+Why is this? Well, we have the ECMAScript specification to thank for that. The concept of [automatic semicolon insertion](http://www.ecma-international.org/ecma-262/7.0/index.html#sec-rules-of-automatic-semicolon-insertion) describes is a set of rules that JavaScript uses to determine whether a semicolon should be automatically inserted at the end of a line or in an expression based on its syntax.
+
+The description is rather bulky since it's the official language specification, so here are the main takeaways. A semicolon will be automatically inserted if:
+1. We find a token that is not allowed *and*:
+    - Said token is separated by a newline
+    - Said token is }
+    - The previous token is ) and the inserted semicolon would terminate a do-while
+2. The end of file is encountered
+3. The token we've found is reserved for something (think about `return`, `throw`, `arrow`, etc.)
+
+While it's good to know this, most of the time semicolons are included anyways for sake of clarity.
+
+### Interpreted v. JIT
+
+One of the weirder things about JavaScript is that it doesn't have a provided interpreter or compiler, like Python or C or ...well, any language.
+
+Instead, each web browser has its **own implementation of JavaScript**. When implementing, there are two routes for handling the language: **interpreted** and **just-in-time compiled (JIT)**.
+
+In the case of handling it as an interpreted language, JavaScript is read line-by-line and executed in bytecode as the web browser reads the file. In the case of JIT compilation, the JavaScript source is read in one shot and compiled down to machine code.
+
+The pros and cons of interpretation are that it is quick to start running code, but it has to translate the code multiple times in the case of loops or function calls.
+
+The pros and cons of JIT are that it is far more efficient at runtime, but at expense of an initial cost to compile the source.
+
+Nowadays, most browsers use JIT to handle JavaScript.
 
 ## Additional Resources
 
 In addition to the sources we've cited along the way throughout this document, there are a variety of parts of JavaScript and the DOM that we haven't talked about. These resources will help you to understand these other features and common use cases.
 
-...
+* [Mozilla's guide to the DOM and its interfaces](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+* [w3schools' examples of DOM events](https://www.w3schools.com/js/js_events.asp)
+* [ECMAScript International's automatic semicolon insertion specification](http://www.ecma-international.org/ecma-262/7.0/index.html#sec-rules-of-automatic-semicolon-insertion)
+* [Mozilla's piece on interpreted v. JIT compiled JavaScript engines](https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/)
