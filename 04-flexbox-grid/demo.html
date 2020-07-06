@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flexbox and Grid Demo</title>
+        <link rel='stylesheet' type='text/css' href='demo.css' />
+    </head>
+    <body>
+        <h1>I am a farmer.</h1>
+        <p>I want to set up a website to show off my products which are coincidentally all images graciously provided by <a href='https://commons.wikimedia.org/wiki/Main_Page'>Wikimedia Commons</a>, so I create a super barebones template product card:</p>
+
+        <div>
+            <div class='product'>
+                <h3>Product Name</h3>
+                <img alt='picture of [product name] in bulk' />
+                <p>This is my product description</p>
+            </div>
+            <div class='product'>
+                <h3>Product Name</h3>
+                <img alt='picture of [product name] in bulk' />
+                <p>This is my product description</p>
+            </div>
+        </div>
+
+        <p>But wait a sec, I want to keep my products in neat rows, not boxes!</p>
+        <p>Thankfully, CSS provides us with a number of options for handling the creation of rows and columns.</p>
+
+        <h1>Let's try setting up our store with table formatting!</h1>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class='product'>
+                            <h3>Maize</h3>
+                            <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Corncobs.jpg' alt='multicolored maize in bulk' />
+                            <p>This is my product description</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class='product'>
+                            <h3>Wheat</h3>
+                            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Wheat_close-up.JPG/1280px-Wheat_close-up.JPG' alt='close up wheat' />
+                            <p>This is my product description</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class='product'>
+                            <h3>Barley</h3>
+                            <img src='https://upload.wikimedia.org/wikipedia/commons/8/8d/Barley_fruit.jpg' alt='barley fruit' />
+                            <p>This is my product description</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Things are looking glum. Our elements are different heights unless we enforce it with explicit style rules. The actual document is incredibly hard to read for a developer, let alone a screen reader, and on top of it all, our styling isn't exact due to the defaults maintained by our <code>&lt;td&gt;</code> tags!
+        </p>
+
+        <h1>Let's give flexbox a try.</h1>
+
+        <div style='display: flex; flex-flow: row wrap;'>
+            <div class='product'>
+                <h3>Maize</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Corncobs.jpg' alt='multicolored maize in bulk' />
+                <p>This is my product description</p>
+            </div>
+            <div class='product'>
+                <h3>Wheat</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Wheat_close-up.JPG/1280px-Wheat_close-up.JPG' alt='close up wheat' />
+                <p>This is my product description</p>
+            </div>
+            <div class='product'>
+                <h3>Barley</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/8/8d/Barley_fruit.jpg' alt='barley fruit' />
+                <p>This is my product description</p>
+            </div>
+        </div>
+
+        <p>
+            The elements are all the same height, preserve the neat column we were looking for, and the HTML source is easily readable.
+        </p>
+        <p>
+            Another thing to note is that by adding <code>flex-flow: row wrap;</code> (equivalent to setting the flex direction to "row" and the wrap behavior to "wrap"), our row of content automatically adjusts itself to the viewport.
+        </p>
+
+        <hr />
+
+        <h1>Now let's try something a little more rigid with grid.</h1>
+
+        <div style='display: grid; grid-template-columns: auto auto auto auto auto;'>
+            <div class='product'>
+                <h3>Maize</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Corncobs.jpg' alt='multicolored maize in bulk' />
+                <p>This is my product description</p>
+            </div>
+            <div class='product'>
+                <h3>Maize</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Corncobs.jpg' alt='multicolored maize in bulk' />
+                <p>This is my product description</p>
+            </div>
+            <div class='product'>
+                <h3>Maize</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Corncobs.jpg' alt='multicolored maize in bulk' />
+                <p>This is my product description</p>
+            </div>
+            <div class='product'>
+                <h3>Maize</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Corncobs.jpg' alt='multicolored maize in bulk' />
+                <p>This is my product description</p>
+            </div>
+            <div class='product'>
+                <h3>Maize</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Corncobs.jpg' alt='multicolored maize in bulk' />
+                <p>This is my product description</p>
+            </div>
+            <div class='product'>
+                <h3>Maize</h3>
+                <img src='https://upload.wikimedia.org/wikipedia/commons/7/7d/Corncobs.jpg' alt='multicolored maize in bulk' />
+                <p>This is my product description</p>
+            </div>
+        </div>
+
+        <h1>For sake of demo purposes, here's the 3x3 grid used in the README</h1>
+        <div id='grid-demo-container'>
+            <div class='grid-demo'></div>
+            <div class='grid-demo'></div>
+            <div class='grid-demo'></div>
+            <div class='grid-demo'></div>
+            <div class='grid-demo'></div>
+            <div class='grid-demo'></div>
+            <div class='grid-demo'></div>
+            <div class='grid-demo'></div>
+            <div class='grid-demo'></div>
+        </div>
+    </body>
+</html>

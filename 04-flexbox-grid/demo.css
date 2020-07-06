@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+body {
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+hr { display: none; }
+
+.product {
+    padding: .5rem;
+    margin: .5rem;
+    border: solid #a1d900;
+    max-width: 20rem;
+}
+
+img {
+    object-fit: cover;
+    width: 90%;
+    padding: 5%;
+    text-align: center;
+}
+
+#grid-demo-container {
+    width: 30rem;
+    height: 30rem;
+    display: grid;
+    grid-template: auto auto auto / auto auto auto;
+}
+.grid-demo { border: solid black; }
