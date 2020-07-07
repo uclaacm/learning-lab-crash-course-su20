@@ -11,6 +11,8 @@ While these notes are a good starting point, simply reading through all of these
 * [Task 1: Personal Portfolio](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/task-1-portfolio)
 * [Lesson 01: Intro to HTML & CSS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/01-intro-html-css)
 * [Lesson 02: Intermediate CSS: The Box Model & Positioning](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/02-intermediate-css)
+* [Lesson 03: Intro to JS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/03-intro-js)
+* [Lesson 04: Intermediate CSS: Flexbox & Grid](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/04-flexbox-grid)
 * more on the way
 
 You can also find recorded videos of our summer sessions on the ACM YouTube channel, in [this playlist](https://www.youtube.com/playlist?list=PLPO7_kXilXFa6YdXxn5oln1gagcqnFI4l).

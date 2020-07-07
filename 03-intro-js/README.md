@@ -1,5 +1,7 @@
 # Intro to JS: Programming Fundamentals
 
+[Link to Video](https://www.youtube.com/watch?v=wTMeQSq2PJg).
+
 ## Overview
 
 This lecture (and set of notes) is supposed to be a primer into Javascript for developers with experience in another imperative language (e.g. C++, Java, Python, etc.). At UCLA, CS (and related) majors typically start with C++, so we'll draw some comparisons with it there - however, we don't make any assumptions of what your previous language is.
@@ -18,6 +20,26 @@ By the end of this lesson, you'll know enough Javascript to make simple interact
 Let's get started!
 
 ## Table of Contents
+
+* [Overview](#overview)
+* [Table of Contents](#table-of-contents)
+* [What is Javascript?](#what-is-javascript)
+* [Hello World](#hello-world)
+* [Variables and Types in Javascript](#variables-and-types-in-javascript)
+    * [Primitive Types](#primitive-types)
+    * [Type Coercion](#type-coercion)
+    * [Everything is an Object](#everything-is-an-object)
+    * [let, var, and const](#let-var-and-const)
+* [Quick Control Flow Stuffs](#quick-control-flow-stuffs)
+* [Speaking of Functions...](#speaking-of-functions)
+    * [First-Class Functions](#first-class-functions)
+    * [Anonymous Functions](#anonymous-functions)
+* [Manipulating the DOM](#manipulating-the-dom)
+    * [addEventListener](#addeventlistener)
+* [Some Other Quirks](#some-other-quirks)
+    * [Optional Semicolons](#optional-semicolons)
+    * [Interpreted v. JIT](#interpreted-v-jit)
+* [Additional Resources](#additional-resources)
 
 ## What is Javascript?
 
