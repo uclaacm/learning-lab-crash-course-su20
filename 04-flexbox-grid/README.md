@@ -84,9 +84,16 @@ Let's take a peek back at the webpage:
 
 As a matter of fact, `<table>`s aren't supposed to be used for layout purposes in HTML5 **at all**, and create a [wealth of problems for accessibility](https://webaim.org/techniques/tables/) that need to be addressed. Instead, we can use flexbox to accomplish our layout goals with less rules, a flatter hierarchy, and more accessible tags with less lines of code.
 
+What can we take away from this change?
+* Flexbox forms a row by default
+* Flexbox automatically sets all elements to the same height
+* Flexbox **displays elements in the order they are listed in the document by default**
+
+Let's learn how to set it up!
+
 ### Setting up flexbox
 
-To create a flexbox container, we need to identify our **container** and our **children**. In the case of our farmer page, we have created a parent container in the form of a `<div>`. It's children are also `<div>`s:
+To create a flexbox container, we need to identify our **container** and our **children**. In the case of our storefront, we have created a parent container in the form of a `<div>`. It's children are also `<div>`s:
 
 ```html
 <div class='container'>
@@ -114,23 +121,27 @@ But, if we apply `display: flex;`, the visual flow *immediately* changes.
 
 ![square product cards put into a row](images/instantflex.png)
 
+That's all there is to it. Let's talk about how to customize the layout, now.
+
 ### Critical concepts in flexbox
 
-There's a handful of concepts that are critical to understanding flexbox layouts. Let's take a look at them all:
+Before we dig into the properties of flexbox, there's a handful of concepts we need to talk about. To start, let's just list them all out:
 
-* flex-start
-* flex-end
-* center
-* space-between
-* space-around
-* stretch
-* space-evenly (nonstandard definition)
+* Main axis
+* Cross axis
+* `flex-start`: the start of your parent container
+* `flex-end`: the end of your parent container
+* `center`: the center
+* `space-between`
+* `space-around`
+* `stretch`
+* `space-evenly` (nonstandard definition)
 
-These regions are all illustrated beautifully in this diagram from the [official specification from W3C](https://www.w3.org/TR/css-flexbox-1/). All diagrams used under this header are from W3C unless otherwise specified.
+These regions are all illustrated beautifully in this diagram from the [official specification from W3C](https://www.w3.org/TR/css-flexbox-1/). **All diagrams used under this header are from W3C unless otherwise specified.**
 
-![](https://www.w3.org/TR/css-flexbox-1/images/flex-direction-terms.svg)
+![diagram of axes along with the start and end of the parent container](https://www.w3.org/TR/css-flexbox-1/images/flex-direction-terms.svg)
 
-...
+Let's break them down one by one.
 
 #### Flex axes and flow
 
@@ -138,13 +149,49 @@ In flexbox, there are two axes along which elements of the container are aligned
 1. Main Axis (set by flex-direction, either horizontal `row` or vertical `column`)
 2. Cross Axis (automatically set perpendicular to the main axis)
 
-These two axes are set by the parent properties `flex-direction` and `flex-basis`, or by the single shorthand property `flex-flow`!
+These two axes and the flow of elements are set by the parent properties `flex-direction` and `flex-wrap`, or by the single shorthand property `flex-flow`!
 * If we want our main axis to be horizontal, we set `flex-direction: row;`. This is the default.
+    * If we wanted to reverse this direction, we would use `flex-direction: row-reverse;`. This places elements right-to-left.
 * If we want our main axis to be vertical, we set `flex-direction: column;`.
+    * If we wanted to reverse this direction, we would use `flex-direction: column-reverse;`. This places elements bottom-to-top.
 
-Then, to determine whether elements should wrap around to another line when they can no longer fit, we use `flex-basis: wrap;`. Otherwise, we can use `flex-basis: nowrap;`.
+Next, we can determine the wrapping behavior of the container. Should we wrap elements around if they run out of space on the current row, or not?
+* To wrap elements around to the next line when the current line runs out of space, we use `flex-wrap: wrap;`.
+* To disable wrapping, we use `flex-wrap: nowrap;`.
+* To wrap in the opposite direction, we use `flex-wrap: wrap-reverse;`.
 
-#### Align v. justify in action
+To set both of these, we can use `flex-flow: DIRECTION WRAP;`. For example:
+
+```css
+.container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+```
+
+This will create a container whose elements will form a single row that does not wrap around on itself. So if we have more elements than can fit on the viewport, this will happen:
+
+...image
+
+#### Distributing free space: `justify-content`
+
+Before we talk about the remaining properties for the container, we should address the values we can give them. All of them deal with aligning elements with respect to the free space remaining in the container.
+
+##### `flex-start`, `-end`, `center`
+
+These are values we can use to talk about how we want our elements to be lined up. `flex-start` means that we want them to be stacked up against the start of the container, and `flex-end` means we want them to be stacked against the end. Center does what you think it might: line up elements with respect to the center of the container.
+
+##### `space-between`, `-around` (also `-evenly`)
+
+There are also values we can use that arrange elements by distribution of the remaining space in the container. For basic purposes, we can talk about `space-between`, where our unused space is distributed **between** elements, and `space-around`, where our unused space is distributed all around the elements.
+
+There's also another value we can use here called `space-evenly`. This does what one might expect, but it is a **nonstandard definition**, meaning that we shouldn't use it or provide a fallback value since not all browsers are guaranteed to support it.
+
+##### `stretch`
+
+This is a weird value. It **stretches** the elements such that the remaining space in the parent container is filled.
+
+##### All of them visualized
 
 We can instruct a flexbox container to align its content with respect to the axes and about the aforementioned regions.
 
@@ -152,23 +199,144 @@ When we `align-*`, we are doing so along the **cross axis**. When we are `justif
 
 Here's what the same three items look like when using all possible values for `justify-content`:
 
-![](https://www.w3.org/TR/css-flexbox-1/images/flex-pack.svg)
+![all combinations of values with justify-content](https://www.w3.org/TR/css-flexbox-1/images/flex-pack.svg)
 
-Meanwhile, here are four items adjusted with all possible values of `align-items`:
+#### Aligning against with the cross-axis: `align-items`, `align-content`
 
-![](https://www.w3.org/TR/css-flexbox-1/images/flex-pack.svg)
+We can also align our items **and their content** against the cross-axis of the container.
 
-#### Grow v. shrink in action
+Let's investigate the possible values:
 
-...
+##### `flex-start`, `flex-end`
 
-#### Order in action
+This places elements at the top of the flex container or the bottom of the container.
 
-We can also provide an ordering for each particular element in the child CSS. **Note, however, this will not change the order of your source code**.
+##### `center`
+
+This aligns all elements such that the cross-axis falls directly in the center of the item.
+
+##### `stretch`
+
+This does what it says on the tin, stretching elements to fit the remaining space.
+
+##### `baseline`
+
+This aligns the elements such that they are all at the same.
+
+##### All values compared
+
+Here are four items adjusted with all possible values of `align-items`:
+
+![all combinations of values with align-items](https://www.w3.org/TR/css-flexbox-1/images/flex-align.svg)
+
+#### Distributing the free space of the whole container: `align-content`
+
+In addition to the ability to describe how free space on the main axis should be distributed and how elements should position themselves up, we also have `align-content`, which controls how the space remaining on the cross-axis should be distributed.
+
+This property uses the same values as `align-items`. Let's view them side-by-side:
+
+![all combinations of values with align-content](https://www.w3.org/TR/css-flexbox-1/images/align-content-example.svg)
+
+For a textual breakdown:
+* `flex-start` places elements at the start of the cross axis.
+* `center` centers the elements with respect to remaining space on the cross axis.
+* `flex-end` places elements at the end of the cross axis.
+* `space-between` places all free space on the cross axis in between the rows or columns.
+* `space-around` places the free space evenly around the rows or columns of elements.
+* `stretch` stretches all rows or columns so that no free space remains on the cross axis.
+
+#### Example: Horizontally and Vertically Centering an Element
+
+These properties in tandem make it **incredibly easy to center an object** in the middle of your container if you only have a single element:
+
+...image
+
+### Properties for the elements
+
+Finally, we can talk about properties for the child elements. These mostly deal with ordering, relative size, and whether a specific element should be pulled out of the original flow.
+
+#### `order`
+
+We can also provide an ordering for each particular element in the child CSS. **Note this will not change the order of your source code**.
+
+If two elements have the same `order` value, they will be arranged in order of how they appear. Otherwise, the elements are sorted from least to greatest in placement along the main axis.
+
+...example
+
+### Grow v. shrink
+
+#### `flex-grow`
+
+We can specify whether we'd like for an element to be able to grow relative to its peers.
+
+You can think of the system as fractional. If we have `flex-grow` set to a value of 1 or more, the element specified will be able **to grow to fill the remaining space on the main axis**.
+
+#### `flex-shrink`
+
+We can also specify whether we'd like for an element to be able to shrink if need be.
+
+If we set `flex-shrink` to 1 or more, the element specified will be able to **shrink to account for other elements on the main axis**.
+
+### `align-self`
+
+We can specify how an element should align itself in the flex container, if necessary. This pulls the element outside of the flex flow. All aforementioned properties for `align-items` apply here:
+* `flex-start`
+* `flex-end`
+* `center`
+* `baseline`
+* `stretch`
+
+But we also have a bonus value: `auto`. This one just instructs the child to inherit its parent's specification.
+
+For example, if I have a class:
+
+```css
+.aligns-center {
+    align-self: center;
+}
+```
+
+And it is applied to each child of the parent container (which is kind of weird behavior, and you generally shouldn't do), then I can tell a **specific element** to be put **back into the flow** with:
+
+```css
+#specific-el {
+    align-self: auto;
+}
+```
+
+Think about why this works for a second. Remember the CSS cascade? The specificity of an **element selector** dominates in this case.
+
+### Other things (`flex-basis`, `flex`)
+
+### `flex-basis`
+
+We can also describe the default size of the element on the main axis through `flex-basis` - done by providing a length.
+
+This property needn't always be specified, though, since the initial value will be set to accommodate the default dimensions of the element to begin anyways.
+
+...image
+
+#### `flex`
+
+This is shorthand to describe values for `flex-grow`, `flex-shrink`, and `align-self` all in one line. Pretty handy!
+
+If I wanted to describe the behavior of an element that should be able to grow if possible, but always begin at a minimum width of `500px`, we would write:
+
+```css
+.custom {
+    flex: 1 0 500px;
+}
+```
+
+This would look like *this* on the page with other elements:
+
+...image
 
 ## CSS Grid
 
 Flexbox has a sister `display` style called grid! This one works exactly how you might expect it.
+
+Put simply, it is CSS' way of organizing content into a rigid grid on the page.
 
 Let's visualize this with a simple webpage. I have product cards that I want to lay out in a rigid, 3x3 grid containing previews of my top items.
 
@@ -228,7 +396,11 @@ And if we wanted to go ahead and make the middle column a little larger than the
 }
 ```
 
-...
+The best part of using the `auto` keyword is that we can allow the rows and columns to automatically adjust to the `gap` we specify, or any other changes.
+
+### But wait, there's more
+
+There's a **lot** more to CSS grid than we've covered, but the purpose of this section was to simply introduce it. If you'd like to read any more about it, you can find some great [resources](#Resources) down below.
 
 ***
 
@@ -236,5 +408,10 @@ And if we wanted to go ahead and make the middle column a little larger than the
 
 There's no way that we can cover all of the things you can do with flexbox in a single document or lesson, so here is a small collection of resources for you to look into regarding all of the possible properties and use cases of flexbox and grid:
 * [css-tricks' guide to flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/): one of the most comprehensive guides to every single part of flexbox on the internet. Great for quick reference!
+* [css-tricks' guide to grid](https://css-tricks.com/snippets/css/complete-guide-grid/): a great guide to every single part of CSS grid. **Very detailed**.
 * [Mozilla Developer Network's guide to flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout) provides a great overview of flexbox as a whole.
 * The [CSS Flexbox Layout Module Level 1](https://www.w3.org/TR/css-flexbox-1/) specification. This truly is the bible of flexbox, and is surprisingly easy to read thanks in large part to the wealth of diagrams throughout - which were made extensive use of in this README.
+
+### More reading
+
+* [Tiff Nogueira's piece on `flex-grow` and `flex-shrink`](https://medium.com/@tiffnogueira/understanding-flex-shrink-flex-grow-and-flex-basis-and-using-these-properties-to-their-full-e4b4afd2c930) is very helpful for understanding how all the properties set through `flex` on a flex element play together.
