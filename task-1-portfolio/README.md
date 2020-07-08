@@ -22,7 +22,7 @@ Like the rest of this crash course, the onus is on you to practice what you've l
 * creating your own visual components using a combination of HTML and CSS (like a card, tag, or navbar)
 * use the right HTML tags to convey your page structure, even to those who use screen readers
 
-Note that using JS is optional: some people use it, and some don't. Do what feels right for you! 
+Note that using JS is optional: some people use it, and some don't. Do what feels right for you!
 
 We also want you to get used to using `git` and GitHub. We'll talk a bit about these tools in text below, but we'll be a bit brief (there are many, many `git` and GitHub tutorials out there).
 
@@ -44,7 +44,7 @@ These next three are all more blog-focused, but still have good lessons to learn
 * [https://thume.ca/](https://thume.ca/) - Tristan Hume is a Canadian software engineer who works at Jane Street, and writes some of the most interesting blog posts that Matt reads. His website is simple, with nothing flasy, but easy to navigate.
 * [https://andrewkelley.me/](https://andrewkelley.me/) - Andrew Kelley is the main developer behind Zig, a new programming language with a large online following and lots of cool features. Note that his website is similarly minimal with Tristan's.
 
-We think sites like the ones we showed above are a great place to start, and probably what you should focus on for this project. The best sites don't necessarily have to be overly complex: minimal but clean is much better than flashy and messy. In particular, you'll notice the phrase "simple and easy to navigate" appears a few times: on a portfolio page, that's probably the most important thing (other than you 😉). 
+We think sites like the ones we showed above are a great place to start, and probably what you should focus on for this project. The best sites don't necessarily have to be overly complex: minimal but clean is much better than flashy and messy. In particular, you'll notice the phrase "simple and easy to navigate" appears a few times: on a portfolio page, that's probably the most important thing (other than you 😉).
 
 But for fun, let's see a bit more.
 
@@ -127,13 +127,19 @@ $ git commit -m "adding my README file"
 
 The `-m` argument says to use the message from the command line, rather than entering a text editor.
 
-Now, all that's left is to push our changes to GitHub. But wait! We haven't even told GitHub we're going to do something! So let's do that first
+Now, all that's left is to push our changes to GitHub. But wait! We haven't even told GitHub we're going to do something! So let's do that first!
 
+Head to GitHub, and create a new repository. Two important things:
+
+* make your repository name `YOUR_GITHUB_USERNAME.github.io` - you'll see why in a moment!
+* don't "Initialize this repository with a README", add a `.gitignore`, or a license - we're going to import an existing repository!
+
+Next, you'll get a prompt to "push an existing repository from the command line"; follow those commands:
+
+```sh
+$ git remote add origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME.github.io
 ...
-
-Next, as GitHub tells us, we need to set the remote in our git repository. (matt will fill this out soon. for now, create a github repository, and don't make a README. GitHub will tell you what to do next)
-
-...
+```
 
 Great, and now we're ready. We can finally run `git push`!
 
@@ -141,6 +147,8 @@ Great, and now we're ready. We can finally run `git push`!
 $ git push -u origin master
 ...
 ```
+
+Now, if you head to your GitHub repository, you should see your changes pushed!
 
 ### The Typical Workflow
 
@@ -158,4 +166,17 @@ Note: we haven't talked about branches and pull requests yet. We'll do that for 
 
 **TL;DR: [read this guide](https://pages.github.com/).**
 
-...
+You want to show off your website to the world! The fancy word for being able to put your website on the internet is called *deploying* your website (or web application).
+
+Your portfolio will probably be a *static website*, which means that there's no back-end, database, or dynamic process required to run your website - it's "static"! If your website is static, there are many different free options to deploy your website - which is an incentive to put as much into the frontend as possible!
+
+One such option is [GitHub Pages](https://pages.github.com/), a static-site deployment provider made by GitHub! The biggest advantage: of GitHub Pages are
+
+* It integrates *really easily* with GitHub, with no configuration required!
+* You get a relatively clean URL (e.g. `krashanoff.github.io`) compared to other things like Netlify
+
+In fact, if you followed the instructions above, it's already been configured for you! If you make a repository of the form `YOUR_GITHUB_USERNAME.github.io`, GitHub is pretty smart and automatically deploys the content of your repository to the domain `https://YOUR_GITHUB_USERNAME.github.io` (i.e. if you made a file `me.html`, then it would be at `https://YOUR_GITHUB_USERNAME.github.io/me.html`) - with no extra steps! How *extremely* convenient!!!
+
+GitHub Pages does a bit more than that too - you can create a Pages site for each repository that you have, and use [Jekyll](https://jekyllrb.com) to super-charge your site! You can [review the documentation](https://pages.github.com/) for more information!
+
+As an addendum, we'll talk about [Netlify](https://www.netlify.com/), another popular static site host! It has a lot of flexibility that GitHub Pages doesn't offer, but is a bit more complicated to set up.
