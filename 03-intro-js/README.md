@@ -681,3 +681,8 @@ In addition to the sources we've cited along the way throughout this document, t
 * [w3schools' examples of DOM events](https://www.w3schools.com/js/js_events.asp)
 * [ECMAScript International's automatic semicolon insertion specification](http://www.ecma-international.org/ecma-262/7.0/index.html#sec-rules-of-automatic-semicolon-insertion)
 * [Mozilla's piece on interpreted v. JIT compiled JavaScript engines](https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/)
+
+If you really want to learn more about Javascript, we recommend one of two (free) books:
+
+* [Eloquent Javascript](https://eloquentjavascript.net/)
+* [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS)
