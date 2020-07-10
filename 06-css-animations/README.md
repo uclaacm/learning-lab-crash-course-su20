@@ -93,7 +93,7 @@ You can animate many different properties, with more control over timing! Let's 
 <span class="animated-heartbeat">❤️</span>
 ```
 
-![animation of an emoji heart "beating"](images/simple-color.gif)
+![animation of an emoji heart "beating"](images/heartbeat.gif)
 
 Hopefully, you can infer some of the new features that we've just used - generally, we think that CSS does a solid job of naming things. But, just to be clear:
 
