@@ -1,0 +1,101 @@
+@keyframes redToBlue {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: blue;
+    }
+}
+
+#simple-square {
+    width: 250px;
+    height: 250px;
+    animation-name: redToBlue;
+    animation-duration: 5s;
+    background-color: black;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(0.75);
+    }
+
+    25% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.75);
+    }
+
+    75% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.75);
+    }
+}
+
+.animated-heartbeat {
+    animation-name: heartbeat;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    font-size: 100px;
+    display: inline-block;
+}
+
+@keyframes text-whiten {
+    from {
+        color: #333333;
+    }
+
+    to {
+        color: white;
+    }
+}
+
+@keyframes underline {
+    0% {
+        height: 5px;
+        width: 0;
+    }
+
+    50% {
+        height: 5px;
+        width: calc(100% + 1rem);
+    }
+
+    100% {
+        width: calc(100% + 1rem);
+        height: 1.5em;
+    }
+}
+
+.underline-expand {
+    font-family: "Arial";
+    font-size: 50px;
+    display: inline-block;
+    position: relative;
+
+    animation-name: text-whiten;
+    animation-duration: 0.5s;
+    animation-delay: 2.5s;
+    animation-fill-mode: both;
+}
+
+.underline-expand:after {
+    animation-name: underline;
+    animation-duration: 1.5s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+
+    content: "";
+    display: block;
+    background-color: #333333;
+
+    z-index: -1;
+    position: absolute;
+    bottom:  -10px;
+    left: -5px;
+}
