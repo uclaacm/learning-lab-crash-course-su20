@@ -1,4 +1,4 @@
-# Intermediate CSS: Animations
+# A CSS Animations Primer
 
 ## Overview/Table of Contents
 

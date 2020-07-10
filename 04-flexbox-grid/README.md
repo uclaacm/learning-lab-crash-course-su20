@@ -1,5 +1,7 @@
 # Intermediate CSS: Flexbox & Grid
 
+[Link to video.](https://www.youtube.com/watch?v=CBR0R50-jGg)
+
 ## Overview
 
 In this session, we will learn about two of the most powerful tools in our vanilla CSS toolbox: CSS flexbox and CSS grid. These sibling layouts are perfect for making your website flexible to viewports of all sorts of varied sizes. Here's what we'll chat about today:

@@ -1,5 +1,7 @@
 # A Brief Flyover of CSS Frameworks
 
+[Link to video.](https://www.youtube.com/watch?v=akvVfxi_h94)
+
 ## Overview/Table of Contents
 
 This set of notes is a brief overview of how to use CSS frameworks and a tour of some popular ones. 
@@ -62,7 +64,7 @@ The nice thing is that using a CDN is easy as pie.
 Okay, so it looks like you plop a URL into `href` (just like what we'd do for a `<a>` tag). But what about the `integrity` and `crossorigin` properties?
 
 * the `integrity` property contains a SHA-384 checksum, which is a fancy computer algorithm that people use to make sure that the file wasn't changed. Since we don't control stackpath.bootstrapcdn.com, we have no idea what the file actually is - maybe it's a virus! So, the writers of Bootstrap give us a way to check the *integrity* of a file - if the hash of the file doesn't match the checksum, the file isn't loaded. This property is *optional*, but you should use it when you can!
-* the `crossorigin` property has to do with something called [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), which is an acronym that no web developer likes. The link will explain it better than we ever can, but the gist of the story is that ... . In some cases (especially with API calls), **CORS is mandatory**. So if the docs tell you to use it, please use it.
+* the `crossorigin` property has to do with something called [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), which is an acronym that no web developer likes. The link will explain it better than we ever can, but the gist of the story is that we need to be nice to people that we borrow resources from (you really should read the link). In some cases (especially with API calls), **CORS is mandatory**. So if the docs tell you to use it, please use it.
 
 Long story short? Follow the documentation!
 

@@ -15,6 +15,7 @@ Lessons:
 * [Lesson 03: Intro to JS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/03-intro-js)
 * [Lesson 04: Intermediate CSS: Flexbox & Grid](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/04-flexbox-grid)
 * [Lesson 05: A Brief Flyover of CSS Frameworks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/05-css-frameworks)
+* [Lesson 06: A CSS Animations Primer](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/06-css-animations)
 * more on the way
 
 And two tasks:
