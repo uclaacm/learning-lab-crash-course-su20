@@ -1,5 +1,7 @@
 # A CSS Animations Primer
 
+[Link to Video.](https://youtu.be/eqogXB3tLes)
+
 ## Overview/Table of Contents
 
 We'll take a *very brief* tour of CSS Animations, and talk about what you can use them for.
