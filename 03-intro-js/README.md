@@ -338,7 +338,7 @@ There is another keyword, `var` - in fact, this is the original one. `var` is fu
 
 ```js
 if (error){
-    let errorMessage = "oh no!";
+    var errorMessage = "oh no!";
 }
 console.log(error);
 // "oh no!"
