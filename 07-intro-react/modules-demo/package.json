@@ -1,0 +1,22 @@
+{
+  "name": "modules-demo",
+  "version": "1.0.0",
+  "description": "My first package!",
+  "main": "someOtherFile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/uclaacm/learning-lab-crash-course-su20.git"
+  },
+  "keywords": [
+    "education"
+  ],
+  "author": "Teach LA <acmteachla@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uclaacm/learning-lab-crash-course-su20/issues"
+  },
+  "homepage": "https://github.com/uclaacm/learning-lab-crash-course-su20#readme"
+}
