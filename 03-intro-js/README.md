@@ -192,7 +192,7 @@ console.log(null);
 // Symbol is out of scope :(
 ```
 
-Some of these are familar: almost every language has `Boolean` (except C, I'm looking at you). It's convenient that Javascript supports strings out of the box (C, I'm looking at you again).
+Some of these are familiar: almost every language has `Boolean` (except C, I'm looking at you). It's convenient that Javascript supports strings out of the box (C, I'm looking at you again).
 
 There are some noticeable missing entries. Javascript doesn't have C-like `int`, `short`, `double`, or other types of integer/float precision: it's just floating point. This leads to some fun shenanigans:
 
@@ -267,14 +267,14 @@ console.log(arr);
 
 And, there are more options for things like slicing an array, popping from the front/back, etc. A few things to note:
 
-* JS arrays/lists allow for hetergenous types!
+* JS arrays/lists allow for heterogeneous types!
 * They are a linked list, stack, and queue all conveniently packaged into one data structure!
 * You can initialize an empty array too, like so: `let arr = [];`
 * **an array is an object**
 
 That's right, this array was an object. Under the hood, when we called `let arr`, we "called the constructor for an array" (not... entirely true). Then, when we do things like `.length` or `.push()`, we're accessing variables or using class functions respectively!
 
-This is the case for *every data type* in Javascript, including the primitve ones we discussed earlier! They all stem from one "class" (not entirely true) called `Object`, which has a [wide variety of predefined properties and methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object). You'll probably find the `toString()` method helpful later on. This is very similar to how Java works.
+This is the case for *every data type* in Javascript, including the primitive ones we discussed earlier! They all stem from one "class" (not entirely true) called `Object`, which has a [wide variety of predefined properties and methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object). You'll probably find the `toString()` method helpful later on. This is very similar to how Java works.
 
 Exactly how do objects work in Javascript? Well, they're **key-value** pairs. In fact, that makes the `Object` class itself very useful: it's a dictionary! If you've heard of JSON (JavaScript Object Notation), this next syntax is going to be quite familiar:
 
@@ -298,7 +298,7 @@ console.log(dict.owo);
 // "uwu"
 ```
 
-Hopefully, this should look somewhat familar to arrays, because arrays **are just a type of object**!
+Hopefully, this should look somewhat familiar to arrays, because arrays **are just a type of object**!
 
 There is one important note about objects in Javascript. The variable that "holds" an object is really just a reference to an object. This leads to an issue with "deep copying" or when you have a nested object.
 
@@ -362,7 +362,7 @@ CONSTANT_OBJECT = {};
 // Uncaught TypeError: Assignment to constant variable.
 ```
 
-Okay, well that first example makes sense. But what's up with the second one? Well, recall that all data types in javascript are objects, and therefore all variables are references.
+Okay, well that first example makes sense. But what's up with the second one? Well, recall that all data types in Javascript are objects, and therefore all variables are references.
 
 So, what `const` really guarantees is that the reference will always stay the same. With primitive data types, that's great: because they're immutable, once the value is created, it'll never change. But, for every non-primitive data type, the object *is mutable*, and so it can change at any point without changing the underlying reference. Long story short? Using `const` on an object, or an array, or many other data types doesn't guarantee that it's truly constant - it just can't be reassigned.
 
@@ -497,7 +497,7 @@ console.log(greeter);
 // f: greeter(message) ...
 ```
 
-Wow! That's not something you'll see often. The lack of type annotations makes this a little tricky ot understand, but we're basically pointing `greeter` to the "function body" of `saySomething`! Every time you use the name of the function *without parentheses or its parameters*, it's the reference to the function - just like any other variable!
+Wow! That's not something you'll see often. The lack of type annotations makes this a little tricky to understand, but we're basically pointing `greeter` to the "function body" of `saySomething`! Every time you use the name of the function *without parentheses or its parameters*, it's the reference to the function - just like any other variable!
 
 One useful application of this is a *higher-order function*, or passing in functions as arguments for other functions.
 
@@ -535,7 +535,7 @@ This is a huge part of functional programming (something about no side effects, 
 
 ### Anonymous Functions
 
-There's one other thing we'll quickly point out: anomyous (or lambda, or whatever you want to call them) functions.
+There's one other thing we'll quickly point out: anonymous (or lambda, or whatever you want to call them) functions.
 
 Let's say we wanted to double all elements of the `nums` array again, but we only need to *really* do this operation once. It wouldn't make sense to write a whole function, so we'd like for a slightly more disposable medium.
 
@@ -572,7 +572,7 @@ There are slightly cleaner ways of creating lambdas in JavaScript, but this form
 
 ## Manipulating the DOM
 
-Okay, but how does this help us make websites? Well, the original focus was to change the "Document Object Model", which as you may recall, is a fancy word for our webpage. Let's run through a barebones example:
+Okay, but how does this help us make websites? Well, the original focus was to change the "Document Object Model", which as you may recall, is a fancy word for our webpage. Let's run through a bare-bones example:
 
 ```html
 <button id="button">
