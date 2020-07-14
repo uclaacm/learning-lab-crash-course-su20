@@ -1,0 +1,83 @@
+:root{
+  --main-accent: #E95420;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.header{
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.img-responsive{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featured-card-container{
+  width: 100%;
+  padding: 2em;
+}
+
+.featured-fan-card{
+  margin: 0.5em 1em;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 0.5em;
+  display: grid;
+  grid-template-columns: 20% auto;
+  font-size: calc(10px + 2vmin);
+}
+
+.featured-fan-card > div {
+  padding: 1em;
+}
+
+.card-container{
+  width: 100%;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.fan-card{
+  margin: 0.5em 1em;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 0.5em;
+}
+
+.button{
+  display: inline-block;
+  background: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  color: var(--main-accent);
+  border: 2px solid var(--main-accent);
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover {
+  color: white;
+  background: var(--main-accent);
+  cursor: pointer;
+}
+
+.link{
+  color: var(--main-accent);
+}
