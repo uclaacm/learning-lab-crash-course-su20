@@ -163,15 +163,110 @@ p.startGrowing();
 
 ## The React Component Lifecycle
 
+This is a bit of a complicated topic, so we'll cover the more simplified version:
+
+![React Component Lifecycle diagram](images/lifecycle.jpg)
+
+There are three different types of actions
+
 ## Events in React
 
 ## Functional Programming in React
 
-### Functions-as-props
-
 ### Generating Lists of Components
 
-### Functional Components
+As we've discussed before, the `Array.map()` functions apply a function on every element of an array, to create a new array. This is especially useful to create a *list of React components* from a set of data. As it turns out, this is a very common and popular operation in functional programming.
+
+Let's took at a simple example:
+
+```jsx
+const foods = ["apple", "banana", "coconut"];
+
+function ListOfFoods(){
+  return (
+    <div>
+      <p>
+        a list of fruits I like:
+      </p>
+      <ul>
+        {foods.map((food)=> {
+          return <li key={food}>food</li>;
+        })}
+      </ul>
+    </div>
+  );
+}
+
+// <p>
+//   a list of fruits I like:
+// </p>
+// <ul>
+//   <li>apple</li>
+//   <li>banana</li>
+//   <li>coconut</li>
+// </ul>
+```
+
+Note the `key` property: when you generate a list of components, you must create them with unique `key`s. This is because React needs some sort of identifier to distinguish the elements from each other.
+
+You can also use it with much more complicated components, and with ones you've made yourself!
+
+```
+
+```
+
+### Functions-as-props
+
+Often times, you'll pass down functions as props to another component. One common use case is to control a parent component from its child.
+
+```jsx
+function Message(props){
+  return (
+    <div>
+      <p>{props.author} says...</p>
+      <p>{props.message}</p>
+      <p>{props.date}</p>
+      <button onClick={props.deleteFunc}>
+        remove message
+      </button>
+    </div>
+  );
+}
+
+class Dashboard(){
+  state = {
+    messages: [
+      {
+        author: "matt",
+        content: "owo!",
+        date: "July 14"
+      },
+    ]
+  }
+  render = () =>{
+    return (
+      <div>
+        {
+          this.state.messages.map((message, i)=>{
+            return
+            (<Message
+              key={i}
+              author={message.author}
+              content={message.content}
+              date={message.date}
+              deleteFunc={() => this.deleteMessage(i)}
+            }/>);
+          })
+        }
+      </div>
+    )
+  }
+}
+```
+
+...
+
+### Functional Components and Hooks
 
 ## Resources
 

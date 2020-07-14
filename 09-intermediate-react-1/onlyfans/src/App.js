@@ -6,17 +6,17 @@ import FeaturedFanCard from './FeaturedFanCard';
 
 const listOfFanOwners = [
   {
-    name: "Arjun",
+    name: "Matt",
     favFan: "Vornado 633 Mid-Size 9 in. Whole Room Air Circulator Fan",
     link: "https://www.homedepot.com/p/Vornado-633-Mid-Size-9-in-Whole-Room-Air-Circulator-Fan-CR1-0120-06/203682426"
   },
   {
-    name: "Leo",
+    name: "Matthew",
     favFan: "Honeywell HT-900 TurboForce Air Circulator Fan Black",
     link: "https://smile.amazon.com/Honeywell-HT-900-TurboForce-Circulator-Black/dp/B001R1RXUG/ref=sr_1_3?dchild=1&keywords=fan&qid=1594701152&sr=8-3"
   },
   {
-    name: "Matt",
+    name: "Matteo",
     favFan: "OMyTea \"Grassflowers 8.27\" (21cm) Hand Held Folding Fans",
     link: "https://smile.amazon.com/OMyTea-Grassflowers-8-27-21cm-Folding/dp/B01AZIKXF8/ref=sr_1_10?dchild=1&keywords=paper+fan&qid=1594701198&sr=8-10"
   },
