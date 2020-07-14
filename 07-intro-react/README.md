@@ -1,5 +1,7 @@
 # Introduction to React
 
+[Link to Video.](https://www.youtube.com/watch?v=3UKF9qMBIzA)
+
 With Leo and Matt, we will learn all the basics to the model citizen of JavaScript frameworks, React! That might sound like a garbled mess, but I promise by the end of this, you will understand the following:
 * How to install node
 * What node, NPM, and React are.

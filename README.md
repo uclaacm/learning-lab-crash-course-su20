@@ -16,11 +16,13 @@ Lessons:
 * [Lesson 04: Intermediate CSS: Flexbox & Grid](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/04-flexbox-grid)
 * [Lesson 05: A Brief Flyover of CSS Frameworks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/05-css-frameworks)
 * [Lesson 06: A CSS Animations Primer](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/06-css-animations)
+* [Lesson 07: Intro to React](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/07-intro-react)
 * more on the way
 
 And two tasks:
 
-1. [Make a Portfolio website!](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-1-portfolio/README.md)
+1. [Make a portfolio website!](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-1-portfolio)
+2. [Make a to-do list!](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-2-to-do-list)
 
 You can also find recorded videos of our summer sessions on the ACM YouTube channel, in [this playlist](https://www.youtube.com/playlist?list=PLPO7_kXilXFa6YdXxn5oln1gagcqnFI4l).
 
