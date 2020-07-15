@@ -342,7 +342,7 @@ Put simply, it is CSS' way of organizing content into a rigid grid on the page.
 
 Let's visualize this with a simple webpage. I have product cards that I want to lay out in a rigid, 3x3 grid containing previews of my top items.
 
-![a black three-by-three grid overlayed on a white background](images/3x3.png)
+![a black three-by-three grid overlay ed on a white background](images/3x3.png)
 
 We will have *at most* 9 items to preview on this grid, so it works out nicely.
 

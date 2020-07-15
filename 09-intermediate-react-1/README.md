@@ -151,7 +151,7 @@ p.startGrowing();
 // 3
 ```
 
-But this is pretty unelegant, and importantly, **developers forget to do it**. So, what can we do?
+But this is pretty inelegant, and importantly, **developers forget to do it**. So, what can we do?
 
 ### Arrow Functions
 
@@ -217,7 +217,7 @@ Let's say you have any random component; we'll keep it abstract for now. If the 
 
 On the other hand, if the component needs some data that doesn't come from its parent, then **the component itself** is responsible for managing this data - and therefore, it belongs to the app's **state**.
 
-If a component has a snapshot that has its current state and props, it should have all the daata it needs to render a complete view, at that time. If not, you should rethink your app's state!
+If a component has a snapshot that has its current state and props, it should have all the data it needs to render a complete view, at that time. If not, you should rethink your app's state!
 
 One confusing bit is that sometimes, a variable that's the state of something is the props for something else:
 
@@ -338,7 +338,7 @@ this.setState({message: "uwu"}); // "uwu"
 this.state.message; // may be "owo" or "uwu", we're not sure!
 ```
 
-Oh no! This seems problematic, right? In one "render-loop" (or update loop, which you'll learn about in like... two paragraphs), changes to state are not necessarily going to happen instantneously. In other words, updating the state takes time!
+Oh no! This seems problematic, right? In one "render-loop" (or update loop, which you'll learn about in like... two paragraphs), changes to state are not necessarily going to happen instantaneously. In other words, updating the state takes time!
 
 Usually, this is actually not a big deal. If you design your state and web-app properly, you shouldn't run into too many problems here. But, there is one design pattern where this is important:
 
@@ -539,7 +539,7 @@ This one's a bit more complicated, and exposes what we call a **single state of 
 * next, we've used an `onChange` event listener + handler, which behaves very similarly to the `onClick` method we looked at earlier.
 * let's take a quick look at `handleChange` - we'll notice that here, we actually care about the argument passed to the function. In particular, we look at `event.target.value`, which is the value of the target of the event - or the value of the `textarea`. This is the other part of the "single state of truth": every time the user types in text, it **always updates the state**.
 
-Now, you might think that this is a bit strange - why don't we just let the `textarea` update istelf? It turns out, this method is the best way to fully control your app, and **guarantee consistency**, which is important!
+Now, you might think that this is a bit strange - why don't we just let the `textarea` update itself? It turns out, this method is the best way to fully control your app, and **guarantee consistency**, which is important!
 
 Something very similar is happening with the `form` and `onSubmit` + `handleSubmit`. The `event.preventDefault` prevents the default action of submitting the form, which usually refreshes the page.
 

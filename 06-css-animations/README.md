@@ -112,7 +112,7 @@ In general, there are many, many useful ways you can control animations in CSS. 
 * [`animation-fill-mode`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode) what happens to the element before and after the animation? this has to do with **the square turning black in our first example**
 * [`animation-play-state`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state) should the animation continue playing, or pause itself? useful to control your animations with Javascript
 
-And, there's a shortform, [`animation`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation), that makes your life easier.
+And, there's a short-form, [`animation`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation), that makes your life easier.
 
 This is only enough to dip your toes in CSS animations, but we wanted to show you what is *possible*. If this is the kind of thing that interests you, definitely read more - sinking one or two hours into CSS animations can make you an absolute pro!
 
@@ -166,7 +166,7 @@ Pros use keyframes too! But sometimes, there are easier ways to do things.
 
 One is to rely on other people. [Animate.css](https://animate.style/) is one such example, a pure CSS framework that implements animations just like how we did! But, instead of fiddling around with bezier curves, delays, or tiny details, they do it for you. How convenient!
 
-But... what happens when your animations get very complex? For example, look at this animation (courtsey of [Julian Garnier](https://codepen.io/juliangarnier/pen/LMrRNW))
+But... what happens when your animations get very complex? For example, look at this animation (courtesy of [Julian Garnier](https://codepen.io/juliangarnier/pen/LMrRNW))
 
 ![julian garnier's anime.js demo, concentric circles lighting up on a sphere](images/anime-js-sphere.gif)
 
@@ -182,7 +182,7 @@ One way to create complex animations is to programatically control them with Jav
 
 There are also React bindings for it as well, so you can use anime in your React apps! Awesome!
 
-Another (much less complex) option is [Micron.js](https://webkul.github.io/micron/) is a liteweight "microinteraction" library that uses JS & CSS animations to create small but pleasing interactions. This is great for button hover effects, little notification alerts, and small text transitions.
+Another (much less complex) option is [Micron.js](https://webkul.github.io/micron/) is a lightweight "micro-interaction" library that uses JS & CSS animations to create small but pleasing interactions. This is great for button hover effects, little notification alerts, and small text transitions.
 
 One great visual tool that we've heard of (though haven't personally used) is [Keyframes.app](https://keyframes.app/), which provides a UI on top of the types of interactions that these libraries provide. If you enjoy using tools like iMovie, this might be it for you!
 

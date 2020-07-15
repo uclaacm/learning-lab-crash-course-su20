@@ -103,7 +103,7 @@ With that, let's go ahead and save this file as, say, [`index.html`](./index.htm
 
 ![our document rendered in a browser: "This is where the head is! This is where the body is!"](images/basic.png)
 
-Of course, everyone's operating systems and web browsers vary, so what you see might not be exactly the same (if you changed your system's defualt fonts, for example), but you should see something at least a little bit similar.
+Of course, everyone's operating systems and web browsers vary, so what you see might not be exactly the same (if you changed your system's default fonts, for example), but you should see something at least a little bit similar.
 
 ### What's special about `index.html`?
 
@@ -495,7 +495,7 @@ This concept is critical for working with the document in JavaScript, a topic th
 
 ## Properties
 
-Tags all have properties, as well. We have avoided talking about them until now, but the idea behind them is that before one writes the `>` at the end of a tag's opening, they can specify certain properties about that particular tag, or pass it certain values. Think of it kind of like the constructor list of an object in a traditional object-oriented langauge!
+Tags all have properties, as well. We have avoided talking about them until now, but the idea behind them is that before one writes the `>` at the end of a tag's opening, they can specify certain properties about that particular tag, or pass it certain values. Think of it kind of like the constructor list of an object in a traditional object-oriented language!
 
 To specify a property of a tag, the format is `<tagName propName="propValue" anotherPropName="propValue1 propValue2>`. Notice that you can have multiple properties on a tag, as well as multiple values passed to a single property. Looking at this format, can you think of some examples we've already seen?
 

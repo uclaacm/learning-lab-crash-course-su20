@@ -29,7 +29,7 @@ You have two options:
 * host the framework yourself
 * use a CDN (content delivery network) <- usually better
 
-Hosting the framework yourself is exaclty what you might imagine.
+Hosting the framework yourself is exactly what you might imagine.
 
 ```html
 <html>
@@ -115,7 +115,7 @@ There are other benefits to Bootstrap too. It has a very convenient flexbox-base
 Bootstrap also does a lot of important **good web development practices by default**:
 
 * it places mobile-responsiveness as a priority, building it in to their components so you don't have to!
-* it tests strongly for web accessibilty (e.g. contrast, screen-reader friendliness), which is important in making the internet more inclusive!
+* it tests strongly for web accessibility (e.g. contrast, screen-reader friendliness), which is important in making the internet more inclusive!
 * it handles different browsers gracefully, with fallbacks, vendored prefixes, and polyfills (if you don't know what those mean, don't worry about it).
 
 Finally, Bootstrap is easily customizable. It's built with [SASS](https://sass-lang.com/), which means that you can easily change colors and other parameters, remove components, or add your own features easily!
@@ -148,7 +148,7 @@ So, what does this mean? You might see lots of StackOverflow questions that say 
 * Bootstrap is easily customizable with **SASS**.
 * There are lots of libraries that add-on to Bootstrap, or implement Bootstrap in React/Angular/Vue/etc.
 * Since *so many people use Bootstrap*, the default theme doesn't look very unique.
-* Bootstrap has a veteran release time behind it. You'll rarely find bugs, they cover lots of accessibilty use cases, and when needed, they iterate and bugfix quickly.
+* Bootstrap has a veteran release time behind it. You'll rarely find bugs, they cover lots of accessibility use cases, and when needed, they iterate and bugfix quickly.
 
 ## Bulma: a primer
 

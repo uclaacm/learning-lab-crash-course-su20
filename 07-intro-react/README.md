@@ -129,7 +129,7 @@ For a quick refresher on the motivation behind classes, though:
 
 Imagine that we have a number of data points that we want to group together under a single data type. For example, if I send a text message to someone, the data types we'd like to house in a single `Message` type would include some things like...
 * Sender
-* Recepient
+* Recipient
 * Contents of the message
 
 Let's mock this up with a class in JavaScript.

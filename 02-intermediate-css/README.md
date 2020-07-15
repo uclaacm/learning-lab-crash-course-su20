@@ -354,7 +354,7 @@ While we're on the topic, let's quickly also mention what `max-width` and `auto`
 * `max-width` overrides the `width` property, and stops the `width` from ever being larger than the `max-width` property. Basically, this says to never scale the image larger than its original size.
 * the `auto` keyword automatically adjusts the value of its property based on the content and context of the element. `height: auto;` keeps the aspect ratio the same as the image gets larger, while `margin-left:auto;` and `margin-right:auto;` "fill" the rest of the space in the block-level element (as our width can't get larger than `100%`, so something else needs to take on the space.
 
-If that didn't make too much sense, that's okay - that was a bit of a handwavy explanation. We'll include some resources below that explain that more in-depth.
+If that didn't make too much sense, that's okay - that was a bit of a hand-wavy explanation. We'll include some resources below that explain that more in-depth.
 
 ## The `position` property
 
