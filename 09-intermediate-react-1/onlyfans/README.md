@@ -1,3 +1,23 @@
+# only fans
+
+this is a sample app we made for this lesson! it demonstrates most (if not all) the concepts that we talk about in the lesson.
+
+To run it locally on your computer, do either:
+
+```
+$ cd onlyfans
+$ npm install
+$ npm start
+```
+
+or, if you prefer `yarn`,
+
+```
+$ cd onlyfans
+$ yarn
+$ yarn start
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
