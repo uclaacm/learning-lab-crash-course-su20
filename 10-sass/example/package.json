@@ -1,0 +1,13 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "Sass demo",
+  "license": "MIT",
+  "scripts": {
+    "sass": "node-sass -watch scss -o css"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1",
+    "sass": "^1.26.10"
+  }
+}

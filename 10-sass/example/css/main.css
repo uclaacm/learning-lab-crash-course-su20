@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-size: 2em; }
+
+body :nth-child(1) {
+  background: #6dc9ff; }
+
+body :nth-child(2) {
+  background: #86d3ff; }
+
+body :nth-child(3) {
+  background: #a0dcff; }
+
+body :nth-child(4) {
+  background: #b9e5ff; }
+
+body :nth-child(5) {
+  background: #d3efff; }
+
+body :nth-child(6) {
+  background: #ecf8ff; }
+
+body :nth-child(7) {
+  background: white; }
+
+body :nth-child(8) {
+  background: white; }
+
+body :nth-child(9) {
+  background: white; }
+
+body :nth-child(10) {
+  background: white; }
+
+#content h1, #content h2, #content h3, #content h4, #content h5, #content h6, #content p {
+  font-size: 50px; }
+
+#content h1 {
+  color: #53c0ff; }
+
+#content div h1 {
+  color: black; }
