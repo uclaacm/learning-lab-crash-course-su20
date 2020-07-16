@@ -1,4 +1,6 @@
-# Intermediate React 1 (Big Brain Energy)
+# Intermediate React 1 (Big Brain Energy/Concepts & Patterns)
+
+[Link to video.](https://youtu.be/SJOWiYyRjkE)
 
 ## Overview
 
@@ -442,7 +444,7 @@ class SalesCounter extends React.Component {
 }
 
 componentWillUnmount = () => {
-    this.cleanup();
+    clearInterval(this.cleanup);
 }
 ```
 
