@@ -1,0 +1,33 @@
+@import './base.scss';
+
+// var declaration block
+$my-favorite-color: rgb(83, 192, 255);
+$my-font-size: 50px;
+
+body {
+    font-size: 2em;
+}
+
+// for loops
+@for $k from 1 through 10 {
+    body :nth-child(#{$k}) {
+        background: lighten($my-favorite-color, $k * 5 % 100);
+    }
+}
+
+// nested styling
+#content {
+    h1, h2, h3, h4, h5, h6, p {
+        font-size: $my-font-size;
+    }
+
+    h1 {
+        color: $my-favorite-color;
+    }
+    
+    div {
+        h1 {
+            color: black;
+        }
+    }
+}
