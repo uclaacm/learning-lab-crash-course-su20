@@ -13,7 +13,7 @@ By the end of this, you should understand the basics of SASS, and know how to us
 
 SASS is a preprocessor for CSS. That is, it takes not only plain CSS, but also macros that we write, and then substitutes our macros in to build plain CSS.
 
-It lets us get away with neat things like for loops, math, and variables.
+It lets us get away with neat things like for loops, math, and variables in development that process down to clean CSS with ease. Let's highlight some of the features that SASS has to offer!
 
 ## Variables
 
@@ -97,7 +97,27 @@ To add it to your node project, it's as easy as running `npm install node-sass` 
 
 This will install for us a set of node commands to build CSS files from our SCSS ones.
 
+### Using it with CLI
+
 To build CSS files that will update live as changes are made in development, run `node-sass -w scss -o css`.
+
+### Using it in a React app
+
+If you are writing a React app, life is even easier for us! We can simply change the extension on our files and rebuild/restart the project to see our changes immediately reflected.
+
+For example,
+
+```js
+import './MyApp.css';
+```
+
+Becomes...
+
+```js
+import './MyApp.scss';
+```
+
+And just like that, we can instantly use SASS in our project at no cost.
 
 ## Other neat features
 
@@ -138,9 +158,11 @@ This will process down nicely for us to vanilla CSS:
   color: black; }
 ```
 
+Note the formatting is a little weird. This is nothing that will affect your styles.
+
 ### Mixins
 
-There are certain properties in CSS that are verbose and teidous to write. These properties often come in bulk when specific browser vendors use specific property names or codes in order to set the values. [SASS' official documentation](https://sass-lang.com/guide#topic-6) uses `transform` as an example:
+There are certain properties in CSS that are verbose and tedious to write. These properties often come in bulk when specific browser vendors use specific property names or codes in order to set the values. [SASS' official documentation](https://sass-lang.com/guide#topic-6) uses `transform` as an example:
 
 ```css
 body {
@@ -177,6 +199,27 @@ Another application is for making properties easier to use:
 
 .dark-shadow {
     @include default-box-shadow(.1);
+}
+```
+
+### Functions
+
+Functions are like mixins but their scope is a lot more specific - they only return a single value. The classic example that SASS uses in [their documentation](https://sass-lang.com/documentation/at-rules/function) is computing an exponential value. Their syntax is similar, where `@` prepends keywords. Let's write a function for the factorial of a number:
+
+```scss
+@function fact($n) {
+    @if $n {
+        @return ($n * fact($n - 1));
+    }
+    @return 1;
+}
+```
+
+Then, to use this in our code, we simply use `fact(n)` as a value like any other:
+
+```scss
+body {
+    font-size: fact(3) * .5em;
 }
 ```
 
