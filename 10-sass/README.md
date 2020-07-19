@@ -1,6 +1,9 @@
 # Intro to SASS
 
+[Link to Video.](https://www.youtube.com/watch?v=hJqrfq3r950)
+
 With Leo, we will learn a little bit about what happens when you take preprocessing principles from compilers and apply them to CSS. The answer is SASS! We'll talk about some of the cool things that SASS can do to make your life easier, and the state of CSS in comparison:
+
 * Variables (and their CSS3 counterparts)
 * Math
 * Maps
@@ -8,6 +11,20 @@ With Leo, we will learn a little bit about what happens when you take preprocess
 * How to use it in a node project
 
 By the end of this, you should understand the basics of SASS, and know how to use it in your static and/or node project!
+
+## Table of Contents
+
+* [What is SASS?](#what-is-sass)
+* [Variables](#variables)
+* [Math](#math)
+* [Loops](#loops)
+* [How to use it in Node](#how-to-use-it-in-node)
+* [Other neat features](#other-neat-features)
+    * [Hierarchical styling](#hierarchical-styling)
+    * [Mixins](#mixins)
+    * [Modules](#modules)
+    * [Single-line comments](#single-line-comments)
+* [References](#references)
 
 ## What is SASS?
 

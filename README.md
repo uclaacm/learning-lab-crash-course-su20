@@ -19,6 +19,7 @@ Lessons:
 * [Lesson 07: Intro to React](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/07-intro-react)
 * [Lesson 08: Intro to Design with Figma (guest lecturer: Tomoki!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/08-intro-design)
 * [Lesson 09: Intermediate React 1 (Concepts & Patterns)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/09-intermediate-react-1)
+* [Lesson 10: Intro to SASS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/10-sass)
 * more on the way
 
 And two tasks:
