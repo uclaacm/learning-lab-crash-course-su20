@@ -20,7 +20,7 @@ Lessons:
 * [Lesson 08: Intro to Design with Figma (guest lecturer: Tomoki!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/08-intro-design)
 * [Lesson 09: Intermediate React (Concepts & Patterns)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/09-intermediate-react-1)
 * [Lesson 10: Intro to SASS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/10-sass)
-* [Lesson 11: React Hooks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/10-sass)
+* [Lesson 11: React Hooks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/11-react-hooks)
 * more on the way
 
 And two tasks:
