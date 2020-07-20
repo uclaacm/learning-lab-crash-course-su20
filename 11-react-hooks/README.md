@@ -1,6 +1,6 @@
 # React Hooks
 
-In this writeup, we'll cover **React Hooks**: a different way to create and write React code, preferring functional programming and full composition over the previous class-based approach to components, state, and lifecycle actions.
+In this write-up, we'll cover **React Hooks**: a different way to create and write React code, preferring functional programming and full composition over the previous class-based approach to components, state, and lifecycle actions.
 
 ## Table of Contents
 
@@ -105,7 +105,7 @@ Okay, but what exactly do `count` and `setCount` now have? What does `useState` 
 
 The reason we use array destructuring is so that we can name these items whatever we want. In this case, we create the local `const` variable `count` to have the value of this state variable, and the local `const` function (which ... is also a variable, since functions are objects) `setCount` to update this variable. These two things are tied together - calling `setCount` updates `count`!
 
-And, as you might've guessed, the value we pass into `useState` is the default value of our state. It can be any (shallow-refrenced) object, like a string, number, boolean, or an array!
+And, as you might've guessed, the value we pass into `useState` is the default value of our state. It can be any (shallow-referenced) object, like a string, number, boolean, or an array!
 
 Now, things are making more sense! The render function is quite similar to our other render function, just replacing `this.state.count` with `count` and `setState` with `setCount` when appropriate.
 
@@ -185,7 +185,7 @@ class Counter extends React.Component{
 }
 ```
 
-Uh oh! In this case, we had to duplicate some code. We can't just use `componentDidMount`, since we want our title to update every time that `this.state.count` gets updated. And, we can't juse use `componentDidUpdate`, since it doesn't get called after the first time a component is mounted/rendered.
+Uh oh! In this case, we had to duplicate some code. We can't just use `componentDidMount`, since we want our title to update every time that `this.state.count` gets updated. And, we can't just use `componentDidUpdate`, since it doesn't get called after the first time a component is mounted/rendered.
 
 Hooks come to the rescue here:
 
