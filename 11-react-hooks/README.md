@@ -1,5 +1,7 @@
 # React Hooks
 
+[Link to Video.](https://www.youtube.com/watch?v=-cKLNanIPYA)
+
 In this write-up, we'll cover **React Hooks**: a different way to create and write React code, preferring functional programming and full composition over the previous class-based approach to components, state, and lifecycle actions.
 
 ## Table of Contents
