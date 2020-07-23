@@ -21,6 +21,7 @@ Lessons:
 * [Lesson 09: Intermediate React (Concepts & Patterns)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/09-intermediate-react-1)
 * [Lesson 10: Intro to SASS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/10-sass)
 * [Lesson 11: React Hooks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/11-react-hooks)
+* [Lesson 12: JS Library Tour](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/12-js-lib)
 * more on the way
 
 And two tasks:

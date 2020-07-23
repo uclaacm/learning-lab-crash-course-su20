@@ -1,5 +1,7 @@
 # JS Libraries
 
+[Link to Video.](https://youtu.be/uGns9G4Bh70)
+
 In this chat with Leo, we'll discuss the wonderful world of JavaScript libraries, and how you can use them in your project and add them as a dependency. We will discuss graphing libraries, font packs, math libraries, and animation ones too!
 * Graphing with plotly
 * Icons with fontawesome
