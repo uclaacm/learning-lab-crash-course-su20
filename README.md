@@ -22,6 +22,7 @@ Lessons:
 * [Lesson 10: Intro to SASS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/10-sass)
 * [Lesson 11: React Hooks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/11-react-hooks)
 * [Lesson 12: JS Library Tour](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/12-js-lib)
+* [Lesson 13: Accessibility on the Web (guest lecturer: Karen!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/13-accessibility)
 * more on the way
 
 And two tasks:
@@ -33,6 +34,6 @@ You can also find recorded videos of our summer sessions on the ACM YouTube chan
 
 ## Licensing and Attribution
 
-These notes were mostly written by Matthew Wang ([@malsf21](https://github.com/malsf21)) and Leo Krashanoff ([@krashanoff](https://github.com/krashanoff)). They would like to thank ACM Hack in particular, for providing inspiration for some of these notes.
+These notes were mostly written by Matthew Wang ([@malsf21](https://github.com/malsf21)) and Leo Krashanoff ([@krashanoff](https://github.com/krashanoff)). Many thanks to our guest lecturers, Tomoki and Karen. They would like to also thank ACM Hack, the Mozilla Developer Network, and W3Schools, for providing inspiration for some of these notes.
 
 These notes are published with the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/) ([link to legal](https://creativecommons.org/licenses/by/4.0/legalcode)), and all of the code samples with the MIT License. You are free to use them however you wish. If you do, let us know - we'd love to know how you used them, and how we can make them better.
