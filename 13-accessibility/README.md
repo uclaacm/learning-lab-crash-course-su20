@@ -1,5 +1,7 @@
 # Accessibility on the Web
 
+[Link to Video.](https://youtu.be/C4owSuA5S1Y)
+
 ## Overview
 
 Welcome to Karen's introduction to accessibility on the web! After this workshop, you should have a basic understanding of what kinds of needs we should be meeting as web developers. You should be able to evaluate websites using your familiarity with accessibility guidelines, with the help of convenient tools.
