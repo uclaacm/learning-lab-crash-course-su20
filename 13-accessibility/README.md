@@ -398,4 +398,4 @@ Images and Videos
 
 Bonus (not covered today)
 * [External links](https://codersblock.com/blog/external-links-new-tabs-and-accessibility/)
-* [Gifffer (a JS library that allows pausing GIFs!](https://github.com/krasimir/gifffer)
+* [Gifffer (a JS library that allows pausing GIFs!)](https://github.com/krasimir/gifffer)
