@@ -265,9 +265,9 @@ Finally, `CSS does not support alt text`. When using `background-image` and othe
 
 In summary, when writing alt text, we should ask ourselves:
 
-1. Does this image/icon add context (or does it function as a link)?
-1. Is my alt text as brief as possible?
-1. Does my alt text accurately and fully describe the image? 
+1. Does this image/icon **add context** (or does it function as a link)?
+1. Is my alt text as **brief** as possible?
+1. Does my alt text **accurately** and **fully** describe the image? 
 
 ### Transcripts 
 
