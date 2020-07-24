@@ -11,6 +11,7 @@ This workshop assumes an intermediate knowledge of HTML and CSS. Unlike previous
 * [What Does Accessibility Involve?](#what-does-accessibility-involve)
 * [Appearance](#appearance)
   * [Fonts and Font Sizes](#fonts-and-font-sizes)
+  * [Line Height](#line-height)
   * [Zoom Levels](#zoom-levels)
   * [Color Contrast](#color-contrast)
 * [Supporting Screenreaders](#supporting-screenreaders)
@@ -21,7 +22,7 @@ This workshop assumes an intermediate knowledge of HTML and CSS. Unlike previous
   * [Alt text](#alt-text)
   * [Transcripts](#transcripts)
   * [Autoplay](#autoplay)
-* [Animations](#animations)
+  * [Animations](#animations)
 * [Content Reading Level](#content-reading-level)
 * [Conclusion](#conclusion)
 * [Accessibility Checkers](#accessibility-checkers)
@@ -36,7 +37,7 @@ To create the best user experience, we should be comfortable with constantly ada
 
 For many, poor accessibility features are an inconvenience at worst or even unnoticeable at best. But for an equally important population, these features can make or break their experience with your website. 
 
-These users experience a range of needs, including colorblindness, use of a screen reader (for people with visual impairments, people with learning disabilities, etc.), poor vision (for the elderly, people with visual impairments, etc.), susceptibility to seizures, and more. 
+These users experience a range of needs, including colorblindness, use of a screenreader (for people with visual impairments, people with learning disabilities, etc.), poor vision (for the elderly, people with visual impairments, etc.), susceptibility to seizures, and more. 
 
 Why is this so important, you ask?
 
@@ -53,17 +54,21 @@ We'll start with the visual appearance of websites, since most of us will alread
 
 ### Fonts and Font Sizes
 
-Have you ever visited a website with an uncomfortably small or weirdly large font? Pretty annoying, right? Fortunately, someone was smart enough to come up with standard font sizes for mobile and desktop:
+Have you ever visited a website with an uncomfortably small or weirdly large font? Pretty annoying, right? Fortunately, someone was smart enough to come up with standard font sizes for mobile and desktop. (The base font size for the page should generally be specified in the HTML root node. Overrides can then be applied for more specific selectors, whether you're using px or <span tabindex="-1">[em or rem](https://webdesign.tutsplus.com/tutorials/comprehensive-guide-when-to-use-em-vs-rem--cms-23984)</span>.) 
 
 ```css
 /* CSS file */
 /* 768px is a common breakpoint for smartphones */
   @media all and (max-width: 768px) {
-    font-size: 16px;
+    html {
+     font-size: 16px;
+    }
   }
 
   @media all and (min-width: 769px) {
-    font-size: 18px;
+    html {
+     font-size: 18px;
+    }
   }
 ```
 Fonts can still look too small or too large at these sizes, so adjust as needed. 
@@ -94,11 +99,25 @@ We stick to basic serif and sans serif fonts because using display (aka fancy) f
 
 A good rule of thumb is to copy a paragraph of a random article into your chosen font, and see if you can easily scan the paragraph. If not, it's probably not a good choice for your website.
 
+### Line Height
+
+A short note on line height: closely packed paragraphs of text can be really awful to read! The standard for paragraph text (as opposed to headings and other text) says that we should have a line height at least 1.5x as large as our font size.
+
+```css
+/* CSS file */
+  body {
+    font-size: 16px;
+    line-height: 24px;
+  }
+```
+
 ### Zoom Levels
 
-Users with visual impairments, such as the elderly, often need to zoom in on 16px or 18px text in order to be able to read clearly. As you're developing your website, try zooming in up to 200% and see if the website is still usable. If elements are jumping around or hiding text at this zoom level, that's bad news and we should take steps to fix that. 
+Users with visual impairments, such as the elderly, often need to zoom in on 16px or 18px text in order to be able to read clearly. As you're developing your website, try zooming in up to 200% and see if the website is still usable. If elements are jumping around or hiding text at this zoom level, that's bad news.
 
-Horizontal scrolling should be avoided at all costs. One way horizontal scrolling can unintentionally happen is if our text isn't wrapping correctly inside a container. `whitespace: normal` should be the default, but if things are looking funky, try explicitly setting this property.
+Be careful when using `position: absolute` and other fixed position values because they can result in some unintentional effects in different screen sizes and zoom levels. Using flexbox and other automatic layouts can help prevent this. 
+
+Horizontal scrolling should be avoided because users always expect vertical scrolling. One way horizontal scrolling can unintentionally happen is if our text isn't wrapping correctly inside a container. `whitespace: normal` should be the default, but if things are looking funky, try explicitly setting this property.
 
 ```css
 /* CSS file */
@@ -134,11 +153,15 @@ What we're mainly addressing here is luminance contrast, since high hue contrast
 
 What's up with the second image? That's what would happen if you sucked all the color out of the red and the green. This desaturated example shows why the first image was so ugly: it's because the two colors are too similar in luminance! That's what makes noncontrasting colors hard to read.
 
+**Important: these examples are for illustrative purposes and are an oversimplification of colorblindness.**
+
 In the real world, bad color contrast can be hard to spot. Thankfully, you don't have to calculate any ratios yourself. Color-contrast checkers help us make sure that our text and visual elements pass standards. 
 
 ![The WebAIM color contrast checker](resources/color-contrast.PNG)
 
 Sometimes we'll be tempted to place text over images. It's very difficult to make sure that each of the different color combinations in these instances pass standards! So it's best to avoid background images when the text is essential to understanding or using the site.
+
+Large text literally has larger shapes, which makes it slightly easier to see/read. In the color contrast checker image, you can see that large text has slightly more lax standards. If you must place text over images, larger text is a better way to go.
 
 ![Some text placed over an image, which is very difficult to read.](resources/image-text.png)
 
@@ -261,13 +284,13 @@ The only situation where alt text can be redundant with surrounding text is when
 
 Videos do not support `alt` attributes. Use `title` instead or provide an external link to the video. 
 
-Finally, `CSS does not support alt text`. When using `background-image` and other CSS image-related properties, use decorative images only.
+Finally, **CSS does not support alt text**. When using `background-image` and other CSS image-related properties, use decorative images only.
 
 In summary, when writing alt text, we should ask ourselves:
 
-1. Does this image/icon **add context** (or does it function as a link)?
-1. Is my alt text as **brief** as possible?
-1. Does my alt text **accurately** and **fully** describe the image? 
+1. Does this image/icon add context (or does it function as a link)?
+1. Is my alt text as brief as possible?
+1. Does my alt text accurately and fully describe the image? 
 
 ### Transcripts 
 
@@ -298,7 +321,7 @@ Similarly, allow users to pause and navigate slideshows&mdash;it can be distract
 
 Since slideshows are usually made using JavaScript, we won't cover how to do it here.
 
-## Animations
+### Animations
 
 Many people are prone to seizures and can be harmed by websites with too much animation. This means limiting the number of GIFs, and avoiding flashing elements at all costs (the w3 standard is three flashes or less per second).
 
@@ -375,3 +398,4 @@ Images and Videos
 
 Bonus (not covered today)
 * [External links](https://codersblock.com/blog/external-links-new-tabs-and-accessibility/)
+* [Gifffer (a JS library that allows pausing GIFs!](https://github.com/krasimir/gifffer)
