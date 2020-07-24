@@ -139,7 +139,7 @@ p {
 
 ### Color Contrast 
 
-Color blindness affects 1 in 12 men and 1 in 200 women worldwide. For these people, it can be hard to read text against a noncontrasting background. 
+Color blindness affects 1 in 12 men and 1 in 200 women worldwide. For these people, as well as people with low vision, it can be hard to read text against a noncontrasting background. 
 
 What does color contrast mean, exactly?
 
@@ -153,7 +153,7 @@ What we're mainly addressing here is luminance contrast, since high hue contrast
 
 What's up with the second image? That's what would happen if you sucked all the color out of the red and the green. This desaturated example shows why the first image was so ugly: it's because the two colors are too similar in luminance! That's what makes noncontrasting colors hard to read.
 
-**Important: these examples are for illustrative purposes and are an oversimplification of colorblindness.**
+**Important: these examples are for illustrative purposes and are an oversimplification of color blindness.** Check out our resources for a tool you can use to [simulate color blindness](#accessibility-checkers) on images.
 
 In the real world, bad color contrast can be hard to spot. Thankfully, you don't have to calculate any ratios yourself. Color-contrast checkers help us make sure that our text and visual elements pass standards. 
 
