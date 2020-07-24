@@ -41,8 +41,8 @@ These users experience a range of needs, including colorblindness, use of a scre
 Why is this so important, you ask?
 
 1. Make websites functional and enjoyable for users with different needs
-1. Increase traffic and user satisfaction
 1. Everyone benefits from accessible websites
+1. Increase traffic and user satisfaction
 
 Each website element that you design or create will be used by all kinds of different people. So, we need to think about how these parts can meet the needs of our users. Many web developers (like me) can get too caught up in what looks "cool" and not what is actually legible or usable. 
 
@@ -236,11 +236,13 @@ Embedded media can be difficult to consume for many populations and for many rea
 
 ### Alt text
 
-You've seen alt text before, which is displayed when an image file fails to load. It's also read by screenreaders. 
+You've seen alt text before, which is displayed when an image file fails to load. It's also read by <span tabindex="-1">[screenreaders](#supporting-screenreaders)</span>. 
 
 Always provide alt text for images that have semantic meaning. For example: a decorative background image of a stripe pattern probably does not need alt text, but an illustrative image of the company's logo probably does. 
 
-A good rule of thumb is if the image adds context to the page that isn't already present in surrounding text, then alt text is needed. If nothing new is added, then `alt=""` is okay. (Don't omit the `alt` attribute altogether.) 
+A good rule of thumb is if the image adds context to the page that isn't already present in surrounding text, then alt text is needed. If nothing new is added, then `alt=""` is okay. 
+
+Why can't we just omit the `alt` attribute? In the absence of alt text, screenreaders may attempt to read the file name instead.
 
 ```html 
 <!-- HTML file -->
@@ -249,7 +251,7 @@ A good rule of thumb is if the image adds context to the page that isn't already
 
 ![ACM logo](resources/acm-logo.png)
 
-Writing good alt text takes a little thought. Think of it as similar to a caption, only as brief as possible. For example, do not write "Image of..." or "Graphic of..." since it's usually obvious what the element is, even to screen readers. However, "Painting of..." may be used since the user would not know this if the image had failed to load. 
+Writing good alt text takes a little thought. Think of it as similar to a caption, only as brief as possible. For example, do not write "Image of..." or "Graphic of..." since it's usually obvious what the element is. However, "Painting of..." may be used since the user would not know this if the image had failed to load. 
 
 Be accurate when describing image content&mdash;we shouldn't provide information that is not present in the media. 
 
@@ -259,13 +261,21 @@ The only situation where alt text can be redundant with surrounding text is when
 
 Videos do not support `alt` attributes. Use `title` instead or provide an external link to the video. 
 
+Finally, `CSS does not support alt text`. When using `background-image` and other CSS image-related properties, use decorative images only.
+
+In summary, when writing alt text, we should ask ourselves:
+
+1. Does this image/icon add context (or does it function as a link)?
+1. Is my alt text as brief as possible?
+1. Does my alt text accurately and fully describe the image? 
+
 ### Transcripts 
 
 English language learners and people with hearing impairments can have difficulty following audio or video elements. Transcripts and subtitles are also useful in noisy environments or when skipping through media to find specific information. 
 
-WebVTT files are the standard for closed captions. We can include these with the `track` tag, and specify `kind = subtitle` and `label` using the appropriate language. 
+WebVTT files are the standard for closed captions. (This will be familiar if you've read <span tabindex="-1">[Lesson 8](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/08-intro-figma)</span>.) We can include these with the `track` tag, and specify `kind = subtitle` and `label` using the appropriate language. 
 
-`srclang` uses a language code to specify the type of data used (see [Language Specification](#language-specification)), while `label` is meant to help the user choose the correct subtitles.
+`srclang` uses a language code to specify the type of data used <span tabindex="-1">(see [Language Specification](#language-specification)</span>), while `label` is meant to help the user choose the correct subtitles.
 
 Include the `controls` attribute to allow access to volume controls, video pause and playback, existing subtitles and transcripts, and more.
 
@@ -321,7 +331,7 @@ A final note: accessibility shouldn't be an afterthought. You'll make it easier 
 
 Want to put your new knowledge into practice? Start out by turning a critical eye on your [portfolio task](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-1-portfolio/README.md) from earlier in this course, as well as any other websites you may have made. Use the tools below to help you make your website beautiful *and* accessible for all users! 
 
-Or, check out the [anti-accessibility example website](https://electricdinosaurs.github.io/accessibility-demo/) I made that breaks all of the rules we mentioned. Try forking the project or playing around in the browser inspector mode to see how you can make it less awful. 
+Or, check out the [anti-accessibility example website](https://electricdinosaurs.github.io/accessibility-demo/) attached to this repository that breaks all of the rules we mentioned. Try forking the project or playing around in the browser inspector mode to see how you can make it less awful. 
 
 ## Accessibility Checkers
 
