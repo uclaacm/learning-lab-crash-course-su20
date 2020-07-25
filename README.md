@@ -23,6 +23,7 @@ Lessons:
 * [Lesson 11: React Hooks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/11-react-hooks)
 * [Lesson 12: JS Library Tour](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/12-js-lib)
 * [Lesson 13: Accessibility on the Web (guest lecturer: Karen!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/13-accessibility)
+* [Lesson 14: Misc. DevOps](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/14-misc-devops)
 * more on the way
 
 And two tasks:
