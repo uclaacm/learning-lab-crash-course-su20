@@ -102,9 +102,64 @@ When I said I promise, I meant it!
 
 ### Fetching a Resource
 
+The most basic example is a simple `GET` request (in the larger set of possible HTTP requests). `GET` requests are, well, you **get**ting something. But in particular, it means that all the service really needs to know is the path to the resource, no extra options required!
+
+When you call `fetch` with just a URL, you make a `GET` request by default. You can `GET` a lot of things! Remember this example, from earlier?
+
+```js
+fetch('https://teachla.uclaacm.com/accountability/budget-19-20.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // we do some data processing here
+  })
+```
+
+This is actually a `GET` request! Under the hood, our browser is making a request to some server to get the `budget-19-20.json` file. If we get it, we can then decode the response as a JSON file (which in this case, we knew to do because... the file is a `.json` file), and then parse the data and do something with it.
+
+
+
 ### async/await with React
 
 ### POST requests with Fetch
+
+So far, we have only explored one portion of the HTTP request space, the `GET` request. There's actually a whole host of possible requests, but the most likely one you'll hear about is the `POST` request.
+
+Long story short, the `POST` request lets you add parameters to your call. This is really useful when you need to communicate things to an API, or the endpoint that you're reaching needs some extra information to give you what you're looking for. There is also a semantic definition as to *when* you're supposed to use a `POST` request versus a `GET` request, but usually, the developers of the API make that decision, so you don't have to worry!
+
+We won't go over the intracacies of `POST` requests, but we can walk through a quick example: let's say we're making a request to the Spotify API to create a new playlist for a user.
+
+According to [the Spotify Web API documentation](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-create-playlist), to make a new playlist, we **have to include the playlist's name**. That makes sense to me.
+
+If we were to write a simple fetch request, it would look something like this:
+
+```js
+async function createSpotifyPlaylist(playlistName) {
+  const url = 'https://api.spotify.com/v1/users/{user_id}/playlists';
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': '....', // this is a secret!
+    },
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(
+      // how do i know what to put here? check the spotify docs!
+      { name: playlistName }
+    )
+  });
+  return response.json();
+}
+
+createSpotifyPlaylist('amperes')
+  .then(data => {
+    console.log(data); // a response telling us if it was successful, information about the playlist, etc.
+  });
+```
+
+Wow, that looks like a lot! But really, we haven't done too much different from our previous example: all we've done is use the second (optional) argument of `fetch`, which allows us to specify more information about the request. It takes in an object, with many complicated parameters (you can see [the full list for yourself, if you'd like](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch)), but usually this is more than enough for what we need. What's important to note is the `body` key, where we put a "stringified" version of our data. Basically, we convert our data (in this case, our playlist name) into a string, and then send it to the server - you'll do this all the time with `POST` requests.
+
+Other than the new options, everything else is the same! We're still using `async` and Promises. You can integrate this into React, and use any other tricks that you normally use when you write clean, awesome, maintainable JS code!
 
 ## Quick Summary
 
