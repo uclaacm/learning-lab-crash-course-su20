@@ -18,6 +18,7 @@ For this note, we won't assume you have any experience with other asynchronous p
   * [then, catch](#then-catch)
 * [Working Through Examples](#working-through-examples)
   * [Fetching a Resource](#fetching-a-resource)
+  * [Fetch with React](#fetch-with-react)
   * [async/await with React](#asyncawait-with-react)
   * [POST requests with Fetch](#post-requests-with-fetch)
 * [Quick Summary](#quick-summary)
@@ -100,11 +101,13 @@ When I said I promise, I meant it!
 
 ## Working Through Examples
 
+Let's work through a few examples that explain how we'd use `fetch` and other `async` ideas in our day-to-day developer life.
+
 ### Fetching a Resource
 
 The most basic example is a simple `GET` request (in the larger set of possible HTTP requests). `GET` requests are, well, you **get**ting something. But in particular, it means that all the service really needs to know is the path to the resource, no extra options required!
 
-When you call `fetch` with just a URL, you make a `GET` request by default. You can `GET` a lot of things! Remember this example, from earlier?
+When you call `fetch` with just a URL, you make a `GET` request by default. Remember this example, from earlier?
 
 ```js
 fetch('https://teachla.uclaacm.com/accountability/budget-19-20.json')
@@ -117,9 +120,160 @@ fetch('https://teachla.uclaacm.com/accountability/budget-19-20.json')
 
 This is actually a `GET` request! Under the hood, our browser is making a request to some server to get the `budget-19-20.json` file. If we get it, we can then decode the response as a JSON file (which in this case, we knew to do because... the file is a `.json` file), and then parse the data and do something with it.
 
+Normally, you typically use `GET` for text (e.g. a `.json` file, `.yaml`, `.txt`, `.csv`, etc.). But, you can `GET` all sorts of things!
 
+```js
+// fetching a CSV file, and parsing it
+...
+
+
+// fetching an .... image?
+fetch('https://teachla.uclaacm.com/img/team/mwang.jpg')
+  .then(response => response.blob()) // this has to do with interpreting the response as a "blob"
+  .then(image => {
+      localImageURL = URL.createObjectURL(image)
+      document.getElementById('img-container').innerHTML = `
+        <img src=${localImageURL} ... />
+      `;
+  })
+```
+
+### fetch with React
+
+We can also use `fetch` in React. Here's a very basic example (with class-based components):
+
+```jsx
+
+class App extends React.Component {
+  state = {
+    pokeName: ""
+  }
+
+  onButtonClick = () => {
+    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          pokeName: data.name, // assuming 'name' is in the JSON field
+        })
+      })
+  }
+
+  render = () => {
+    return (
+      <div>
+        <button onClick={this.onButtonClick}>get ditto's name</button>
+        <p>
+          the name of ur pokemans: {this.state.pokeName}
+        </p>
+      </div>
+    )
+  }
+}
+```
+
+And the same example, with the state hook (if you're rusty, you can check our [hooks lesson](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/11-react-hooks) or [the React tutorial](https://reactjs.org/docs/hooks-intro.html))
+
+```jsx
+function App() {
+  const [pokeName, setPokeName] = useState("");
+
+  function onButtonClick() {
+    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+      .then(response => response.json())
+      .then(data => {
+        setPokeName(data.name);// assuming 'name' is in the JSON field
+        })
+      })
+  }
+
+  return (
+    <div>
+      <button onClick={onButtonClick}>get ditto's name</button>
+      <p>
+        the name of ur pokemans: {pokeName}
+      </p>
+    </div>
+  )
+}
+```
+
+Note that we didn't need to explicitly define `async/await`, since we're never actually writing blocking code! Part of the beauty of this has to do with the arrow functions that pass the "context" of `this.setState` beautifully (which has to do with a concept called closures), but suffice to say, it's not too tricky.
+
+Another common use-case is to make a `fetch` request *as soon as the component loads*. This is especially useful if the main driver of your web app is externally-derived information (e.g. a database). We can do that with class-based components and lifecycle functions, or functional components and effect hooks.
+
+With class-based components:
+
+```jsx
+class App extends React.Component {
+  state = {
+    pokeName: "",
+    pokeAbilities: []
+  }
+  componentDidMount = () => {
+    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          pokeName: data.name, // assuming 'name' is in the JSON field
+          pokeAbilities: data.abilities, // assuming 'abilities' exists too
+        })
+      })
+  }
+  render = () => {
+    return (
+      <div>
+        <h1>the abilities for {this.state.pokeName}</h1>
+        {
+          this.state.pokeAbilities.map((ability) => {
+            <div>
+              ability name: {ability.name} ...
+            </div>
+          })
+        }
+      </div>
+    )
+  }
+}
+```
+
+And hooks:
+
+```jsx
+function App {
+  const [pokeName, setPokeName] = useState("");
+  const [pokeAbilities, setPokeAbilities] = useState([]);
+
+  useEffect(() => {
+    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+      .then(response => response.json())
+      .then(data => {
+          setPokeName(data.name); // assuming 'name' is in the JSON field
+          setPokeAbilities(data.abilities); // assuming 'abilities' exists too
+        })
+      })
+  }, []); // this [] means to only do it once!
+
+  return (
+      <div>
+        <h1>the abilities for {pokeName}</h1>
+        {
+          pokeAbilities.map((ability) => {
+            <div>
+              ability name: {ability.name} ...
+            </div>
+          })
+        }
+      </div>
+    )
+}
+```
+
+The `[]` is part of [this feature of the Effect hook](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects).
 
 ### async/await with React
+
+...
 
 ### POST requests with Fetch
 
