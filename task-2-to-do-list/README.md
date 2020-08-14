@@ -79,4 +79,4 @@ What about the stretch goals?
 
 ## Deploying Your Web App: Netlify
 
-Coming soon!
+See [the video on deploying to Netlify](https://youtu.be/HH2c3YZZasg) or our [misc devops notes](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/14-misc-devops) on how to do this!
