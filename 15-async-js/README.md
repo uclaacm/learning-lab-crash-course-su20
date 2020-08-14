@@ -438,7 +438,7 @@ function App {
 
 The `[]` is part of [this feature of the Effect hook](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects).
 
-Also, as a sidebar: React has many asychronous functions built-in (as ... most code)! For example, `this.setState()` is asynchronous, and technically, all component lifecycle functions, hooks, and any other exposed React functions are all asynchronous to some extent!
+Also, as a sidebar: React has many asynchronous functions built-in (as ... most code)! For example, `this.setState()` is asynchronous, and technically, all component lifecycle functions, hooks, and any other exposed React functions are all asynchronous to some extent!
 
 ### POST requests with Fetch
 
@@ -446,7 +446,7 @@ So far, we have only explored one portion of the HTTP request space, the `GET` r
 
 Long story short, the `POST` request lets you add parameters to your call. This is really useful when you need to communicate things to an API, or the endpoint that you're reaching needs some extra information to give you what you're looking for. There is also a semantic definition as to *when* you're supposed to use a `POST` request versus a `GET` request, but usually, the developers of the API make that decision, so you don't have to worry!
 
-We won't go over the intracacies of `POST` requests, but we can walk through a quick example: let's say we're making a request to the Spotify API to create a new playlist for a user.
+We won't go over the intricacies of `POST` requests, but we can walk through a quick example: let's say we're making a request to the Spotify API to create a new playlist for a user.
 
 According to [the Spotify Web API documentation](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-create-playlist), to make a new playlist, we **have to include the playlist's name**. That makes sense to me.
 
@@ -490,7 +490,7 @@ Okie dokie! In this note, we answered some core questions:
 * what is `fetch()`?
 * how do we run asynchronous code in React?
 
-This is a **very powerful toolkit** in your web development experience, as it lets you interact with the outside world of APIs and servers, and also write very performant code. However, it can also introduce headaches! Race conditions aren't in common in front-end web development as other software paradigms, but they still happen! And there are many intracacies that we didn't have time to cover today.
+This is a **very powerful toolkit** in your web development experience, as it lets you interact with the outside world of APIs and servers, and also write very performant code. However, it can also introduce headaches! Race conditions aren't in common in front-end web development as other software paradigms, but they still happen! And there are many intricacies that we didn't have time to cover today.
 
 ## Appendix: Callbacks
 
