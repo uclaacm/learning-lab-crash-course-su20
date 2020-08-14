@@ -14,12 +14,11 @@ For this note, we won't assume you have any experience with other asynchronous p
 * [First Steps: Using fetch](#first-steps-using-fetch)
 * [async/await and Promises](#asyncawait-and-promises)
   * [async/await](#asyncawait)
-  * [Promises](#promises)
-  * [then, catch](#then-catch)
+  * [Promises and then](#promises-and-then)
+  * [catch](#catch)
 * [Working Through Examples](#working-through-examples)
   * [Fetching a Resource](#fetching-a-resource)
   * [Fetch with React](#fetch-with-react)
-  * [async/await with React](#asyncawait-with-react)
   * [POST requests with Fetch](#post-requests-with-fetch)
 * [Quick Summary](#quick-summary)
 * [Appendix: Callbacks](#appendix-callbacks)
@@ -28,9 +27,33 @@ For this note, we won't assume you have any experience with other asynchronous p
 
 ## What is Async?
 
+Matt is very tired and not good with words, so instead of writing his own to explain asynchronous code, he will borrow them from [Eloquent Javascript](https://eloquentjavascript.net/11_async.html) (which by the way, is a great learning resource):
+
+> In a *synchronous* programming model, things happen one at a time. When you call a function that performs a long-running action, it returns only when the action has finished and it can return the result. This stops your program for the time the action takes.
+>
+> An *asynchronous model* allows multiple things to happen at the same time. When you start an action, your program continues to run. When the action finishes, the program is informed and gets access to the result (for example, the data read from disk).
+>
+> In a synchronous environment, where the request function returns only after it has done its work, the easiest way to perform this task is to make the requests one after the other. This has the drawback that the second request will be started only when the first has finished. The total time taken will be at least the sum of the two response times.
+
+Yeah, I mean, that's really it! But really, we're exposing one of the largest paradigm shifts in learning programming: your code is no longer "sequential" (i.e. run line-by-line), and now we have timelines all over the place! Things can get very confusing, but for our purposes, we'll try to keep it as simple as possible.
+
+And why are we looking at asynchronous programming? Well, it powers almost all of modern computing. Without asynchronous programming, websites would take forever to load, computers could only run one application at a time, and phones would be practically useless. We couldn't even consider things like complex servers, graphics cards & video games, or the internet as a whole. A nebulous claim, but one that's very true.
+
+When we talk about asynchronous programming, there are a lot of terms thrown around. Here are a few that we'll use (other than the ones we gradually introduce):
+
+* **synchronous**: happens one-after-another
+* **asynchronous**: things do not necessarily happen one-after-another. Importantly, **this is not the same as multithreading**
+* **blocking**: the program is being "blocked" by something, or is waiting for something; it cannot proceed
+* **non-blocking**: the action doesn't block the program (often by using asynchronous methods)
+* **threads**: well... it's complicated. don't worry about this for this note, since **Javascript doesn't use multithreading**
+* **API** (Application Programming Interface): an exposed interface that lets you interact with a system. Web APIs form the backbone of the internet: it's how frontends (i.e. a website) can get information from backends/databases.
+* **HTTP Request** or simply **request**: one way to get things from a web API. There's a lot more to unpack here, but for now, imagine that you pass in a URL and maybe some parameters, and then you get something back.
+
+And... **multithreading**? Well, it's kind of out of scope, so we won't cover it today. But feel free to [check out the Wikipedia page](https://en.wikipedia.org/wiki/Thread_(computing)#Multithreading) for more information!
+
 ## First Steps: Using fetch
 
-Before we really dive deep into asynchronous programming in Javascript, let's start with a quick example
+Before we really dive deep into asynchronous programming in Javascript, let's start with a quick example:
 
 ```js
 fetch('https://teachla.uclaacm.com/accountability/budget-19-20.json')
@@ -91,13 +114,157 @@ As you can imagine, this is a very useful programming pattern! You only want to 
 
 But wait! How do we define a value for `await`? Well I'll tell you, I promise.
 
-### Promises
+### Promises and then
 
 When I said I promise, I meant it!
 
-...
+A **Promise** is a special type of object in JS that will eventually be **resolved** or **rejected** (or in other words, will eventually be successful or fail). The key word here is *eventually*: we may check on whatever the Promise is, and find out that it's still waiting for either of those states to exist. So far, this should make sense: if we make a request to an API, and check on the status of the API, it may have not been completed yet!
 
-### then, catch
+However, a Promise gives us a very useful API to do something after something is done, with the `.then()` function. We saw this earlier in our example:
+
+```js
+fetch('https://teachla.uclaacm.com/accountability/budget-19-20.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // we do some data processing here
+  })
+console.log("would this get logged before or after data?");
+```
+
+Here, the first `.then` is chained to the `fetch` function (which, as you may have guessed by now, returns a Promise). **Once the Promise is "resolved"** (aka **the request is successful**), then whatever is passed to `.then` is called; as we guessed above, the parameter is a function! And the function gets something from the `fetch`, in this case, the response from the HTTP request.
+
+The next chained `.then` is chained to the previous `.then`. And you can continue on chaining `.then` functions, as each `.then` functionally returns a new Promise object that you can spy in on.
+
+One other important distinction is that it's almost guaranteed that `"would this get logged before or after data?"` gets logged before the response data. Why is this? Well, `.then` is **non-blocking**. What that means is, after we call `fetch` with its `.then` functions, we just keep on executing our code; the argument to `.then` only gets called once the `fetch` is done! And unless the `.fetch` takes less than the delay to log something to the console (unlikely), our `"would this get logged before or after data?"` log wins out first! This is an important idea behind `.then` - that it's non-blocking!
+
+This is probably all you need to know about Promises from a developer-based perspective when you just start out coding basic web applications. The critical idea, in sum, is that the argument passed to the `.then` of any Promise gets called **after the Promise succeeds**!
+
+Now you might be wondering, what does this have to do with `async/await`? Well, it turns out, you can `await` a Promise; and here, we'll also see the `resolve` keyword in play. Let's take a look at this example graciously provided by the MDN:
+
+```js
+function resolveAfter1Second() {
+  console.log("starting fast promise")
+  return new Promise(resolve => {
+    setTimeout(function() {
+      console.log("fast promise is done")
+      resolve("fast was resolved!")
+    }, 1000)
+  })
+}
+
+async function sequentialStart() {
+  const fast = await resolveAfter1Second()
+  console.log(fast)
+}
+
+// somewhere later
+
+sequentialStart();
+```
+
+First, for your convenience, this is what'll get logged to the console (though the ordering may be off, because, async):
+
+```
+sequentialStart()
+starting fast promise
+fast promise is done
+fast was resolved!
+```
+
+Okay, so what's going on here? Let's start with `resolveAfter1Second()`:
+
+1. First, note that this function **is not `async`**. There's no reason for it to - we don't use `await`!
+2. Second, note that this function returns a `Promise`. We're creating one with `new` and the `Promise` constructor.
+3. Note what we pass to the `Promise` constructor: it's a function! And in this case, this function takes in one parameter, called `resolve` (we'll later see a two-parameter version).
+4. The function that we pass to `Promise` calls `setTimeout`, which just means "do something after X milliseconds"; in this case, after 1 second, it'll call its argument! And we're passing it another function (see why we said you need to know your functions)!
+5. Essentially, all that's done is `resolve` is called. We can now infer that the argument `resolve` is a function, and it takes in one argument; we've passed it "fast was resolved!".
+
+Putting it all together: `resolveAfter1Second()` does exactly what it sounds like: it returns a `Promise` that resolves after exactly one second. We'll see what the `resolve` argument does in a moment.
+
+Okay, we're almost done! What about `sequentialStart()`?
+
+1. First, note that this function **is `async`**. That's because we make use of the `await` keyword!
+2. Now, we set `fast` to `await resolveAfter1Second()`. Note that it's a `const` - which reinforces that what the `await` returns only assigns once.
+3. Okay, and what about this `await resolveAfter1Second()`? Well, we're going to await the resolution of `resolveAfter1Second()`; **our code will synchronously block until the Promise resolves**, and the finally "complete" the assignment to `await`. In this case, this should take exactly one second.
+4. Then, we log what we get from the Promise. And now, we see what the argument to `resolve` does - it's the return value given by the `await` expression!
+5. And, just to be safe, we log what we get.
+
+There's obviously a lot of complexity going on here, and there's even more that we haven't discussed. However, hopefully this gives you a good primer on `async/await`, promises, and `.then`. The key difference that we've seen so far is that `await` blocks execution, while `.then` doesn't - execution continues after, and the Promise gets resolved whenever we want.
+
+One last thing for you to mull over: according to an MDN example, these two functions are the same thing:
+
+```js
+async function foo() {
+  await 1
+}
+
+function foo() {
+  return Promise.resolve(1).then(() => undefined)
+}
+```
+
+Can you explain why?
+
+### catch
+
+Okay, so now we know how to handle things if our request works. But what if it doesn't? What do we do there? What's the... catch?
+
+That's where our friend `.catch()` comes in. `.catch()` is very similar to `.then()`, but instead of calling its argument after the Promise resolves (succeeds), **it calls its argument after the Promise is rejected** (or fails). Let's take a look at an example:
+
+```js
+fetch('https://teachla.uclaacm.com/this/file/does/not/exist')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // we do some data processing here
+  })
+  .catch(e => console.error(e))
+```
+
+Wow, looks *really* similar to `.then()`. But, taking a look at the URL, we can guess that the file doesn't exist. When this happens, we'll usually get a `404` code from the HTTP request, which is an error. And that's where our `catch` statement comes in! We'll "catch" the error, and send an error to the console (`e` is an Error Object provided by HTTP requests/the `fetch` API, but I wouldn't worry about that for now).
+
+Again, this is probably the extent of `.catch` that you'll use as a beginner developer. The important thing to know is that if the Promise fails, at any step of the `.then()` chain, then we'll `.catch()` it and do something instead! In fact, you can intersperse `.then()` and `.catch()`:
+
+```js
+new Promise(resolve => {
+  console.log('Initial');
+  resolve();
+})
+.then(() => {
+  throw new Error('Something failed');
+  console.log('Do this');
+})
+.catch(() => {
+  console.error('Do that');
+})
+.then(() => {
+  console.log('Do this, no matter what happened before');
+});
+```
+
+But okay, what if we want to delve a little deeper? How does this work with `async` and `await`? I won't delve too deep into the details into the interest of length, but here are excerpts from an MDN example: I encourage you to use a similar function-analysis approach we took to the above `resolve` example, and try it here!
+
+```js
+function rejectAfter1Second() {
+  console.log("starting fast promise")
+  return new Promise((resolve, reject) => {
+    setTimeout(function() {
+      console.log("fast promise failed :(")
+      reject("fast was rejected!")
+    }, 1000)
+  })
+}
+
+async function sequentialStart() {
+  const fast = await rejectAfter1Second().catch(error => console.error(error))
+  console.log(fast) // hint: this returns undefined
+}
+
+// somewhere later
+
+sequentialStart();
+```
 
 ## Working Through Examples
 
@@ -271,9 +438,7 @@ function App {
 
 The `[]` is part of [this feature of the Effect hook](https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects).
 
-### async/await with React
-
-...
+Also, as a sidebar: React has many asychronous functions built-in (as ... most code)! For example, `this.setState()` is asynchronous, and technically, all component lifecycle functions, hooks, and any other exposed React functions are all asynchronous to some extent!
 
 ### POST requests with Fetch
 
@@ -317,11 +482,56 @@ Other than the new options, everything else is the same! We're still using `asyn
 
 ## Quick Summary
 
+Okie dokie! In this note, we answered some core questions:
+
+* how does `async`/`await` work in JS?
+* how do Promises, `.then()`, and `.catch()` work in JS?
+* how are `async`/`await` related to Promises? How do they differ?
+* what is `fetch()`?
+* how do we run asynchronous code in React?
+
+This is a **very powerful toolkit** in your web development experience, as it lets you interact with the outside world of APIs and servers, and also write very performant code. However, it can also introduce headaches! Race conditions aren't in common in front-end web development as other software paradigms, but they still happen! And there are many intracacies that we didn't have time to cover today.
+
 ## Appendix: Callbacks
 
+You will often hear of "callbacks" when discussing asynchronous code in JS. This refers to a paradigm in programming that's basically an application of higher-order functions; I'll let [MDN explain the details](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function):
+
+> A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
+>
+> Here is a quick example:
+
+```js
+function greeting(name) {
+  alert('Hello ' + name);
+}
+
+function processUserInput(callback) {
+  var name = prompt('Please enter your name.');
+  callback(name);
+}
+
+processUserInput(greeting);
+```
+
+> The above example is a synchronous callback, as it is executed immediately.
+>
+> Note, however, that callbacks are often used to continue code execution after an asynchronous operation has completed — these are called asynchronous callbacks. A good example is the callback functions executed inside a .then() block chained onto the end of a promise after that promise fulfills or rejects. This structure is used in many modern web APIs, such as fetch().
+
+Before Promises became generally supported by most browsers (don't you think `.then()` is convenient? I do!), almost all asynchronous code had to be written in terms of some possibly-complex callbacks (for example, with the predecessor to `fetch`, [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)).
+
 ## Appendix: The JS Event Loop
+
+Okay, so how does asynchronous code *actually work* in Javascript? And... isn't client-side JS single-threaded?
+
+Well, the answer is a bit tricky if you've never dealt with async before. The short answer is: yes, browser Javascript is (usually) single-threaded, and thus doesn't have "multi-threaded" parallelism. Instead, to handle concurrency, it uses a model called an "event loop", which basically is short for "run one thing after another, but break them into *really* small chunks, and between every event, check if any events have happened, and if they did happen, do something that needs to happen when that event happens".
+
+Yikes, that was a not-great sentence. If you're interested in more specifics in JS, you can check out [the MDN docs on the event loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop). One different feature of JS event loops & concurrency compared to other concurrency approaches is that there is no pre-empting, which resolves many concurrency headaches! [Node.js implements concurrency in the same way](https://nodejs.org/en/about/), boasting very cool concurrency benefits such as no deadlock (no locks!), minimal kernel/OS interaction, and almost completely guaranteed non-blocking code.
 
 ## Further Reading
 
 * [Using Fetch (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 * [async function (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+* [Using Promises (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+* [Promise (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+* [Callback functions (MDN)](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
+* [Concurrency model and the event loop (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
