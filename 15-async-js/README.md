@@ -350,7 +350,6 @@ function App() {
       .then(response => response.json())
       .then(data => {
         setPokeName(data.name);// assuming 'name' is in the JSON field
-        })
       })
   }
 
@@ -392,11 +391,11 @@ class App extends React.Component {
       <div>
         <h1>the abilities for {this.state.pokeName}</h1>
         {
-          this.state.pokeAbilities.map((ability) => {
+          this.state.pokeAbilities.map((ability) =>
             <div>
-              ability name: {ability.name} ...
+              ability name: {ability.ability.name} ...
             </div>
-          })
+          )
         }
       </div>
     )
@@ -407,7 +406,7 @@ class App extends React.Component {
 And hooks:
 
 ```jsx
-function App {
+function App() {
   const [pokeName, setPokeName] = useState("");
   const [pokeAbilities, setPokeAbilities] = useState([]);
 
@@ -418,7 +417,6 @@ function App {
           setPokeName(data.name); // assuming 'name' is in the JSON field
           setPokeAbilities(data.abilities); // assuming 'abilities' exists too
         })
-      })
   }, []); // this [] means to only do it once!
 
   return (
