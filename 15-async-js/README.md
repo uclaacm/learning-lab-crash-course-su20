@@ -1,5 +1,7 @@
 # Asynchronous Programming in JS
 
+[Link to video.](https://www.youtube.com/watch?v=T9mslksU_Vg)
+
 ## Overview
 
 In this note, we'll go over **asynchronous programming** in Javascript; or in other words, how you can make code run "in parallel" to other code. This is particularly useful for making requests to outside data (e.g. loading an image or file, making an API request, or fetching an external resource), but it also pops up everywhere in modern coding!

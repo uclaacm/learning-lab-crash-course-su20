@@ -8,7 +8,7 @@ While these notes are a good starting point, simply reading through all of these
 
 ## Table of Contents
 
-Lessons: 
+Lessons:
 
 * [Lesson 01: Intro to HTML & CSS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/01-intro-html-css)
 * [Lesson 02: Intermediate CSS: The Box Model & Positioning](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/02-intermediate-css)
@@ -24,7 +24,7 @@ Lessons:
 * [Lesson 12: JS Library Tour](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/12-js-lib)
 * [Lesson 13: Accessibility on the Web (guest lecturer: Karen!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/13-accessibility)
 * [Lesson 14: Misc. DevOps](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/14-misc-devops)
-* Lesson 15: Async & Fetch (coming soon!)
+* [Lesson 15: Async & Fetch](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/15-async-js)
 * Lesson 16: Intro to Backend Development (coming soon!)
 * Lesson 17: Intro to Testing in JS (coming soon!)
 * Lesson 18: Intro to Firebase (coming soon!)
