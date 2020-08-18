@@ -45,7 +45,7 @@ As with CSS frameworks, static site generators, and JS webapp frameworks, we can
 
 ### Implementation details, optimization
 
-Since we are the ones working all the heavy-lifting behind the scenes, we need to make our code performant and airtight. If there are any bugs on the backend, they will propagate directly to the frontend. Likewise, if there are any slowdowns on our end, they will get shot straight out to the frontend as well. It is our job as a backend developer to ensure that the code we write is effective and snappy.
+Since we are the ones working all the heavy-lifting behind the scenes, we need to make our code performant and airtight. If there are any bugs on the backend, they will propagate directly to the frontend. Likewise, if there are any slowdowns on our end, they will get shot straight out to the frontend as well over layers of network communication. It is our job as a backend developer to ensure that the code we write is effective and snappy.
 
 ## Backend Vocabulary
 
@@ -73,6 +73,8 @@ Enter HTTP methods, of which there a few that will be of significance for this R
 * `PUT`: used to update information at a resource
 * `DELETE`: used to, well, delete information from a resource
 
+These are the suggested use cases for these HTTP methods. Of course, you can use these methods however you want, but this is poor practice.
+
 Information about what the request wishes to do is transmitted via its body. This is usually JSON, but you can use a handful of other formats:
 
 ```json
@@ -83,7 +85,7 @@ Information about what the request wishes to do is transmitted via its body. Thi
 }
 ```
 
-A body is allowed in the request when not making `GET` requests. Instead, we pass it information in the form of query parameters. If you ever are on a website whose URL is something like `https://mycoolsite.com/cars?limit=25`, it is a `GET` request where you are telling the server that you only need to see the first 25 cars on the current page.
+A body is not allowed in the request when making `GET` requests. Instead, we pass it information in the form of query parameters. If you ever are on a website whose URL is something like `https://mycoolsite.com/cars?limit=25`, it is a `GET` request where you are telling the server that you only need to see the first 25 cars on the current page.
 
 ### Endpoints
 
@@ -92,18 +94,18 @@ Specific combinations of a method and a URL on our server compose an endpoint, w
 ### RESTful
 
 [Representation State Transfer (REST)](https://en.wikipedia.org/wiki/Representational_state_transfer) and its implementation -- RESTful -- services are a class of server that meet a handful of criteria, as defined [here](https://restfulapi.net/) and [here](https://en.wikipedia.org/wiki/Representational_state_transfer):
-* Client-server: separate the user concerns from the data storage concerns
-* Stateless: there should not be any context between the server and the client preserved between requests
-* Cacheable: responses must define themselves to be cacheable or not
-* Uniform interface:
+* **Client-server**: separate the user concerns from the data storage concerns
+* **Stateless**: there should not be any context between the server and the client preserved between requests
+* **Cacheable**: responses must define themselves to be cacheable or not
+* **Uniform interface**:
     * Resource identifications are in requests
     * Each request should provide enough information to explain how to manipulate the piece of data
     * Each message should have enough information to explain how to process it
     * A client should be able to use its results to eventually discover all the resources it needs
-* Layered system: a client cannot tell if it is connected directly to our server or via intermediary
-* Code on demand (optional): transferring executable code may be desirable
+* **Layered system**: a client cannot tell if it is connected directly to our server or via intermediary
+* **Code on demand (optional)**: transferring executable code may be desirable
 
-What this means is that you provide the client a stateless web interface meeting these specifications, and then you are in charge of the implementation.
+What this means is that if you provide the client a stateless web interface meeting these specifications, then regardless our implementation, the client will know how to work with our data based on server responses.
 
 ### GraphQL
 
@@ -111,6 +113,7 @@ If you have to get and retrieve data, and not a whole lot else, consider structu
 
 ```json
 // request
+// POST /pokemon
 {
     pokemon(name: "Ditto") {
         id
@@ -364,8 +367,9 @@ fetch('http://localhost:8080/message', {
 
 Here you can see all the properties:
 * The method is `POST`
+* The resource we are talking about is `/message`
 * Our `Content-Type` headers indicate to the server that it is to expect a JSON body
-* The body has all required properties for the message creation
+* The body has all required fields for the message creation
 
 If we make this request then promise chain off of it to report back the response code, we will see a response code of `201: Status Created`.
 
