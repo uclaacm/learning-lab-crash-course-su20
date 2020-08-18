@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My cool message board</title>
+        <link rel='stylesheet' type='text/css' href='./main.css' />
+    </head>
+
+    <body onload='getPosts(10)'>
+        <noscript>You need to enable JavaScript to see posts on this board.</noscript>
+
+        <h1>Welcome to my cool message board!</h1>
+        <div id='posts'>
+            <!-- posts will get populated here -->
+            <h1>Loading your posts...</h1>
+        </div>
+
+        <form id='postform'>
+            <textarea name='content' type='text'>Write your post!</textarea>
+            <br />
+            <input name='author' type='text' placeholder='Author name'>
+            <button type='submit'>Submit</button>
+        </form>
+
+        <script>
+            document
+            .getElementById('postform')
+            .addEventListener('submit', (e) => {
+                e.preventDefault();
+                const form = document.forms['postform'];
+                console.log(form);
+
+                fetch('http://localhost:8080/message', {
+                    method: 'post',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: form['content'].value,
+                        author: form['author'].value,
+                        date: new Date(),
+                    }),
+                });
+            });
+            
+            const getPosts = (n) => {
+                fetch(`http://localhost:8080/message?count=${n}`, {
+                    mode: 'cors',
+                })
+                .then(r => {
+                    if (!r.ok)
+                        return false; // lol
+                    return r.json();
+                })
+                .then(j => {
+                    let el = [];
+
+                    if (!j)
+                        el.innerHTML = 'Couldn\'t load posts!';
+                    else
+                        Array.from(j).forEach(post => {
+                            let newPost = document.createElement('div');
+                            newPost.classList.add('post');
+                            let contents = document.createElement('p');
+                            contents.classList.add('post-contents');
+                            let author = document.createElement('p');
+                            author.classList.add('post-author');
+                            let date = document.createElement('p');
+                            date.classList.add('post-date');
+                            contents.innerHTML = post.text;
+                            author.innerHTML = post.author;
+                            date.innerHTML = post.date;
+                            newPost.appendChild(contents);
+                            newPost.appendChild(author);
+                            newPost.appendChild(date);
+                            el.push(newPost);
+                        });
+                    
+                    document.getElementById('posts').innerHTML = '';
+                    el.forEach(e => document.getElementById('posts').appendChild(e));
+                })
+                .catch(e => console.error(e));
+            }
+        </script>
+    </body>
+</html>

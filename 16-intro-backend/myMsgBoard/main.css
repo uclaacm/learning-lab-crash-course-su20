@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+#posts {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.post {
+    margin: 1.5rem;
+    padding: 1.5rem;
+    max-width: 25rem;
+    background: #f0f0f0;
+}
