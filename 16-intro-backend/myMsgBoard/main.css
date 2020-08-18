@@ -6,6 +6,10 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100vh;
+    max-width: 1000px;
 }
 
 #posts {
@@ -19,4 +23,25 @@ body {
     padding: 1.5rem;
     max-width: 25rem;
     background: #f0f0f0;
+}
+
+.post * {
+    margin: 0;
+}
+
+.post-content {
+    font-size: 1.4em;
+    margin: .1rem;
+}
+
+.post-author {
+    font-weight: 700;
+}
+
+.post-date {
+    font-size: .8em;
+}
+
+textarea {
+    width: 50%;
 }

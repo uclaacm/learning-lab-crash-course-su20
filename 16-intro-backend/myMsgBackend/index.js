@@ -38,6 +38,10 @@ app.post('/message', (req, res) => {
     res.status(200).end();
 });
 
+app.get('/', (req, res) => {
+    res.send('hi!');
+});
+
 app.listen(port, () => {
     console.log(`Started listening at http://localhost:${port}`);
 });

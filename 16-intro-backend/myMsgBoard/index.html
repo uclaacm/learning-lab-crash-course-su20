@@ -3,23 +3,27 @@
     <head>
         <title>My cool message board</title>
         <link rel='stylesheet' type='text/css' href='./main.css' />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
     <body onload='getPosts(10)'>
         <noscript>You need to enable JavaScript to see posts on this board.</noscript>
 
-        <h1>Welcome to my cool message board!</h1>
-        <div id='posts'>
-            <!-- posts will get populated here -->
-            <h1>Loading your posts...</h1>
-        </div>
+        <div id='content'>
+            <div class='blur fullheight fullwidth'></div>
+            <h1>Welcome to my cool message board!</h1>
+            <div id='posts'>
+                <!-- posts will get populated here -->
+                <h1>Loading your posts...</h1>
+            </div>
 
-        <form id='postform'>
-            <textarea name='content' type='text'>Write your post!</textarea>
-            <br />
-            <input name='author' type='text' placeholder='Author name'>
-            <button type='submit'>Submit</button>
-        </form>
+            <form id='postform'>
+                <textarea name='content' type='text'>Write your post!</textarea>
+                <br />
+                <input name='author' type='text' placeholder='Author name'>
+                <button type='submit'>Submit</button>
+            </form>
+        </div>
 
         <script>
             document
@@ -62,24 +66,29 @@
                             let newPost = document.createElement('div');
                             newPost.classList.add('post');
                             let contents = document.createElement('p');
-                            contents.classList.add('post-contents');
+                            contents.classList.add('post-content');
                             let author = document.createElement('p');
                             author.classList.add('post-author');
-                            let date = document.createElement('p');
-                            date.classList.add('post-date');
+                            let dateField = document.createElement('p');
+                            let postDate = new Date(post.date);
+
+                            dateField.classList.add('post-date');
                             contents.innerHTML = post.text;
                             author.innerHTML = post.author;
-                            date.innerHTML = post.date;
+                            dateField.innerHTML = `${postDate.getMonth()}/${postDate.getDay()} ${postDate.getHours()}:${postDate.getMinutes()}`;
                             newPost.appendChild(contents);
                             newPost.appendChild(author);
-                            newPost.appendChild(date);
+                            newPost.appendChild(dateField);
                             el.push(newPost);
                         });
                     
                     document.getElementById('posts').innerHTML = '';
                     el.forEach(e => document.getElementById('posts').appendChild(e));
                 })
-                .catch(e => console.error(e));
+                .catch(e => {
+                    document.getElementById('posts').querySelector('h1').textContent = `Couldn't retrieve latest messages! ${e}`;
+                    console.log(e);
+                });
             }
         </script>
     </body>
