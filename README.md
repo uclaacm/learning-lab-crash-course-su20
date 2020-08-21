@@ -25,7 +25,7 @@ Lessons:
 * [Lesson 13: Accessibility on the Web (guest lecturer: Karen!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/13-accessibility)
 * [Lesson 14: Misc. DevOps](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/14-misc-devops)
 * [Lesson 15: Async & Fetch](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/15-async-js)
-* Lesson 16: Intro to Backend Development (coming soon!)
+* [Lesson 16: Intro to Backend Development](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/16-intro-backend)
 * Lesson 17: Intro to Testing in JS (coming soon!)
 * Lesson 18: Intro to Firebase (coming soon!)
 

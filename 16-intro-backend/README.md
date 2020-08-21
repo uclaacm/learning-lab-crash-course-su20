@@ -1,5 +1,7 @@
 # Intro to Backend
 
+[Link to Video.](https://www.youtube.com/watch?v=kwy4U0980Eg)
+
 While not relevant to your learning labs, Leo walks you through a core part of web development.
 
 What we've been doing up until now is learning skills that build out our **frontend** toolkit. However, like an angler fish, frontend development is the beautiful light that obscures the beast that is often the backend.
@@ -12,6 +14,36 @@ Have you ever wanted to build a messaging app, or something with storage that pe
 * How can I make my backend work with my frontend?
 
 By the end of this talk, you'll be able to think at a high level about the partitioning of a webapp, and write your own (admittedly basic) fullstack application.
+
+## Table of Contents
+
+* [Table of Contents](#table-of-contents)
+* [Why bother?](#why-bother)
+* [Why is it cool?](#why-is-it-cool)
+    * [The language we want to work in](#the-language-we-want-to-work-in)
+    * [The framework, libraries we want to use](#the-framework-libraries-we-want-to-use)
+    * [Implementation details, optimization](#implementation-details-optimization)
+* [Backend Vocabulary](#backend-vocabulary)
+    * [Requests, responses](#requests-responses)
+    * [HTTP Methods](#http-methods)
+    * [Endpoints](#endpoints)
+    * [RESTful](#restful)
+    * [GraphQL](#graphql)
+* [Common Backend Frameworks](#common-backend-frameworks)
+* [Building a Basic Backend](#building-a-basic-backend)
+    * [Prototyping](#prototyping)
+    * [Setting up the server](#setting-up-the-server)
+    * [Middleware](#middleware)
+        * [express.json()](#expressjson)
+        * [What's CORS?](#whats-cors)
+    * [Running the server](#running-the-server)
+    * [Adding some functionality](#adding-some-functionality)
+    * [Adapting functions to handlers](#adapting-functions-to-handlers)
+        * [GET](#get)
+        * [POST](#post)
+* [Calling the backend](#calling-the-backend)
+* [Now what?](#now-what)
+* [Things that you should check out](#things-that-you-should-check-out)
 
 ## Why bother?
 
