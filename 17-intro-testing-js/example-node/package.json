@@ -1,0 +1,14 @@
+{
+  "name": "example-node",
+  "version": "1.0.0",
+  "description": "example proj for LLSU20",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "matt wang @malsf21",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}

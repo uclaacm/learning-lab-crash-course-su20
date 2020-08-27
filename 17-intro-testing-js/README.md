@@ -65,9 +65,82 @@ Test-driven development isn't *always* the right solution either (especially for
 
 ### CI & CD
 
+We've previously (briefly) mentioned the concepts of **Continuous Integration** and **Continuous Deployment**, which automates the versioning, dependency management, and deployment of your software. Tests are a big part of that! Often times, deployment services are configured so that they only deploy *if the tests pass*. Writing solid tests are a great part of making sure that you never deploy broken code!
+
+There are also ways you can configure your development workflow to ensure that tests pass before someone commits (called a [commit hook](https://githooks.com/)), or that a certain set of tests pass before a PR can be merged (which can be easily done with [GitHub Actions](https://github.com/features/actions) and required status checks).
+
 ## Getting Started w/ Jest
 
+Okay, enough babble. Let's get started.
+
+We're going to use a Javascript library called [Jest](https://jestjs.io/), an open-source Javascript testing library developed by Facebook. For the rest of the workshop, we're going to assume that you have jest installed in your development workspace, which you can do with `npm`:
+
+```
+npm install --save-dev jest
+# or
+yarn add --dev jest
+```
+
 ### The "Hello World"
+
+*The "example-node" folder contains the final code for the non-React demo.*
+
+Let's start with a very simple function that says "hello" to people:
+
+```js
+// hello.js
+const hello = (name) => {
+  return `hello ${name}!`
+}
+
+module.exports = hello
+```
+
+Nothing too spicy! The line with `module.exports` just says that we're exporting the `hello` function.
+
+Here's how we'll use jest:
+
+```js
+// hello.test.js
+const hello = require('./hello')
+
+test('hello works as intended!', () => {
+  expect(hello("matt")).toBe("hello matt!")
+})
+```
+
+Oh wow, a few different things going on here! We import `hello` from our other file, and then we use the `test` function.
+
+`test` is provided by Jest, and takes in two parameters:
+
+1. the name of the test - this should be descriptive
+2. a test function, which gets run during the test!
+
+The test function in this case only contains one line, `expect(hello("matt")).toBe("hello matt!")`, but it ccan contain many lines too - it's just a function!
+
+What's `expect` then? It's another function provided by jest that works like `assert` in many languages (something you might've seen in C++ in CS31/32). You pass it the thing you're testing, which in this case, is the output of our `hello` function (when we pass in `"matt"` as a parameter).
+
+Then, we chain it with `.toBe` - a function that takes an argument on what... the return value *should be*, or the "correct answer". If the two things match (the real and expected values), then the test passes - but if they don't, then the test fails.
+
+To run your test, you can run `npm test`:
+
+```
+npm test                                                                            master * ] 5:44 PM
+
+> example-node@1.0.0 test /Users/matt/code/learning-lab-crash-course-su20/17-intro-testing-js/example-node
+> jest
+
+ PASS  ./hello.test.js
+  ✓ hello works as intended! (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.805 s
+Ran all test suites.
+```
+
+And that's it! You just wrote your very first test!!
 
 ### The React "Hello World" with Enzyme
 
