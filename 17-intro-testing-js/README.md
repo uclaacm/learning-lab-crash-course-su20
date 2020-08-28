@@ -144,7 +144,7 @@ And that's it! You just wrote your very first test!!
 
 ### The React "Hello World" with Enzyme
 
-Okay, so testing things with Jest is easy enough, but where things get more complicated is when we want to test things like the user interface -- things that we build with React. Luckily, instead of limiting ourselves to testing our functional components with props and renders dependent on React-specific types on test frameworks we wrote ourselves, we can just make use a great piece of software from AirBnB: [Enzyme](https://airbnb.io/projects/enzyme/) (`npm install --save-dev enzyme`).
+Okay, so testing things with Jest is easy enough, but where things get more complicated is when we want to test things like the user interface -- things that we build with React. Luckily, instead of limiting ourselves to testing our functional components with props and renders dependent on React-specific types on test frameworks we wrote ourselves, we can just make use a great piece of software from AirBnB: [Enzyme](https://airbnb.io/projects/enzyme/) (`npm install --save-dev enzyme`). Likewise, we will need an adapter to ensure that Enzyme will work well with our current version of React. Checking our `package.json`, we are using version 16, so we should `npm install enzyme-adapter-react-16`.
 
 Enzyme lets us write tests for React components by mocking them up with specific props, then exploring their contents as a browser would, or by simulating user interactions!
 
@@ -194,7 +194,7 @@ test('renders learn react link', () => {
 });
 ```
 
-Let's take a peek at the code:
+This is a test written using React's testing library, and will be good practice to review:
 * We import the `render()` function from our testing library, which is provided by React.
 * Then, we write a test that checks that our component renders a link to the "learn react" page.
 * First, we pull out the `getByText` member function of the result of `render(<App />)`.
@@ -203,9 +203,44 @@ Let's take a peek at the code:
 
 The `render` function allows us to simulate rendering a component to the page, and returns a wrapper that puts it in a workable form with Jest.
 
-But Matt, where's Enzyme? Why did we bother installing it? Easy:
+We can run this test, and all other `.test.js` files, with a simple `npm run test` in the terminal, which launches a script provided by CRA that handles Jest.
 
-...
+But Matt, where's Enzyme? Why did we bother installing it? Converting this test will be easier than you think. Using our Jest syntax we are familiar with, we can rewrite our test as follows:
+
+```js
+// App.test.js
+import { shallow } from 'enzyme';
+import App from './App';
+
+describe('<App />', () => {
+  it('renders learn react link', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.exists('.App-link')).toBe(true);
+  });
+});
+```
+
+This is a far more natural way of describing our component-based tests, in which we can query for document selectors and use them naturally in our Jest tests.
+
+To configure Jest to handle these changes, all we need to do is add some lines to our test setup file, `src/setupTests.js`. This file is configured by CRA to run everytime we need to start testing with Jest, and it's where we will apply our adapter. There will already be some code in there, but we can just append to the file.
+
+```js
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom/extend-expect';
+
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+configure({ adapter: Adapter });
+```
+
+Now when we run it, we will see...
+
+```sh
+# ...
+```
 
 ## Mocking Browser Interactions
 
@@ -221,9 +256,9 @@ describe('<App />', () => {
     let i = 0;
     const wrapper = shallow(<App onClick={() => i++)} />);
     wrapper.find('button').simulate('click');
-    expect(i).to.be(1);
+    expect(i).toBe(1);
   });
-})
+});
 ```
 
 We have changed up a few small things to better cater to Enzyme's syntax:
@@ -236,9 +271,42 @@ Then, we write tests as usual! We expect the length of the children to be of len
 
 Here, we simulate a click on the button in our App, then check to see if the click did, in fact, register, by creating an anonymous function that updates a variable in the test scope.
 
+There are a lot more things that one can do with Enzyme tests, which you can check out [on their docs](https://enzymejs.github.io/enzyme/docs/api/).
+
 ## Dependency Injection et al.
 
-...
+Sometimes in testing, we want to mock up more complicated objects that may be produced during execution, or to emulate specific situations.
+
+For example, if an object used in our library takes another object meeting a particular interface, we can mock it up. Here's an example:
+
+```js
+class MyClass {
+  constructor(log) {
+    this.logger = log ? log : new ConsoleLogger();
+  }
+}
+```
+
+We have exposed an explicit class dependency in our class to the developer in the form of a constructor parameter. Now, when we go to create an instance of our `MyClass`, we can declare it like `new MyClass()` or `new MyClass(new MyConsoleLogger)`. Why might we want to use the latter? Think for a moment...
+
+The answer is that it makes testing easier, of course! If we want to track the input and output of something, we can just extend `ConsoleLogger`, adjust its `log` functions, then pass it down to our class. Then, we are in control of all the input and output of the logger for that class instance. This is **dependency injection**. Usually it is used for things like services that will persist throughout the lifetime of an instance.
+
+We can do so in React just as easily! Simply pass down a mocked-up interface as a prop to your component when testing with Enzyme:
+
+```js
+// MyComponent.test.js
+// ...
+
+describe('<MyComponent />', () => {
+  it('logs properly', () => {
+    let customLogger = new ConsoleLogger();
+    const wrapper = shallow(<MyComponent logger={customLogger} />);
+    // ...
+  });
+});
+```
+
+Though we won't be able to go in-depth in this short lesson, this is a critical testing strategy to bear in mind when writing complex applications.
 
 ## And... Writing Test-Friendly Code
 
@@ -246,8 +314,11 @@ For obvious reasons, the only way that we are able to test all of our code up un
 
 We could still test the click functionality by rendering and checking for changes, but this makes life difficult when we want to mock up functions that would change things like a backend or the network.
 
-...
+To make life easier for ourselves, writing code with tests in mind will ultimately improve the maintainability and readability of one's codebase, and keep tests predictable.
 
 ## Further Reading & References
-
-...
+* [Jest docs](https://jestjs.io/docs/en/getting-started)
+* [Enzyme docs](https://enzymejs.github.io/enzyme/docs/api/)
+* [chai, an assertion library for Node](https://www.chaijs.com/)
+* [Dependency Injection: Practical Examples for Testing and Refactoring in JavaScript](https://medium.com/@daniel.oliver.king/dependency-injection-practical-examples-for-testing-and-refactoring-in-javascript-3cb5b58b50be)
+* ["React Has Built-In Dependency Injection"](https://marmelab.com/blog/2019/03/13/react-dependency-injection.html)
