@@ -144,10 +144,110 @@ And that's it! You just wrote your very first test!!
 
 ### The React "Hello World" with Enzyme
 
+Okay, so testing things with Jest is easy enough, but where things get more complicated is when we want to test things like the user interface -- things that we build with React. Luckily, instead of limiting ourselves to testing our functional components with props and renders dependent on React-specific types on test frameworks we wrote ourselves, we can just make use a great piece of software from AirBnB: [Enzyme](https://airbnb.io/projects/enzyme/) (`npm install --save-dev enzyme`).
+
+Enzyme lets us write tests for React components by mocking them up with specific props, then exploring their contents as a browser would, or by simulating user interactions!
+
+That sounds super complicated, so let's start from somewhere simple: remember our hello world example with React?
+
+#### The code
+
+Recall the code for the React "hello world" app, something that we have reviewed several times at this point. The only adjustment we will make to it for our purposes is the addition of a single button, which takes an optional onClick function through the component props:
+
+```js
+// App.js
+function App(props) {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+        <button onClick={props.onClick}>Click me!</button>
+      </header>
+    </div>
+  );
+}
+```
+
+Now, we want to write a basic test using Jest so that our React components can be tested just as easily as our library functions. If we take a look in the CRA example, we'll see there is already a test written for us!
+
+```js
+// App.test.js
+import React from 'react';
+import { render } from '@testing-library/react';
+import App from './App';
+
+test('renders learn react link', () => {
+  const { getByText } = render(<App />);
+  const linkElement = getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+Let's take a peek at the code:
+* We import the `render()` function from our testing library, which is provided by React.
+* Then, we write a test that checks that our component renders a link to the "learn react" page.
+* First, we pull out the `getByText` member function of the result of `render(<App />)`.
+* Then, we search by regexp (hence the `/.../i`) for the string "learn react".
+* Finally, we declare that we expect the resulting element to be in the document.
+
+The `render` function allows us to simulate rendering a component to the page, and returns a wrapper that puts it in a workable form with Jest.
+
+But Matt, where's Enzyme? Why did we bother installing it? Easy:
+
+...
+
 ## Mocking Browser Interactions
+
+We can mock browser interactions with our new component in Enzyme with the `simulate` action. This function allows us to emulate any browser event in the context of our particular component.
+
+```js
+// App.test.js
+import { shallow } from 'enzyme';
+import App from './App';
+
+describe('<App />', () => {
+  it('should react when clicked', () => {
+    let i = 0;
+    const wrapper = shallow(<App onClick={() => i++)} />);
+    wrapper.find('button').simulate('click');
+    expect(i).to.be(1);
+  });
+})
+```
+
+We have changed up a few small things to better cater to Enzyme's syntax:
+* Instead of `test`, we use `describe` -- we are *describing* a component's expected behavior.
+* We use `it` to nest tests within a description.
+
+Here, we use Jest's `describe` to handle the *description* of a particular function or -- in our case -- component. Then, we provide a description of the component -- "it should have one immediate child". Then, we use `shallow()` to perform what is known as a **shallow render** of the component. This simply renders the component without dealing with its complete lifecycle, and returns a wrapper for the component that is workable with Jest.
+
+Then, we write tests as usual! We expect the length of the children to be of length one. Simple!
+
+Here, we simulate a click on the button in our App, then check to see if the click did, in fact, register, by creating an anonymous function that updates a variable in the test scope.
 
 ## Dependency Injection et al.
 
+...
+
 ## And... Writing Test-Friendly Code
 
+For obvious reasons, the only way that we are able to test all of our code up until now has been because our code was written with tests in mind. Consider, for example, if our hello world example didn't allow the `onClick` prop to be passed down. Consider the case that the `onClick` function was instead hard-wired into the `<App />` component.
+
+We could still test the click functionality by rendering and checking for changes, but this makes life difficult when we want to mock up functions that would change things like a backend or the network.
+
+...
+
 ## Further Reading & References
+
+...
