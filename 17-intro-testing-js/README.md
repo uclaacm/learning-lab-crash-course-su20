@@ -1,5 +1,7 @@
 # Testing in Javascript (with Jest)
 
+[Link to Video](https://www.youtube.com/watch?v=aPJm91_cDw4).
+
 ## Overview
 
 Writing tests is an often-neglected part of software development (you'll rarely cover this skill in intro CS classes), but it's an essential part of real-life software development! In this note, we'll go over some very basic concepts of testing, and then delve into how we can write tests using [Jest](https://jestjs.io/) (and [Enzyme](https://enzymejs.github.io/enzyme/)). While it's unlikely that this will be a large focus in your learning labs, we hope that this provides a solid foundation for you to become a rockstar developer in the future!

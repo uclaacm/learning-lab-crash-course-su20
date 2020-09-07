@@ -1,5 +1,7 @@
 # Intro to Firebase
 
+[Link to Video](https://www.youtube.com/watch?v=K5OQD7DdDoo).
+
 While unnecessary to development of your learning labs, we will walk through one of the more popular key-value databases (more like a pseudo-backend) out there right now: Firebase. What you'll learn today in this completely optional lesson:
 * What is firebase? How is it different from other databases?
 * How can I interact with firebase from my webapp or backend?
