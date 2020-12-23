@@ -17,7 +17,7 @@ We'll assume that you have some experience with HTML & CSS, to the extent that w
 
 Let's get started!
 
-## Table of Contents 
+## Table of Contents
 
 * [The Box Model](#the-box-model)
   * [The Content Area](#the-content-area)
@@ -339,11 +339,11 @@ You can change these values with `display:inline` and `display:block`, which hap
 </div>
 ```
 
-![screenshot using img-responsive when the image is smaller than the container](images/box-sizing.png)
+![screenshot using img-responsive when the image is smaller than the container](images/img-responsive-smaller.png)
 
 First, let's look at what this does when the image is smaller than the container. The first (untouched) element is in the top-left, as we'd expect. But, the second one, with `img-responsive`, is horizontally centered. Nice! This is because of `margin-left: auto;` and `margin-right: auto;` (which we'll explain in a moment).
 
-![screenshot using img-responsive when the image is larger than the container](images/box-sizing.png)
+![screenshot using img-responsive when the image is larger than the container](images/img-responsive-larger.png)
 
 Next, we look at what this does then the image is larger than the container. The first (untouched) element expands past its container, which makes it look ugly. But, the second one, with `img-responsive`, is just within the bounds of its container. Nice! This is because of `max-width: 100%`, which we'll explain in a bit.
 
@@ -432,7 +432,7 @@ The `float` property is another CSS property that specifies position. It is used
 </div>
 ```
 
-![screenshot comparing float left and float right](images/box-sizing.png)
+![screenshot comparing float left and float right](images/float.png)
 
 Note how the text wraps around to content not filled by each float - the object is placed "in the middle" of the text, so to speak.
 
