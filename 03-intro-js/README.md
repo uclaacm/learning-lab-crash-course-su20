@@ -249,7 +249,7 @@ Let's take arrays, for example. Like many other programming languages, Javascrip
 
 ```js
 let arr = [1,2, "cat", "dog"];
-// yup, JS lets you have elements with different
+// yup, JS lets you have elements with different types in arrays
 
 console.log(arr[2]);
 // "cat"
