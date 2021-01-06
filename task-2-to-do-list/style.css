@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #app-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #f8f8f8;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-strikethrough{
+  text-decoration:line-through;
+}
+
+.link {
+  color: inherit;
+}
+
+.header {
+  align-self: flex-start;
+}
+
+#todo-input {
+  padding: 0.5em;
+  width: 30em;
+  height: 4em;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+#todo-input:focus {
+  border: 1px solid #1E6CFF;
+  border-radius: 8px;
+}
+
+#todo-container {
+  list-style: none;
+  max-width: 40rem;
+  margin: 2em auto;
+}
+
+#todo-container > li {
+  display: flex;
+  margin: 1em 0;
+}
+
+.todo-text{
+  flex: 1;
+  align-self: center;
+}
+
+.action-button {
+  background: none;
+  border-radius: 1em;
+}
+
+.action-button:hover{
+  cursor: pointer;
+  border-radius: 1em;
+}
+
+.done-button {
+  border: 2px solid #5EDA12;
+}
+
+.nah-button{
+  border: 2px solid#FB4469;
+}
