@@ -27,7 +27,7 @@ Lessons:
 * [Lesson 15: Async & Fetch](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/15-async-js)
 * [Lesson 16: Intro to Backend Development](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/16-intro-backend)
 * [Lesson 17: Intro to Testing in JS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/17-intro-testing-js)
-* [Lesson 18: Intro to Firebase (coming soon!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/18-firebase)
+* [Lesson 18: Intro to Firebase](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/18-firebase)
 
 And two tasks:
 
