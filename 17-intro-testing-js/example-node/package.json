@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest"
   },
-  "author": "matt wang @malsf21",
+  "author": "matt wang @mattxwang",
   "license": "MIT",
   "devDependencies": {
     "jest": "^26.4.2"
