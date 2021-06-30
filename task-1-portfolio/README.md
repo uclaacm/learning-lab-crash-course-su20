@@ -37,6 +37,7 @@ Many people choose minimal websites that are content-focused and driven. Here ar
 * [https://kandrewz.github.io/](https://kandrewz.github.io/) - Andrew is a CS student at UCLA, and also makes very cool interactive stories for Daily Bruin. His website is simple, easy to navigate, and elegant.
 * [https://neerajsamtani.me/](https://neerajsamtani.me/) - Neeraj is one of the first people that Matt ever met at UCLA, and is just as awesome today as he was on day 1. His website is simple, but still conveys a lot about his personality, his design choices, and what he does!
 * [https://jasonjewik.github.io/](https://jasonjewik.github.io/) - ACM AI's very own superstar Jason Jewik! His website puts all of the important content front-and-center, and you know he's hip with the kids because he uses emojis 👀.
+* [https://emmycao.com/](https://emmycao.com/) - Emmy is a previous director of Creative Labs at UCLA, and also one of the coolest designers we know (and she can tell you a lot about Maryland). We think she does an especially great job at using color, spacing, and fonts to create a very visually cohesive website.
 
 These next three are all more blog-focused, but still have good lessons to learn from:
 
@@ -51,9 +52,9 @@ But for fun, let's see a bit more.
 Sometimes, you can add small features to make your website just a bit more distinct than others. Here are a few examples:
 
 * [https://carolchen.me/](https://carolchen.me/) - Carol is one of the smartest software engineers that Matt has ever met, and her website shows it! Two features that he loves are the randomization of certain elements on load, and the slider that lets users pick how much information they want.
-* [https://www.emmycao.com/](https://www.emmycao.com/) - Emmy is one of leads at Creative Labs at UCLA, and also one of the coolest designers we know (and she can tell you a lot about Maryland). We think she does an especially great job at using color, spacing, and fonts to create a very visually cohesive website.
 * [https://sindresorhus.com/](https://sindresorhus.com/) - Sindre Sorhus is one of GitHub's most famous celebrities, creating hundreds of popular open-source packages (mostly for Node.js and Swift). His website gives you a taste of everything he's done, including live (JS) metrics on what he does - you can stalk him realtime!
 * [https://nickelder.ca/](https://nickelder.ca/) - Nick was one of Matt's web development mentors in high school. His website just gives you an amazingly clean feeling, one that screams meticulousness and professionalism.
+* [https://bryanpan.co/](https://bryanpan.co/) - Bryan is another outgoing lead of Creative Labs and their current tech director; his website feels like you're watching art unfold in front of you, especially with this SVG animations!
 
 And sometimes, you can go flashy. Here are some websites that do a lot, and say a lot. We will say, all of these websites have benefits and tradeoffs: as we mentioned earlier, flashy doesn't always mean great (and in particular, accessible):
 
