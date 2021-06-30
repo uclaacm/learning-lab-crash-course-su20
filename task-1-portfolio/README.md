@@ -36,7 +36,7 @@ Many people choose minimal websites that are content-focused and driven. Here ar
 * [https://marceloneil.com/](https://marceloneil.com/) - Marcel is one of Matt's high school friends who does amazing stuff with computers, and his website is dead-simple but cool. It's actually a [Hugo](https://gohugo.io/) theme, but you can probably implement it yourself!
 * [https://kandrewz.github.io/](https://kandrewz.github.io/) - Andrew is a CS student at UCLA, and also makes very cool interactive stories for Daily Bruin. His website is simple, easy to navigate, and elegant.
 * [https://neerajsamtani.me/](https://neerajsamtani.me/) - Neeraj is one of the first people that Matt ever met at UCLA, and is just as awesome today as he was on day 1. His website is simple, but still conveys a lot about his personality, his design choices, and what he does!
-* [https://jasonjewik.com/](https://jasonjewik.com/) - ACM AI's very own superstar Jason Jewik! His website puts all of the important content front-and-center, and you know he's hip with the kids because he uses emojis 👀.
+* [https://jasonjewik.github.io/](https://jasonjewik.github.io/) - ACM AI's very own superstar Jason Jewik! His website puts all of the important content front-and-center, and you know he's hip with the kids because he uses emojis 👀.
 
 These next three are all more blog-focused, but still have good lessons to learn from:
 
