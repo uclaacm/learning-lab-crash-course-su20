@@ -127,7 +127,7 @@ Then, we chain it with `.toBe` - a function that takes an argument on what... th
 To run your test, you can run `npm test`:
 
 ```
-npm test                                                                            master * ] 5:44 PM
+npm test                                                                            main * ] 5:44 PM
 
 > example-node@1.0.0 test /Users/matt/code/learning-lab-crash-course-su20/17-intro-testing-js/example-node
 > jest

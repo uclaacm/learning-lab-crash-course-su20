@@ -94,7 +94,7 @@ Now, we can check what `git` sees with `git status`:
 
 ```sh
 $ git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -110,7 +110,7 @@ This is an important distinction. Just because we've changed a file, doesn't mea
 ```sh
 $ git add *
 $ git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -145,7 +145,7 @@ $ git remote add origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_GITHUB_USER
 Great, and now we're ready. We can finally run `git push`!
 
 ```sh
-$ git push -u origin master
+$ git push -u origin main
 ...
 ```
 

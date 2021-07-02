@@ -451,7 +451,7 @@ Wow, that was a lot! But, we now have many tools in our CSS toolkit to position 
 
 There's no pressure if you don't remember all of this at once! The important thing is that you now know that there are many different ways to position elements, and you have a general idea of how some of them work (Google is your friend)!
 
-Take a quick break, you deserve it! And, if you want to put some of this to use, you can check out our [portfolio task](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-1-portfolio/README.md)!
+Take a quick break, you deserve it! And, if you want to put some of this to use, you can check out our [portfolio task](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/main/task-1-portfolio/README.md)!
 
 ## Further Reading
 

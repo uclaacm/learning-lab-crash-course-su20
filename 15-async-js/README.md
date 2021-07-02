@@ -341,7 +341,7 @@ class App extends React.Component {
 }
 ```
 
-And the same example, with the state hook (if you're rusty, you can check our [hooks lesson](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/11-react-hooks) or [the React tutorial](https://reactjs.org/docs/hooks-intro.html))
+And the same example, with the state hook (if you're rusty, you can check our [hooks lesson](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/11-react-hooks) or [the React tutorial](https://reactjs.org/docs/hooks-intro.html))
 
 ```jsx
 function App() {

@@ -10,29 +10,29 @@ While these notes are a good starting point, simply reading through all of these
 
 Lessons:
 
-* [Lesson 01: Intro to HTML & CSS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/01-intro-html-css)
-* [Lesson 02: Intermediate CSS: The Box Model & Positioning](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/02-intermediate-css)
-* [Lesson 03: Intro to JS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/03-intro-js)
-* [Lesson 04: Intermediate CSS: Flexbox & Grid](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/04-flexbox-grid)
-* [Lesson 05: A Brief Flyover of CSS Frameworks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/05-css-frameworks)
-* [Lesson 06: A CSS Animations Primer](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/06-css-animations)
-* [Lesson 07: Intro to React](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/07-intro-react)
-* [Lesson 08: Intro to Design with Figma (guest lecturer: Tomoki!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/08-intro-design)
-* [Lesson 09: Intermediate React (Concepts & Patterns)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/09-intermediate-react-1)
-* [Lesson 10: Intro to SASS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/10-sass)
-* [Lesson 11: React Hooks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/11-react-hooks)
-* [Lesson 12: JS Library Tour](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/12-js-lib)
-* [Lesson 13: Accessibility on the Web (guest lecturer: Karen!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/13-accessibility)
-* [Lesson 14: Misc. DevOps](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/14-misc-devops)
-* [Lesson 15: Async & Fetch](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/15-async-js)
-* [Lesson 16: Intro to Backend Development](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/16-intro-backend)
-* [Lesson 17: Intro to Testing in JS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/17-intro-testing-js)
-* [Lesson 18: Intro to Firebase](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/18-firebase)
+* [Lesson 01: Intro to HTML & CSS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/01-intro-html-css)
+* [Lesson 02: Intermediate CSS: The Box Model & Positioning](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/02-intermediate-css)
+* [Lesson 03: Intro to JS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/03-intro-js)
+* [Lesson 04: Intermediate CSS: Flexbox & Grid](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/04-flexbox-grid)
+* [Lesson 05: A Brief Flyover of CSS Frameworks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/05-css-frameworks)
+* [Lesson 06: A CSS Animations Primer](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/06-css-animations)
+* [Lesson 07: Intro to React](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/07-intro-react)
+* [Lesson 08: Intro to Design with Figma (guest lecturer: Tomoki!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/08-intro-design)
+* [Lesson 09: Intermediate React (Concepts & Patterns)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/09-intermediate-react-1)
+* [Lesson 10: Intro to SASS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/10-sass)
+* [Lesson 11: React Hooks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/11-react-hooks)
+* [Lesson 12: JS Library Tour](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/12-js-lib)
+* [Lesson 13: Accessibility on the Web (guest lecturer: Karen!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/13-accessibility)
+* [Lesson 14: Misc. DevOps](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/14-misc-devops)
+* [Lesson 15: Async & Fetch](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/15-async-js)
+* [Lesson 16: Intro to Backend Development](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/16-intro-backend)
+* [Lesson 17: Intro to Testing in JS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/17-intro-testing-js)
+* [Lesson 18: Intro to Firebase](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/18-firebase)
 
 And two tasks:
 
-1. [Make a portfolio website!](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-1-portfolio)
-2. [Make a to-do list!](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-2-to-do-list)
+1. [Make a portfolio website!](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/main/task-1-portfolio)
+2. [Make a to-do list!](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/main/task-2-to-do-list)
 
 You can also find recorded videos of our summer sessions on the ACM YouTube channel, in [this playlist](https://www.youtube.com/playlist?list=PLPO7_kXilXFa6YdXxn5oln1gagcqnFI4l).
 
