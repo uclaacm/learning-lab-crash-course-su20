@@ -33,13 +33,13 @@ This workshop assumes an intermediate knowledge of HTML and CSS. Unlike previous
 
 ## What Does Accessibility Involve?
 
-What comes to mind when you think of the word "disabled" or the word "accessible"? Our assumptions about these words don't always tell the whole story. 
+What comes to mind when you think of the word "disabled" or the word "accessible"? Our assumptions about these words don't always tell the whole story.
 
-To create the best user experience, we should be comfortable with constantly adapting to the most recent accessibility standards. (This tends to be a theme across computer programming.) 
+To create the best user experience, we should be comfortable with constantly adapting to the most recent accessibility standards. (This tends to be a theme across computer programming.)
 
-For many, poor accessibility features are an inconvenience at worst or even unnoticeable at best. But for an equally important population, these features can make or break their experience with your website. 
+For many, poor accessibility features are an inconvenience at worst or even unnoticeable at best. But for an equally important population, these features can make or break their experience with your website.
 
-These users experience a range of needs, including colorblindness, use of a screenreader (for people with visual impairments, people with learning disabilities, etc.), poor vision (for the elderly, people with visual impairments, etc.), susceptibility to seizures, and more. 
+These users experience a range of needs, including colorblindness, use of a screenreader (for people with visual impairments, people with learning disabilities, etc.), poor vision (for the elderly, people with visual impairments, etc.), susceptibility to seizures, and more.
 
 Why is this so important, you ask?
 
@@ -47,16 +47,16 @@ Why is this so important, you ask?
 1. Everyone benefits from accessible websites
 1. Increase traffic and user satisfaction
 
-Each website element that you design or create will be used by all kinds of different people. So, we need to think about how these parts can meet the needs of our users. Many web developers (like me) can get too caught up in what looks "cool" and not what is actually legible or usable. 
+Each website element that you design or create will be used by all kinds of different people. So, we need to think about how these parts can meet the needs of our users. Many web developers (like me) can get too caught up in what looks "cool" and not what is actually legible or usable.
 
 Good web design, like any kind of design, is a balance of both *aesthetic* and *function*.
 
 ## Appearance
-We'll start with the visual appearance of websites, since most of us will already be familiar with the qualities that make a website visually accessible or inaccessible. 
+We'll start with the visual appearance of websites, since most of us will already be familiar with the qualities that make a website visually accessible or inaccessible.
 
 ### Fonts and Font Sizes
 
-Have you ever visited a website with an uncomfortably small or weirdly large font? Pretty annoying, right? Fortunately, someone was smart enough to come up with standard font sizes for mobile and desktop. (The base font size for the page should generally be specified in the HTML root node. Overrides can then be applied for more specific selectors, whether you're using px or <span tabindex="-1">[em or rem](https://webdesign.tutsplus.com/tutorials/comprehensive-guide-when-to-use-em-vs-rem--cms-23984)</span>.) 
+Have you ever visited a website with an uncomfortably small or weirdly large font? Pretty annoying, right? Fortunately, someone was smart enough to come up with standard font sizes for mobile and desktop. (The base font size for the page should generally be specified in the HTML root node. Overrides can then be applied for more specific selectors, whether you're using px or <span tabindex="-1">[em or rem](https://webdesign.tutsplus.com/tutorials/comprehensive-guide-when-to-use-em-vs-rem--cms-23984)</span>.)
 
 ```css
 /* CSS file */
@@ -73,7 +73,7 @@ Have you ever visited a website with an uncomfortably small or weirdly large fon
     }
   }
 ```
-Fonts can still look too small or too large at these sizes, so adjust as needed. 
+Fonts can still look too small or too large at these sizes, so adjust as needed.
 
 ```css
 /* CSS file */
@@ -95,9 +95,9 @@ Fonts can still look too small or too large at these sizes, so adjust as needed.
 
 ![A relatively larger font, even at 16px](resources/lucida.PNG)
 
-Mini typography lesson: serif fonts like Times New Roman are often used in body text, because serifs aid the eye in reading text. (Serifs are the little hooks on the ends of letters, like on the ends of the Ts in the Lucida example above.) Sans serif fonts like Arial are also popular because they look sleek and modern. 
+Mini typography lesson: serif fonts like Times New Roman are often used in body text, because serifs aid the eye in reading text. (Serifs are the little hooks on the ends of letters, like on the ends of the Ts in the Lucida example above.) Sans serif fonts like Arial are also popular because they look sleek and modern.
 
-We stick to basic serif and sans serif fonts because using display (aka fancy) fonts in body text slows down the brain's processing of text.  
+We stick to basic serif and sans serif fonts because using display (aka fancy) fonts in body text slows down the brain's processing of text.
 
 A good rule of thumb is to copy a paragraph of a random article into your chosen font, and see if you can easily scan the paragraph. If not, it's probably not a good choice for your website.
 
@@ -117,7 +117,7 @@ A short note on line height: closely packed paragraphs of text can be really awf
 
 Users with visual impairments, such as the elderly, often need to zoom in on 16px or 18px text in order to be able to read clearly. As you're developing your website, try zooming in up to 200% and see if the website is still usable. If elements are jumping around or hiding text at this zoom level, that's bad news.
 
-Be careful when using `position: absolute` and other fixed position values because they can result in some unintentional effects in different screen sizes and zoom levels. Using flexbox and other automatic layouts can help prevent this. 
+Be careful when using `position: absolute` and other fixed position values because they can result in some unintentional effects in different screen sizes and zoom levels. Using flexbox and other automatic layouts can help prevent this.
 
 Horizontal scrolling should be avoided because users always expect vertical scrolling. One way horizontal scrolling can unintentionally happen is if our text isn't wrapping correctly inside a container. `whitespace: normal` should be the default, but if things are looking funky, try explicitly setting this property.
 
@@ -139,9 +139,9 @@ p {
 
 ![Text that wraps nicely when it reaches the end of the container.](resources/normal.PNG)
 
-### Color Contrast 
+### Color Contrast
 
-Color blindness affects 1 in 12 men and 1 in 200 women worldwide. For these people, as well as people with low vision, it can be hard to read text against a noncontrasting background. 
+Color blindness affects 1 in 12 men and 1 in 200 women worldwide. For these people, as well as people with low vision, it can be hard to read text against a noncontrasting background.
 
 What does color contrast mean, exactly?
 
@@ -149,7 +149,7 @@ Technically, there are three types of contrast: hue, luminance, and saturation. 
 
 ![Photoshop properties panel: Hue (a range covering ROYGBIV), luminance (brightness), and saturation ("colorfulness")](resources/hsl.png)
 
-What we're mainly addressing here is luminance contrast, since high hue contrast doesn't help if luminance contrast is still low. To illustrate, take the following example of green text on a red background. Even though red and green have very different hues, you can see that the end result is pretty unpleasant. 
+What we're mainly addressing here is luminance contrast, since high hue contrast doesn't help if luminance contrast is still low. To illustrate, take the following example of green text on a red background. Even though red and green have very different hues, you can see that the end result is pretty unpleasant.
 
 ![Red text on green background. A desaturated version of the image is even more difficult to read.](resources/contrast-calculation.png)
 
@@ -157,7 +157,7 @@ What's up with the second image? That's what would happen if you sucked all the 
 
 **Important: these examples are for illustrative purposes and are an oversimplification of color blindness.** Check out our resources for a tool you can use to [simulate color blindness](#accessibility-checkers) on images.
 
-In the real world, bad color contrast can be hard to spot. Thankfully, you don't have to calculate any ratios yourself. Color-contrast checkers help us make sure that our text and visual elements pass standards. 
+In the real world, bad color contrast can be hard to spot. Thankfully, you don't have to calculate any ratios yourself. Color-contrast checkers help us make sure that our text and visual elements pass standards.
 
 ![The WebAIM color contrast checker](resources/color-contrast.PNG)
 
@@ -204,7 +204,7 @@ How does semantic HTML work? After each section and before each heading, screenr
 
 Notice that there's no visual difference between using many of these tags as opposed to a `div`, which is why I say that screenreader users' needs are often invisible.
 
-Did you know that `h1`, `h2`, etc. are actually semantic tags? It's bad practice to use heading tags to control font size and weight&mdash;that's what CSS is for! Think of heading tags as organizational tools for your website. Only the page title should be an `h1`. Subsections may be `h2`, `h3`, and so forth. 
+Did you know that `h1`, `h2`, etc. are actually semantic tags? It's bad practice to use heading tags to control font size and weight&mdash;that's what CSS is for! Think of heading tags as organizational tools for your website. Only the page title should be an `h1`. Subsections may be `h2`, `h3`, and so forth.
 
 On the same note, use CSS instead of `br` for spacing purposes. `br` should be used meaningfully, like in poems or addresses.
 
@@ -212,13 +212,13 @@ Using semantic HTML also has a positive side effect: it can make your HTML and C
 
 ### Tabindex
 
-Tabindex refers to tabbing through the buttons or links (or "focusable" elements) on a page using the Tab key on the keyboard. This feature can be used by people navigating by keyboard, as well as people using screen readers. 
+Tabindex refers to tabbing through the buttons or links (or "focusable" elements) on a page using the Tab key on the keyboard. This feature can be used by people navigating by keyboard, as well as people using screen readers.
 
 Try it yourself: stop here and press "Tab" until you have navigated all the "tabbable" elements on the page. Imagine that you are using a screenreader, so you can't see the context around each link as you're doing this. If you read just the highlighted text as you tab around the page, can you still tell where each link leads?
 
-"Click here" and other phrases without context can be confusing to people who are navigating a site by the links only. Even worse, imagine a screen reader reading a raw link like <span tabindex="-1">https://github.com/username/project/master/README.md</span>. That would be awful! 
+"Click here" and other phrases without context can be confusing to people who are navigating a site by the links only. Even worse, imagine a screen reader reading a raw link like <span tabindex="-1">https://github.com/username/project/main/README.md</span>. That would be awful!
 
-Instead, we should label links and buttons in an informative way. For the above example, a better link would be "[visit my project](https://github.com/electricdinosaurs/accessibility-demo/master/README.md)". Descriptive labels allow the user to know what to expect when they visit a link.
+Instead, we should label links and buttons in an informative way. For the above example, a better link would be "[visit my project](https://github.com/electricdinosaurs/accessibility-demo/main/README.md)". Descriptive labels allow the user to know what to expect when they visit a link.
 
 ```html
 <!-- HTML file -->
@@ -261,30 +261,30 @@ Embedded media can be difficult to consume for many populations and for many rea
 
 ### Alt text
 
-You've seen alt text before, which is displayed when an image file fails to load. It's also read by <span tabindex="-1">[screenreaders](#supporting-screenreaders)</span>. 
+You've seen alt text before, which is displayed when an image file fails to load. It's also read by <span tabindex="-1">[screenreaders](#supporting-screenreaders)</span>.
 
-Always provide alt text for images that have semantic meaning. For example: a decorative background image of a stripe pattern probably does not need alt text, but an illustrative image of the company's logo probably does. 
+Always provide alt text for images that have semantic meaning. For example: a decorative background image of a stripe pattern probably does not need alt text, but an illustrative image of the company's logo probably does.
 
-A good rule of thumb is if the image adds context to the page that isn't already present in surrounding text, then alt text is needed. If nothing new is added, then `alt=""` is okay. 
+A good rule of thumb is if the image adds context to the page that isn't already present in surrounding text, then alt text is needed. If nothing new is added, then `alt=""` is okay.
 
 Why can't we just omit the `alt` attribute? In the absence of alt text, screenreaders may attempt to read the file name instead.
 
-```html 
+```html
 <!-- HTML file -->
  <img href="images/acm-logo.png" alt="ACM logo" />
 ```
 
 ![ACM logo](resources/acm-logo.png)
 
-Writing good alt text takes a little thought. Think of it as similar to a caption, only as brief as possible. For example, do not write "Image of..." or "Graphic of..." since it's usually obvious what the element is. However, "Painting of..." may be used since the user would not know this if the image had failed to load. 
+Writing good alt text takes a little thought. Think of it as similar to a caption, only as brief as possible. For example, do not write "Image of..." or "Graphic of..." since it's usually obvious what the element is. However, "Painting of..." may be used since the user would not know this if the image had failed to load.
 
-Be accurate when describing image content&mdash;we shouldn't provide information that is not present in the media. 
+Be accurate when describing image content&mdash;we shouldn't provide information that is not present in the media.
 
 Alt text for icons follows the same conventions as for images, since some icons (such as file-type icons) add context.
 
 The only situation where alt text can be redundant with surrounding text is when an image functions as a link. In that case, alt text must be present to act as a link, so `alt=""` is not allowed. Again, "Link to..." is not necessary as it is clear that the image is a link.
 
-Videos do not support `alt` attributes. Use `title` instead or provide an external link to the video. 
+Videos do not support `alt` attributes. Use `title` instead or provide an external link to the video.
 
 Finally, **CSS does not support alt text**. When using `background-image` and other CSS image-related properties, use decorative images only.
 
@@ -292,13 +292,13 @@ In summary, when writing alt text, we should ask ourselves:
 
 1. Does this image/icon add context (or does it function as a link)?
 1. Is my alt text as brief as possible?
-1. Does my alt text accurately and fully describe the image? 
+1. Does my alt text accurately and fully describe the image?
 
-### Transcripts 
+### Transcripts
 
-English language learners and people with hearing impairments can have difficulty following audio or video elements. Transcripts and subtitles are also useful in noisy environments or when skipping through media to find specific information. 
+English language learners and people with hearing impairments can have difficulty following audio or video elements. Transcripts and subtitles are also useful in noisy environments or when skipping through media to find specific information.
 
-WebVTT files are the standard for closed captions. (This will be familiar if you've read <span tabindex="-1">[Lesson 8](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/master/08-intro-figma)</span>.) We can include these with the `track` tag, and specify `kind = subtitle` and `label` using the appropriate language. 
+WebVTT files are the standard for closed captions. (This will be familiar if you've read <span tabindex="-1">[Lesson 8](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/08-intro-figma)</span>.) We can include these with the `track` tag, and specify `kind = subtitle` and `label` using the appropriate language.
 
 `srclang` uses a language code to specify the type of data used <span tabindex="-1">(see [Language Specification](#language-specification)</span>), while `label` is meant to help the user choose the correct subtitles.
 
@@ -319,7 +319,7 @@ Autoplay can be disorienting for users, as well as annoying (have you ever tried
 
 The `autoplay` attribute for `video` tags is an "opt-in" feature. If for some reason this attribute is present in your code, you have to delete it in order to disable autoplay. Setting `autoplay=false` will not work.
 
-Similarly, allow users to pause and navigate slideshows&mdash;it can be distracting to see a constantly sliding slideshow when you're trying to focus on a different part of the page. Plus, many slideshows move too fast for some users to read each slide. 
+Similarly, allow users to pause and navigate slideshows&mdash;it can be distracting to see a constantly sliding slideshow when you're trying to focus on a different part of the page. Plus, many slideshows move too fast for some users to read each slide.
 
 Since slideshows are usually made using JavaScript, we won't cover how to do it here.
 
@@ -327,11 +327,11 @@ Since slideshows are usually made using JavaScript, we won't cover how to do it 
 
 Many people are prone to seizures and can be harmed by websites with too much animation. This means limiting the number of GIFs, and avoiding flashing elements at all costs (the w3 standard is three flashes or less per second).
 
-## Content Reading Level 
+## Content Reading Level
 
 Although web developers often aren't responsible for writing site content, 1) they can be and 2) they are often asked for feedback on content.
 
-Unclear or complicated language affect English language learners, people with reading disabilities, and others. For general-audience websites, the standard is to use language at an 8th-grade reading level.  
+Unclear or complicated language affect English language learners, people with reading disabilities, and others. For general-audience websites, the standard is to use language at an 8th-grade reading level.
 
 You'll also find that many words or phrases can be replaced with simpler ones. (Who wants to read 1000 words when you can get the same thing across in 500?) Towards this end, avoid the passive voice and avoid convoluted sentence structures.
 
@@ -352,15 +352,15 @@ As a review, here are the topics we've covered:
 * Tabindex and labeling links
 * Content reading level
 
-A final note: accessibility shouldn't be an afterthought. You'll make it easier for yourself and your users if you think about it early on: when you're picking your fonts and color palette, when you're creating elements in HTML, and when you're structuring the flow of your website. 
+A final note: accessibility shouldn't be an afterthought. You'll make it easier for yourself and your users if you think about it early on: when you're picking your fonts and color palette, when you're creating elements in HTML, and when you're structuring the flow of your website.
 
-Want to put your new knowledge into practice? Start out by turning a critical eye on your [portfolio task](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/master/task-1-portfolio/README.md) from earlier in this course, as well as any other websites you may have made. Use the tools below to help you make your website beautiful *and* accessible for all users! 
+Want to put your new knowledge into practice? Start out by turning a critical eye on your [portfolio task](https://github.com/uclaacm/learning-lab-crash-course-su20/blob/main/task-1-portfolio/README.md) from earlier in this course, as well as any other websites you may have made. Use the tools below to help you make your website beautiful *and* accessible for all users!
 
-Or, check out the [anti-accessibility example website](https://electricdinosaurs.github.io/accessibility-demo/) attached to this repository that breaks all of the rules we mentioned. Try forking the project or playing around in the browser inspector mode to see how you can make it less awful. 
+Or, check out the [anti-accessibility example website](https://electricdinosaurs.github.io/accessibility-demo/) attached to this repository that breaks all of the rules we mentioned. Try forking the project or playing around in the browser inspector mode to see how you can make it less awful.
 
 ## Accessibility Checkers
 
-Never rely on a machine to "check off" accessibility requirements. (Here is a blog post that shows [how machines can make mistakes sometimes](https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/).) Still, I highly recommend saving these resources for later&mdash;I use them all the time and they are great aids for checking how your website measures up. 
+Never rely on a machine to "check off" accessibility requirements. (Here is a blog post that shows [how machines can make mistakes sometimes](https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/).) Still, I highly recommend saving these resources for later&mdash;I use them all the time and they are great aids for checking how your website measures up.
 
 * [WAVE browser extension](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
 * [w3 evaluation tools](https://www.w3.org/WAI/ER/tools/)
