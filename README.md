@@ -17,7 +17,7 @@ Lessons:
 * [Lesson 05: A Brief Flyover of CSS Frameworks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/05-css-frameworks)
 * [Lesson 06: A CSS Animations Primer](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/06-css-animations)
 * [Lesson 07: Intro to React](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/07-intro-react)
-* [Lesson 08: Intro to Design with Figma (guest lecturer: Tomoki!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/08-intro-design)
+* [Lesson 08: Intro to Design with Figma (guest lecturer: Tomoki!)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/08-intro-figma)
 * [Lesson 09: Intermediate React (Concepts & Patterns)](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/09-intermediate-react-1)
 * [Lesson 10: Intro to SASS](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/10-sass)
 * [Lesson 11: React Hooks](https://github.com/uclaacm/learning-lab-crash-course-su20/tree/main/11-react-hooks)
