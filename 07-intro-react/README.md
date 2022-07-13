@@ -137,9 +137,9 @@ Let's mock this up with a class in JavaScript.
 ```js
 // message.js
 class Message {
-    constructor(sender, recepient, contents) {
+    constructor(sender, recipient, contents) {
         this.sender = sender;
-        this.recepient = recepient;
+        this.recipient = recipient;
         this.contents = contents;
     }
 }
@@ -151,11 +151,11 @@ Notice that, like Python, we don't declare any data members, but rather that we 
 class Message {
 public:
   Message()
-    : _timeSent(0), _timeReceived(0), _sender(), _recepient(), _contents() {}
+    : _timeSent(0), _timeReceived(0), _sender(), _recipient(), _contents() {}
 
 private:
   double _timeSent, _timeReceived;
-  std::string _sender, _recepient, _contents;
+  std::string _sender, _recipient, _contents;
 }
 ```
 
@@ -178,15 +178,15 @@ The first thing that likely comes to mind when thinking of ways to model these f
 ```js
 // message.js
 class Message {
-    constructor(sender, recepient, contents) {
+    constructor(sender, recipient, contents) {
         this.sender = sender;
-        this.recepient = recepient;
+        this.recipient = recipient;
         this.contents = contents;
     }
 
     send() {
       // send the message to a server or something
-      console.log('sent the message to ' + this.recepient);
+      console.log('sent the message to ' + this.recipient);
     }
 
     read() {
@@ -200,9 +200,9 @@ If we wanted to implement the timestamping behavior previously described, we can
 ```js
 // message.js
 class Message {
-    constructor(sender, recepient, contents) {
+    constructor(sender, recipient, contents) {
         this.sender = sender;
-        this.recepient = recepient;
+        this.recipient = recipient;
         this.contents = contents;
         this.timeSent = null;
     }
@@ -210,7 +210,7 @@ class Message {
     send() {
       // send the message to a server or something
       this.timeSent = new Date();
-      console.log('sent the message to ' + this.recepient);
+      console.log('sent the message to ' + this.recipient);
     }
 
     read() {
@@ -226,9 +226,9 @@ We also have static methods as one might expect in any 'ol OOP. We just have to 
 ```js
 // message.js
 class Message {
-    constructor(sender, recepient, contents) {
+    constructor(sender, recipient, contents) {
         this.sender = sender;
-        this.recepient = recepient;
+        this.recipient = recipient;
         this.contents = contents;
         this.timeSent = null;
     }
@@ -399,6 +399,8 @@ Recall that we installed an NPM package called `create-react-app` earlier in thi
 ```sh
 create-react-app <folderName>
 ```
+
+Note: if you get the message `npm WARN config global --global, --local are deprecated. Use --location=global instead.`, [edit the nodejs files accordingly](https://stackoverflow.com/questions/72401421/message-npm-warn-config-global-global-local-are-deprecated-use-loc).
 
 Once this runs, you'll create a new package with all the dependencies for a react app already installed, and a handful of scripts to run, test, and build your app at your disposal. More specifically,
 * We can serve the project locally with `npm start`
